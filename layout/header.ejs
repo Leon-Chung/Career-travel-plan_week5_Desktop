@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom py-3 border-natural-85" id="navLogin">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand me-0 py-0" href="../pages/index.html">
       <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/b73ea8a74c1ac1f404c8b9e08555ad2f7b7f20e5/2025-week5/logo.svg" alt="logo">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +19,177 @@
         </li>
          </ul>
       </div>
-      <a href="../pages/user.html"><img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2025-week5/avatar.png?raw=true" alt="user-img" class=" me-2 border rounded-circle user-img">Mokumaru</a>
+      <!-- login Button trigger modal -->
+    <button type="button" class="btn border border-natural-85 py-2 px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      登入/註冊
+    </button>
+      <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="display: none" ref="loginModal">
+      <div class="modal-dialog modal-dialog-centered modal-width modal-fullscreen-lg-down">
+        <div class="modal-content">
+          <!-- Login page -->
+          <div class="card shadow border-0 custom-rounded " v-show="modalLogin">
+            <div class="row g-0">
+              <!-- Login-girl-Page -->
+              <div class="col-lg-7 d-lg-block d-none">
+                <div class="img-wrapper">
+                  <img src="../assets/images/about/login.png" class=" img-fluid custom-img-width" alt="Login-girl-Promotional-Photos">
+                </div>
+              </div>
+              <!-- Login-text-page -->
+              <div class="col-12 pt-5 pb-5 col-lg-5 pt-lg-0 pb-lg-0">
+                <div class="modal-header border-0 p-0 position-relative">
+                  <button type="button" class="btn-close p-0 user-img position-absolute top-0 end-0 mt-3 me-3 mt-lg-5 me-lg-5" data-bs-dismiss="modal" aria-label="Close" @click.prevent="closeModal()"></button>
+                </div>
+                <div class="card-header-title d-flex justify-content-center mt-5 mt-lg-6">
+                  <h2 class="fw-bold fs-3 fs-lg-2">登入</h2>
+                </div>
+                <!-- 第三方認證 -->
+                <div class="card-body p-5 p-lg-6 d-flex flex-column gap-5">
+                  <div class="third-party-certification border-bottom border-natural-85 pb-5">
+                      <div class="google">
+                          <button type="button" 
+                                  class="btn border w-100 fs-lg-6 fs-14 border-natural-85 rounded-2 py-3  d-flex align-items-center justify-content-center">
+                                  <img src="../assets/images/btn-Icon/google.png" alt="google-icon" class="me-1 google-img">Google</button>
+                      </div>
+                      <div class="discord mt-4">
+                          <button type="button" 
+                                  class="btn border w-100 fs-lg-6 fs-14 border-natural-85 rounded-2 py-3  d-flex align-items-center justify-content-center">
+                                  <img src="../assets/images/btn-Icon/discord.png" alt="google-icon" class="me-1 google-img">Discord</button>
+                      </div>
+                  </div>
+                   <!-- 登入帳號欄 -->
+                  <div class="login-account d-flex flex-column gap-4">
+                    <!-- 信箱 -->
+                    <div class="form-floating position-relative">
+                      <input type="email" class="form-control border-natural-85" id="floatingEmail" placeholder="Email" v-model.trim="loginValue.email">
+                      <label for="floatingEmail" class="fs-lg-6 fs-14">信箱</label>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="loginReminder.email">{{loginErrorMessage.email}}</span>
+                    </div>
+                    <!-- 密碼 -->
+                    <div class="form-floating position-relative">
+                      <input ref="loginPasswordInput" type="password" class="form-control border-natural-85" id="floatingPassword"  placeholder="Password" v-model.trim="loginValue.password">
+                      <label for="floatingPassword" class="fs-lg-6 fs-14">Password</label>
+                      <span class="material-symbols-outlined icon-fs20 click-cursor position-absolute top-50 end-0 translate-middle-y me-3" @click.prevent="eyeLoginChange($event)">{{ eyeIcon }}</span>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="loginReminder.password">{{loginErrorMessage.password}}</span>
+                    </div>
+                    <!-- 提醒 -->
+                     <div class="d-flex justify-content-end">
+                      <a href="javascript:;"><span class="fs-14 text-natural-50">忘記密碼</span></a>
+                     </div>
+                     <!-- sent-btn -->
+                      <div>
+                        <button class="btn w-100 py-3 rounded-2 bg-black text-white fs-lg-6 fs-14" type="button" @click.prevent="loginSent($event)" >送出
+                          <span class="material-icons-outlined icon-fs20 align-bottom ms-1">
+                            chevron_right
+                          </span>
+                        </button>
+                      </div>
+                  </div>
+                </div>
+                 <!-- 快速註冊 -->
+                  <div class="d-flex justify-content-center custom-modal-mb">
+                    <span class="fw-medium lh-120 text-natural-50 fs-lg-6 fs-14">不是會員？</span>
+                    <a href="javascript:;" class="fw-medium lh-120 text-primary text-underline fs-lg-6 fs-14" @click.prevent="switchRegisterOrLogin($event)">快速註冊</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- register page -->
+          <div class="card shadow border-0 custom-rounded" v-show="modalRegister">
+            <div class="row g-0">
+              <div class="col-12 col-lg-5 pt-5 pt-lg-0">
+                <!-- close btn -->
+                <div class="modal-header border-0 p-0 position-relative">
+                  <button type="button" class="btn-close p-0 user-img position-absolute top-0 end-0 mt-3 me-3 mt-lg-5 me-lg-5" data-bs-dismiss="modal" aria-label="Close" @click.prevent="closeModal()"></button>
+                </div>
+                <!-- title -->
+                <div class="d-flex justify-content-center mt-5 mt-lg-6">
+                   <h2 class="fw-bold fs-3 fs-lg-2 ">註冊</h2>
+                </div>
+                <!-- 第三方認證 -->
+                <div class="card-body p-5 p-lg-6 d-flex flex-column gap-5">
+                  <div class="border-bottom border-natural-85 pb-5">
+                    <!-- google -->
+                    <!-- <div class="py-3 border d-flex justify-content-center rounded-2 border-natural-85">
+                      <label for="google" class="d-flex align-items-center"><img src="../assets/images/btn-Icon/google.png" alt="" class="me-1">Google</label>
+                      <input type="text" id="google" name="google" class="d-none" >
+                    </div> -->
+                    <div class="google">
+                        <button type="button" 
+                                class="btn border w-100 fs-lg-6 fs-14 border-natural-85 rounded-2 py-3  d-flex align-items-center justify-content-center">
+                                <img src="../assets/images/btn-Icon/google.png" alt="google-icon" class="me-1 google-img">Google</button>
+                    </div>
+                    <div class="discord mt-4">
+                        <button type="button" 
+                                class="btn border w-100 fs-lg-6 fs-14 border-natural-85 rounded-2 py-3  d-flex align-items-center justify-content-center">
+                                <img src="../assets/images/btn-Icon/discord.png" alt="google-icon" class="me-1 google-img">Discord</button>
+                    </div>
+                  </div>
+                  <!-- register -->
+                  <div class="d-flex flex-column gap-4">
+                    <!-- 帳號 -->
+                    <div class="form-floating position-relative">
+                      <input ref="registerAccount" type="text" class="form-control border-natural-85" id="floatingRegisterAccount" placeholder="registerAccount" v-model.trim="registerAccountValue">
+                      <label for="floatingRegisterAccount" class="fs-lg-6 fs-14">帳號</label>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="accountReminder">{{accountErrorMessage}}</span>
+                    </div>
+                    <!-- 信箱 -->
+                    <div class="form-floating position-relative">
+                      <input ref="registerEmail" type="email" class="form-control border-natural-85" id="floatingRegisterEmail" placeholder="registerEmail" v-model.trim="registerEmailValue">
+                      <label for="floatingRegisterEmail" class="fs-lg-6 fs-14">信箱</label>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="emailReminder">{{emailErrorMessage}}</span>
+                    </div>
+                    <!-- 密碼 -->
+                    <div class="form-floating position-relative">
+                      <input ref="registerPasswordInput" type="password" class="form-control border-natural-85 " id="floatingRegisterPassword" placeholder="registerPassword" v-model.trim="registerPasswordValue">
+                      <label for="floatingRegisterPassword" class="fs-lg-6 fs-14">密碼</label>
+                      <span class="material-symbols-outlined icon-fs20 click-cursor position-absolute top-50 end-0 translate-middle-y me-3" @click.prevent="eyeRegisterChange($event)">{{ eyeRegisterIcon }}</span>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="pwdReminder">{{pwdErrorMessage}}</span>
+                    </div>
+                    <!-- 確認密碼 -->
+                    <div class="form-floating position-relative">
+                      <input ref="checkPasswordInput" type="password" class="form-control" id="floatingCheckPassword" placeholder="CheckPassword" v-model.trim="registerCheckPasswordValue">
+                      <label for="floatingCheckPassword" class="fs-lg-6 fs-14">確認密碼</label>
+                      <span class="material-symbols-outlined icon-fs20 click-cursor position-absolute top-50 translate-middle-y end-0 me-3" @click.prevent="eyeCheckChange($event)">{{ eyeCheckIcon }}</span>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="checkPwdReminder">{{checkPwdErrorMessage}}</span>
+                    </div>
+                    <!-- check -->
+                    <div class="form-check mb-0 d-flex align-items-center">
+                      <input class="form-check-input border-natural-85 me-1" type="checkbox" value="" id="checkChecked" v-model="checked">
+                      <span class="fs-14 me-1">我同意</span>
+                      <a href="../pages/tos.html" class="text-primary fs-14 text-underline me-1">服務條款</a>
+                      <span class="fs-14 me-1">和</span>
+                      <a href="../pages/pp.html" class="text-primary fs-14 text-underline">隱私政策</a>
+                      <span class="fs-14 me-1">。</span>
+                      <span class="fs-14 text-danger" v-show="agreeTermsReminder">{{agreeTermsErrorMessage}}</span>
+                    </div>
+                    <!-- sent btn -->
+                     <div>
+                      <button type="button" class="btn w-100 py-3 bg-black text-white fs-lg-6 fs-14" @click.prevent="registerSent($event)">送出
+                        <span class="material-icons-outlined icon-fs20 align-bottom  ms-1">
+                            chevron_right
+                          </span>
+                      </button>
+                     </div>
+                  </div>
+                </div>
+                <!-- 直接登入 -->
+                <div class="d-flex justify-content-center custom-modal-register-mb">
+                  <span class="fw-medium lh-120 text-natural-50 fs-lg-6 fs-14">已經會員？</span>
+                  <a href="javascript:;" class="fw-medium lh-120 text-primary text-underline fs-lg-6 fs-14" @click.prevent="switchRegisterOrLogin($event)" >直接登入</a>
+                </div>
+              </div>
+              <div class="col-lg-7 d-lg-block d-none">
+                <div class="img-wrapper-register">
+                  <img src="../assets/images/about/register.png" class="img-fluid custom-img-width" alt="register-boy-Promotional-Photos">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="../pages/user.html" v-show="memberPhoto"><img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2025-week5/avatar.png?raw=true" alt="user-img" class=" me-2 border rounded-circle user-img" >Mokumaru</a>
   </div>
 </nav>

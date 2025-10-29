@@ -1,28 +1,13 @@
-.bg-gray{
-  background: #f0f3f5;
-}
-
-.section-padding{
-  padding: 80px 12px;
-}
-
-.rounded-panel{
-  border-radius: 24px;
-  background: #FCFCFD;
-}
-
-.text-blue{
-  color: #4A69E8;
-}
-
-.subtitle{
-  font-size: 18px;
-  color: #667F99;
-}
-
+// user page
 .side-width{
-  max-width: 300px;
+  max-width: 300px; //沒有相關的基礎設定
   width: 100%;
+}
+
+.tab-btn-bg{
+  .nav-link{
+    background: $white;
+  }
 }
 
 .rounded-16 {
@@ -38,5 +23,35 @@
 
 .fs-14{
   font-size: 14px;
+}
+
+.user-default-img{
+  width: 120px;
+  height: 120px;
+}
+
+.modal-480{
+  max-width: 480px;
+}
+
+.modal-header-padding{
+  padding: 8px 16px 8px 24px;
+}
+
+.modal-body-padding{
+  padding: 24px;
+}
+
+.modal-footer-padding{
+  padding: 16px 24px;
+}
+
+.modal-icon{
+  display: flex;               /* 變成 flex 容器 */
+  justify-content: center;     /* 水平置中 */
+  align-items: center;         /* 垂直置中 */
+  width: 44px;                 /* 按鈕寬度 */
+  height: 44px;                /* 按鈕高度 */
+  padding: 0;                  /* 去除多餘間距 */
 }
 

@@ -1,9 +1,6 @@
 /* 標籤的基本樣式 */
 body {
-  font-family: "Noto Sans TC", sans-serif;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: #141a1f;
+  letter-spacing: 0.02em; //沒有相關的基礎設定
 }
 
 img {
@@ -13,19 +10,5 @@ img {
 
 a {
   display: inline-block;
-  text-decoration: none;
   color: inherit;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 0;
-}
-
-p {
-  margin-bottom: 0;
 }

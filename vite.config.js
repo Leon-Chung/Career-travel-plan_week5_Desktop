@@ -6,6 +6,8 @@ import { glob } from 'glob';
 
 import liveReload from 'vite-plugin-live-reload';
 
+import vue from '@vitejs/plugin-vue';
+
 function moveOutputPlugin() {
   return {
     name: 'move-output',
@@ -25,11 +27,12 @@ function moveOutputPlugin() {
 export default defineConfig({
   // base 的寫法:
   // base: '/Repository 的名稱/'
-  base: '/web-layout-training-vite/',
+  base: '/Career-travel-plan_week5_Desktop/',
   plugins: [
     liveReload(['./layout/**/*.ejs', './pages/**/*.ejs', './pages/**/*.html']),
     ViteEjsPlugin(),
     moveOutputPlugin(),
+    vue() // 新增 vue 插件
   ],
   server: {
     // 啟動 server 時預設開啟的頁面
@@ -51,4 +54,11 @@ export default defineConfig({
     },
     outDir: 'dist',
   },
+  // 💡 這裡很重要！指定帶編譯器的 Vue 版本
+   resolve: {
+    alias: {
+      // 💡 這裡很重要！指定帶編譯器的 Vue 版本
+      'vue': 'vue/dist/vue.esm-bundler.js'
+    }
+  }
 });
