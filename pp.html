@@ -10,7 +10,7 @@
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility_off" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
     <title>index</title>
-    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-BfMBNGSg.js"></script>
+    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-B-adwksf.js"></script>
     <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-uCll-4Ro.css">
   </head>
   <body>
@@ -36,7 +36,7 @@
          </ul>
       </div>
       <!-- login Button trigger modal -->
-    <button type="button" class="btn border border-natural-85 py-2 px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <button type="button" class="btn border border-natural-85 py-2 px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" v-show="memberPhotoChange.LoginAndRegisterPhoto">
       登入/註冊
     </button>
       <!-- Modal -->
@@ -206,7 +206,7 @@
         </div>
       </div>
     </div>
-    <a href="../pages/user.html" v-show="memberPhoto"><img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2025-week5/avatar.png?raw=true" alt="user-img" class=" me-2 border rounded-circle user-img" >Mokumaru</a>
+    <a  v-show="memberPhotoChange.memberPhoto" @click.prevent="userPage($event)"><img :src="userData.photo" alt="user-img" class=" me-2 border rounded-circle user-img" >{{ userData.userInfo }}</a>
   </div>
 </nav>
     <h1>隱私政策</h1>

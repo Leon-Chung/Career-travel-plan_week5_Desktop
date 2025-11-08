@@ -14,7 +14,7 @@
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility_off" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
     <title>index</title>
-    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-BfMBNGSg.js"></script>
+    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-B-adwksf.js"></script>
     <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-uCll-4Ro.css">
   </head>
   <body>
@@ -40,7 +40,7 @@
          </ul>
       </div>
       <!-- login Button trigger modal -->
-    <button type="button" class="btn border border-natural-85 py-2 px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <button type="button" class="btn border border-natural-85 py-2 px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" v-show="memberPhotoChange.LoginAndRegisterPhoto">
       登入/註冊
     </button>
       <!-- Modal -->
@@ -210,10 +210,10 @@
         </div>
       </div>
     </div>
-    <a href="../pages/user.html" v-show="memberPhoto"><img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2025-week5/avatar.png?raw=true" alt="user-img" class=" me-2 border rounded-circle user-img" >Mokumaru</a>
+    <a  v-show="memberPhotoChange.memberPhoto" @click.prevent="userPage($event)"><img :src="userData.photo" alt="user-img" class=" me-2 border rounded-circle user-img" >{{ userData.userInfo }}</a>
   </div>
 </nav>
-    <main class="bg-natural-95">
+    <main class="bg-natural-95" id="userApp">
       <div class="container py-7">
         <div class="row justify-content-center">
           <div class="col-10">
@@ -240,7 +240,7 @@
               <div class="tab-pane fade show active" id="pills-info" role="tabpanel" aria-labelledby="pills-info-tab" tabindex="0">
                 <div id="personalData">
                 <form action="">
-                  <div class="d-flex gap-4 mb-5">
+                  <div class="d-flex gap-5 mb-6">
                     <!-- left side -->
                      <section class="flex-shrink-0 side-width">
                       <div>
@@ -250,47 +250,53 @@
                      <!-- right side -->
                       <section class="w-100">
                         <!-- picture -->
-                        <div class="d-flex align-items-end mb-4" id="changePhotos">
-                          <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2025-week5/avatar_default.png?raw=true" alt="user-default-img" class="me-3 border user-default-img rounded-circle">
+                        <div class="d-flex align-items-end mb-5" id="changePhotos">
+                          <img :src="userData.photo" alt="user-default-img" class="me-3 border user-default-img rounded-circle">
                           <label for="changePic" class="btn border rounded-16 uploadPadding"><span class="material-icons-outlined me-1 align-bottom">file_upload</span>更新頭貼</label>
-                          <input type="file" name="changePic" id="changePic" class="d-none">
+                          <input type="file" name="changePic" id="changePic" class="d-none" @change="updateAvatar">
                         </div>
                         <!-- personal data -->
                         <article>
                           <!-- name -->
-                          <div class="mb-4">
+                          <div class="mb-5">
                             <div class="form-floating">
-                              <input type="text" class="form-control" id="enterInputName" placeholder="enterYourName" value="Mokumaru" >
+                              <input type="text" class="form-control" id="enterInputName" placeholder="enterYourName"
+                                v-model="userData.userInfo" disabled>
+                                <!-- :vaiue ="userData?.userInfo" -->
+                                <!-- :key="userData?.userInfo" -->
                               <label for="enterInputName">姓名</label>
                             </div>
                           </div>
                           <!-- gender -->
-                          <div class="mb-4">
+                          <div class="mb-5">
                             <p class="mb-2">性別</p>
                             <div class="d-flex px-2">
-                              <div class="form-check form-check-inline mb-0 me-4">
-                                <input class="form-check-input" type="radio" name="gender-status" id="female" value="female" checked>
+                              <div class="form-check form-check-inline mb-0 me-5">
+                                <input class="form-check-input" type="radio" name="gender-status" id="female" value="female" v-model="userData.gender" >
                                 <label class="form-check-label" for="female">女性</label>
                               </div>
-                              <div class="form-check form-check-inline mb-0 me-4">
-                                <input class="form-check-input" type="radio" name="gender-status" id="male" value="male">
+                              <div class="form-check form-check-inline mb-0 me-5">
+                                <input class="form-check-input" type="radio" name="gender-status" id="male" value="male" v-model="userData.gender">
                                 <label class="form-check-label" for="male">男性</label>
                               </div>
-                              <div class="form-check form-check-inline mb-0 me-4">
-                                <input class="form-check-input" type="radio" name="gender-status" id="prefer-not-to-disclose" value="prefer-not-to-disclose">
+                              <div class="form-check form-check-inline mb-0 me-5">
+                                <input class="form-check-input" type="radio" name="gender-status" id="prefer-not-to-disclose" value="prefer-not-to-disclose" v-model="userData.gender">
                                 <label class="form-check-label" for="prefer-not-to-disclose">不願透露</label>
                               </div>
                             </div>
                           </div>
                           <!-- Birthday -->
-                          <div class="mb-4">
+                          <div class="mb-5">
                               <div class="form-floating">
-                                <input type="text" class="form-control" id="enterYourBirthday" placeholder="enterYourBirthday" value="2000/01/10">
-                                <label for="enterYourBirthday">生日</label>
+                                <input type="text" class="form-control" id="enterYourBirthday" placeholder="enterYourBirthday" v-model="userData.birthday" >
+                                <label for="enterYourBirthday" class="text-natural-50">生日</label>
+                              </div>
+                              <div class="px-2">
+                                  <span class="fs-14 text-natural-50">有效的生日格式請輸入: 2000/01/01 格式</span>
                               </div>
                           </div>
                           <!-- password -->
-                          <div class="mb-4">
+                          <div class="mb-5">
                               <p class="mb-2">密碼</p>
                               <label for="edit-password" class="btn border rounded-16 printPadding" data-bs-toggle="modal" data-bs-target="#exampleModal">修改密碼
                                 <span class="material-icons-outlined align-bottom ms-1">
@@ -314,13 +320,13 @@
                                     <!-- body -->
                                     <div class="modal-body border-top border-bottom modal-body-padding">
                                       <form>
-                                        <div class="mb-4">
+                                        <div class="mb-5">
                                           <div class="form-floating">
                                             <input type="password" class="form-control" id="new-password" placeholder="new-password" value="">
                                             <label for="new-password" class="text-black">新密碼</label>
                                           </div>
                                         </div>
-                                        <div class="mb-4">
+                                        <div class="mb-0">
                                           <div class="form-floating">
                                             <input type="password" class="form-control" id="password-again" placeholder="password-again" value="">
                                             <label for="password-again" class="text-black">再次密碼</label>
@@ -343,27 +349,30 @@
                           </div>
                           <address class="mb-0">
                           <!-- email -->
-                            <div class="mb-4">
+                            <div class="mb-5">
                                 <div class="form-floating ">
-                                  <input type="email" class="form-control" id="enterYourEmail" placeholder="enterYourEmail" value="mokumaru@mail.com">
-                                  <label for="enterYourEmail">Email address</label>
+                                  <input type="email" class="form-control" id="enterYourEmail" placeholder="enterYourEmail" v-model="userData.email" disabled>
+                                  <label for="enterYourEmail">信箱</label>
                                 </div>
-                                <div class="px-2">
-                                  <span class="fs-14 text-secondary">盡量勿使用Yahoo或Hotmail郵件信箱，以免因擋信、漏信</span>
-                                </div>
+                                <!-- <div class="px-2">
+                                  <span class="fs-14 text-natural-50">盡量勿使用Yahoo或Hotmail郵件信箱，以免因擋信、漏信</span>
+                                </div> -->
                             </div>
                           <!-- tel -->
-                            <div class="mb-4">
+                            <div class="mb-5">
                               <div class="form-floating">
-                                <input type="tel" class="form-control" id="tel-num" placeholder="tel-num" value="09-1234-5678">
-                                <label for="tel-num">聯絡電話</label>
+                                <input type="tel" class="form-control" id="tel-num" placeholder="tel-num" v-model="userData.tel">
+                                <label for="tel-num" class="text-natural-50">聯絡電話</label>
+                              </div>
+                              <div class="px-2">
+                                  <span class="fs-14 text-natural-50">有效的電話號碼格式請輸入: 09xx-xxxxxx 格式</span>
                               </div>
                             </div>
                           <!-- address -->
                             <div>
                               <div class="form-floating">
-                                <input type="text" class="form-control" id="enterInputAddress" placeholder="enterInputAddress" value="高雄市三民區九如一路 87 號">
-                                <label for="enterInputAddress">通訊地址</label>
+                                <input type="text" class="form-control" id="enterInputAddress" placeholder="enterInputAddress"  v-model="userData.address">
+                                <label for="enterInputAddress" class="text-natural-50">通訊地址</label>
                               </div>
                             </div>
                           </address>
@@ -371,15 +380,15 @@
                       </section>
                   </div>
                   <!-- btn -->
-                   <div class="d-flex gap-4 justify-content-center">
-                    <label for="Refill" class="btn border rounded-16 printPadding">重新填寫
+                   <div class="d-flex gap-5 justify-content-center">
+                    <label for="Refill" class="btn border rounded-16 printPadding" @click.prevent="resetForm($event)">重新填寫
                       <span class="material-icons-outlined align-bottom ms-1">
                         chevron_right
                       </span>
                     </label>
                     <input type="text" name="Refill" id="Refill" class="d-none">
                     <!-- btn-dark -->
-                    <label for="save-updates" class="btn border rounded-16 printPadding text-bg-dark">儲存更新
+                    <label for="save-updates" class="btn border rounded-16 printPadding text-bg-dark" @click.prevent="saveUpdate($event)">儲存更新
                       <span class="material-icons-outlined align-bottom ms-1">
                         chevron_right
                       </span>
