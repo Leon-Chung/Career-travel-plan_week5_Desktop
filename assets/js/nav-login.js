@@ -1,5 +1,5 @@
 import { Modal } from 'bootstrap';
-import { createApp, watch } from 'vue';
+import { createApp, warn, watch } from 'vue';
 
 import axios, {isCancel, AxiosError} from 'axios';
 
@@ -14,10 +14,23 @@ axios(apiUrl,{
   headers: header,
 }).then(res=>console.log(res));
 
+
+
 const navLogin = {
   data(){
     return {
-      memberPhoto:false,
+      //切換會員暱稱、頭像按鈕
+      memberPhotoChange:{
+        LoginAndRegisterPhoto: true,
+        memberPhoto:false,
+      },
+      //紀錄目前登入的會員資料（暱稱、頭像等等)
+      userData:{
+        isLogin:false,
+        userInfo: null, // 一開始沒有登入，所以是 null
+        email: null,
+        photo: ''
+      },
       //追蹤 login 送出後狀態來抑止-->模擬點擊一次，讓 Bootstrap 關掉 modal 
       isClosingModal: false, // 新增一個 flag
       //readLoginValue(優化成「物件分組」的形式)
@@ -52,8 +65,10 @@ const navLogin = {
       pwdErrorMessage: '',
       checkPwdErrorMessage: '',
       agreeTermsErrorMessage: '',
+      
       //registerReadCheck
       checked: false,
+
       //toggleEye
       eyeIcon:'visibility_off', //代表目前是「隱藏狀態」
       eyeRegisterIcon:'visibility_off', //代表目前是「隱藏狀態」
@@ -70,6 +85,72 @@ const navLogin = {
       url:'https://todoo.5xcamp.us',
     }
   },
+  mounted() { //mounted() 是跳頁時會自動進行「初始化階段讀取一次」
+
+      // localStorage.clear();
+      // 進入頁面時，從 localStorage 同步登入狀態
+      const isLogin = localStorage.getItem('isLogin');
+      console.warn(isLogin);
+      const user = localStorage.getItem('userInfo');
+      console.log(typeof user);
+      const userEmail = localStorage.getItem('userEmail');
+      console.log(typeof userEmail);
+      const savedPhoto = localStorage.getItem('userPhoto');
+
+    if(isLogin  === 'true' && user && userEmail  && savedPhoto){
+      console.log('success');
+      this.userData.isLogin = true; // 告訴 Vue：已登入
+      this.userData.userInfo = JSON.parse(user); // 還原會員資料到畫面
+      this.userData.email = JSON.parse(userEmail); // 還原會員資料到畫面
+      this.userData.photo = savedPhoto;
+      
+      this.memberPhotoChange.LoginAndRegisterPhoto = false;
+      this.memberPhotoChange.memberPhoto = true;
+    }
+ 
+    // 監聽自訂事件（同分頁）的用途 => 單分頁應用
+      window.addEventListener('userPhotoUpdated', (e) => {
+      console.log('同分頁頭貼更新', e.detail);
+      this.userData.photo = e.detail;
+    });
+
+    // 若是跨分頁（不同 tab）的用途 =>  同帳號開多個分頁（例如同時開 user.html + index.html）
+      window.addEventListener('storage', (event) => {
+      if (event.key === 'userPhoto') {
+        console.log('跨分頁頭貼更新', event.newValue);
+        this.userData.photo = event.newValue;
+      }
+    });
+
+
+// 一、mounted() 是「初始化階段讀取一次」
+
+// 當 Vue 組件第一次被掛載到頁面上時（DOM 已渲染完成），
+// mounted() 會執行一次。
+
+//  這很適合拿來：
+
+// 讀取 localStorage
+
+// 呼叫 API 載入使用者資料
+
+// 初始化畫面狀態（例如：登入狀態、使用者暱稱）
+
+// 🔹 功能：
+// 只要網頁一打開（或跳轉到新頁面），
+// 這段 mounted() 就會從 localStorage 重新同步登入狀態。
+
+// 📌 優點：
+
+// 不依賴前一頁的 Vue 狀態（因為換頁 Vue 實例會重建）
+
+// 自動恢復登入資料
+
+// 頁面重整或重新開啟仍保留狀態
+
+// 監聽跨頁 localStorage 變更事件
+ 
+},
   watch:{ //watch 是在監聽 data 中的變數，但它的值來自 v-model 綁定的 html 標籤
 
     // 監聽 registerCheckbox變化的值的流程
@@ -81,13 +162,22 @@ const navLogin = {
         this.agreeTermsReminder = false;
         this.agreeTermsErrorMessage = '';
       }      
-    }
+    },
+
+    
   },
   methods:{ // 這裡只能放函式
 
+    //userPage
+    userPage(e){
+      const isLogin = localStorage.getItem('isLogin');
+      if (isLogin === 'true') {
+      window.location.href = '../pages/user.html';
+      }
+    },
+
     // read login and register value
     loginSent(e){
-
 
       // console.log(this.loginValue.email);
       const loginErrorMessageValueData = [
@@ -185,7 +275,36 @@ const navLogin = {
                 //過一段時間再解除鎖
                 this.isClosingModal = false;
               }, 1000);
-                
+              
+              // 清掉舊的登入資訊（比較安全）
+              localStorage.removeItem('isLogin');
+              localStorage.removeItem('userInfo');
+
+              // localStorage.setItem(); 只是存資料，不會自動改變畫面
+              //紀錄登入狀態
+              localStorage.setItem('isLogin', 'true');
+              
+              // 用 JSON.stringify() 是因為 localStorage 只能存字串，不能直接存物件。
+              localStorage.setItem('userInfo', JSON.stringify(loginRes.data.nickname)); // 紀錄 API 回傳使用者資料(loginRes.data.nickname)
+              localStorage.setItem('userEmail', JSON.stringify(loginRes.data.email)); // 紀錄 API 回傳使用者資料(loginRes.data.nickname)
+
+              // 若 localStorage 還沒有存照片，設置預設頭貼
+              if(!localStorage.getItem('userPhoto')){
+                // 登入時預設頭貼
+                const defaultPhoto = 'https://github.com/hexschool/2022-web-layout-training/blob/main/2025-week5/avatar_default.png?raw=true';
+                localStorage.setItem('userPhoto', defaultPhoto );
+              }
+              //為了讓「前端畫面立即更新」而存在的
+              this.userData.isLogin = true;
+              this.userData.userInfo = loginRes.data.nickname;
+              this.userData.email = loginRes.data.email;
+
+              // 為了讓「前端畫面立即更新」而讀取 localStorage 的頭貼（可能是預設，也可能是使用者之前上傳的）
+              this.userData.photo = localStorage.getItem('userPhoto');
+              
+              this.memberPhotoChange.LoginAndRegisterPhoto = false;
+              this.memberPhotoChange.memberPhoto = true;
+              
             }
           }catch(loginErr){
             console.log(loginErr);
@@ -617,3 +736,7 @@ createApp(navLogin).mount('#navLogin');
 //     this.accountError = '';
 //   }
 // }
+
+
+
+

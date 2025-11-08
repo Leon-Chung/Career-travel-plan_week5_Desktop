@@ -6,7 +6,8 @@ if (mountPoint) { // 如果這個節點存在, 執行
   const personalData = {
   data(){
     return {
-      name: 'leon',
+      name: 'leon123154',
+      // userData: { userInfo: null, isLogin: false },
       url:'https://todoo.5xcamp.us/api-docs/index.html',
     }
   },

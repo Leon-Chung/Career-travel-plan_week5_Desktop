@@ -20,7 +20,7 @@
          </ul>
       </div>
       <!-- login Button trigger modal -->
-    <button type="button" class="btn border border-natural-85 py-2 px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <button type="button" class="btn border border-natural-85 py-2 px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" v-show="memberPhotoChange.LoginAndRegisterPhoto">
       登入/註冊
     </button>
       <!-- Modal -->
@@ -190,6 +190,6 @@
         </div>
       </div>
     </div>
-    <a href="../pages/user.html" v-show="memberPhoto"><img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2025-week5/avatar.png?raw=true" alt="user-img" class=" me-2 border rounded-circle user-img" >Mokumaru</a>
+    <a  v-show="memberPhotoChange.memberPhoto" @click.prevent="userPage($event)"><img :src="userData.photo" alt="user-img" class=" me-2 border rounded-circle user-img" >{{ userData.userInfo }}</a>
   </div>
 </nav>
