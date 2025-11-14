@@ -14,35 +14,44 @@
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility_off" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
     <title>index</title>
-    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-B-adwksf.js"></script>
-    <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-uCll-4Ro.css">
+    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-CVdVxNrk.js"></script>
+    <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-CZ5e4wMD.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom py-3 border-natural-85" id="navLogin">
-  <div class="container">
-    <a class="navbar-brand me-0 py-0" href="../pages/index.html">
+    
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom py-14 py-lg-3 border-natural-85" id="navLogin">
+  <div class="container position-relative">
+    <a class="navbar-brand me-0 py-0 logo" href="../pages/index.html">
       <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/b73ea8a74c1ac1f404c8b9e08555ad2f7b7f20e5/2025-week5/logo.svg" alt="logo">
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <!-- collapse -->
+    <button class="navbar-toggler position-absolute end-0 border-0 mx-3 p-0"
+            type="button"
+            id="menuBtn"
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon bar-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-        <li class="nav-item me-3">
-          <a class="nav-link" href="#">服務方案</a>
+    <div class="custom-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-lg-auto mb-0 mb-lg-0 nav-flex ">
+        <li class="nav-item me-lg-3">
+          <a class="nav-link px-lg-5 " href="#">服務方案</a>
         </li>
-        <li class="nav-item me-3">
-          <a class="nav-link" href="#">關於職旅</a>
+        <li class="nav-item me-lg-3">
+          <a class="nav-link px-lg-5 " href="#">關於職旅</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">聯絡我們</a>
+          <a class="nav-link px-lg-5 " href="#">聯絡我們</a>
         </li>
-         </ul>
-      </div>
+      </ul>
+    </div>
+       
       <!-- login Button trigger modal -->
     <button type="button" class="btn border border-natural-85 py-2 px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" v-show="memberPhotoChange.LoginAndRegisterPhoto">
       登入/註冊
     </button>
+    
       <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="display: none" ref="loginModal">
       <div class="modal-dialog modal-dialog-centered modal-width modal-fullscreen-lg-down">
@@ -210,28 +219,29 @@
         </div>
       </div>
     </div>
-    <a  v-show="memberPhotoChange.memberPhoto" @click.prevent="userPage($event)"><img :src="userData.photo" alt="user-img" class=" me-2 border rounded-circle user-img" >{{ userData.userInfo }}</a>
+    <a class="avatar-removing fs-14 fs-lg-6" v-show="memberPhotoChange.memberPhoto" @click.prevent="userPage($event)"><img :src="userData.photo" alt="user-img" class=" me-2 border rounded-circle user-img" >{{ userData.userInfo }}</a>
   </div>
 </nav>
+
     <main class="bg-natural-95" id="userApp">
-      <div class="container py-7">
+      <div class="container py-6 py-lg-7">
         <div class="row justify-content-center">
-          <div class="col-10">
-            <ul class="nav nav-pills mb-5 justify-content-center tab-btn-bg" id="pills-tab" role="tablist">
-              <li class="nav-item me-4" role="presentation">
-                <button class="nav-link border border-natural-85 active" id="pills-info-tab" data-bs-toggle="pill" data-bs-target="#pills-info" type="button" role="tab" aria-controls="pills-info" aria-selected="true">
-                  <span class="material-icons-outlined align-bottom me-1">face</span>
+          <div class="col-lg-10">
+            <ul class="nav nav-pills  gap-4 gap-lg-5 mb-lg-5 mb-4  justify-content-center tab-btn-bg" id="pills-tab" role="tablist">
+              <li class="nav-item"  role="presentation">
+                <button class="nav-link  border border-natural-85 fs-14 fs-lg-6  p-3 py-lg-2 px-lg-4 active" id="pills-info-tab" data-bs-toggle="pill" data-bs-target="#pills-info" type="button" role="tab" aria-controls="pills-info" aria-selected="true">
+                  <span class="material-icons-outlined align-bottom me-lg-1">face</span>
                   個人資料
                 </button>
               </li>
-              <li class="nav-item me-4" role="presentation">
-                <button class="nav-link border border-natural-85" id="pills-record-tab" data-bs-toggle="pill" data-bs-target="#pills-record" type="button" role="tab" aria-controls="pills-record" aria-selected="false">
-                  <span class="material-icons-outlined align-bottom me-1">pending_actions</span>
+              <li class="nav-item"  role="presentation">
+                <button class="nav-link border border-natural-85 fs-14 fs-lg-6  p-3 py-lg-2 px-lg-4 " id="pills-record-tab" data-bs-toggle="pill" data-bs-target="#pills-record" type="button" role="tab" aria-controls="pills-record" aria-selected="false">
+                  <span class="material-icons-outlined align-bottom me-lg-1">pending_actions</span>
                   預約紀錄</button>
               </li>
-              <li class="nav-item me-4" role="presentation">
-                <button class="nav-link border border-natural-85" id="pills-plan-tab" data-bs-toggle="pill" data-bs-target="#pills-plan" type="button" role="tab" aria-controls="pills-plan" aria-selected="false">
-                  <span class="material-icons-outlined align-bottom me-1">list_alt</span>
+              <li class="nav-item"  role="presentation" >
+                <button class="nav-link border border-natural-85 fs-14 fs-lg-6  p-3 py-lg-2 px-lg-4 " id="pills-plan-tab" data-bs-toggle="pill" data-bs-target="#pills-plan" type="button" role="tab" aria-controls="pills-plan" aria-selected="false">
+                  <span class="material-icons-outlined align-bottom me-lg-1">list_alt</span>
                   職旅計劃</button>
               </li>
             </ul>
@@ -304,8 +314,9 @@
                                 </span>
                               </label>
                               <input type="text" id="edit-password" class="d-none">
-                              <!-- pop-up window -->
+                              <!-- pop-up window --> 
                               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <!-- aria-hidden="true" -->
                                 <div class="modal-dialog modal-dialog-centered modal-480">
                                   <div class="modal-content">
                                     <!-- title -->
@@ -335,7 +346,7 @@
                                       </form>
                                     </div>
                                     <div class="modal-footer modal-footer-padding">
-                                      <label for="update-password" class="btn border printPadding rounded-16 m-0 text-bg-dark">
+                                      <label for="update-password" class="btn border printPadding rounded-16 m-0 text-bg-dark" data-bs-dismiss="modal" @click.prevent="updatePwd($event)">
                                         更新密碼
                                         <span class="material-icons-outlined align-bottom ms-1">
                                           chevron_right
