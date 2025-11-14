@@ -3,11 +3,96 @@
     @content;
   }
 }
+//nav
+.py-14{
+  padding: 14px 0px;
+}
+
+.bar-icon{
+  width: 24px;
+  height: 24px;
+}
+
+.logo{
+  @include phone{
+    width: 92px;
+  }
+}
+
+//Avatar
+.avatar-removing{
+  cursor: pointer;
+  margin-right: 0px;
+  @include phone{
+    margin-right: 36px;
+  }
+}
 
 .user-img{
   width: 44px;
   height: 44px;
 }
+
+//navbar
+/* 預設收起 */
+.custom-collapse {
+  @include phone{
+    position: absolute;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    // transition: all 0.5s ease;
+  }
+}
+
+/* 展開狀態 */
+.custom-collapse.is-open {
+  @include phone{
+    width: 100%;
+    background: #f8f9fa;
+    position: absolute;
+    top: 60px;
+    margin: 0px -12px;
+    max-height: 300px; /* 可依內容調整 */
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav-flex{
+    @include phone{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    
+    }
+  }
+}
+
+
+/* 桌面版保持展開 */
+@media (min-width: 1024px) {
+  .custom-collapse {
+    max-height: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible;
+  }
+
+  #menuBtn {
+    display: none;
+  }
+}
+
+//移除點擊瀏覽器預設的 focus outline 樣式
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  @include phone {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+
 
 //modal
 .modal-width{

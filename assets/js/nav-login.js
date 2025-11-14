@@ -3,6 +3,7 @@ import { createApp, warn, watch } from 'vue';
 
 import axios, {isCancel, AxiosError} from 'axios';
 
+
 const $ = (selector)=>document.querySelector(selector);
 let apiUrl = 'https://cloud.weyutech.com/DEMO_H5Api/api/GetGrid';
 let header = {
@@ -13,7 +14,6 @@ axios(apiUrl,{
   method:'POST',
   headers: header,
 }).then(res=>console.log(res));
-
 
 
 const navLogin = {
@@ -121,34 +121,6 @@ const navLogin = {
         this.userData.photo = event.newValue;
       }
     });
-
-
-// 一、mounted() 是「初始化階段讀取一次」
-
-// 當 Vue 組件第一次被掛載到頁面上時（DOM 已渲染完成），
-// mounted() 會執行一次。
-
-//  這很適合拿來：
-
-// 讀取 localStorage
-
-// 呼叫 API 載入使用者資料
-
-// 初始化畫面狀態（例如：登入狀態、使用者暱稱）
-
-// 🔹 功能：
-// 只要網頁一打開（或跳轉到新頁面），
-// 這段 mounted() 就會從 localStorage 重新同步登入狀態。
-
-// 📌 優點：
-
-// 不依賴前一頁的 Vue 狀態（因為換頁 Vue 實例會重建）
-
-// 自動恢復登入資料
-
-// 頁面重整或重新開啟仍保留狀態
-
-// 監聽跨頁 localStorage 變更事件
  
 },
   watch:{ //watch 是在監聽 data 中的變數，但它的值來自 v-model 綁定的 html 標籤
@@ -163,7 +135,6 @@ const navLogin = {
         this.agreeTermsErrorMessage = '';
       }      
     },
-
     
   },
   methods:{ // 這裡只能放函式

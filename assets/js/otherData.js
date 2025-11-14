@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 
-const mountPoint = document.querySelector('#personalData'); // mountPoint => personalData ID 的節點
+const mountPoint = document.querySelector('#otherData'); // mountPoint => otherData ID 的節點
 
 if (mountPoint) { // 如果這個節點存在, 執行
   const personalData = {

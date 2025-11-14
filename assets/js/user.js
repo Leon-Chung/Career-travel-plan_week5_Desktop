@@ -27,16 +27,32 @@ const userApp = {
     // 讀取 localStorage 的使用者暱稱（登入時並紀錄 API 回傳的使用者資料)
     const user = localStorage.getItem('userInfo');
     const userEmail = localStorage.getItem('userEmail');
-    // 讀取 localStorage 的頭貼（可能是預設，也可能是使用者之前上傳的）
-    const savedPhoto = localStorage.getItem('userPhoto');
     console.log('user:', user);
     console.log('email:', userEmail);
+    // 讀取 localStorage 的頭貼（可能是預設，也可能是使用者之前上傳的）
+    const savedPhoto = localStorage.getItem('userPhoto');
     console.log(savedPhoto);
+    // 讀取 localStorage 個人資訊的資料
+    const userGender = localStorage.getItem('userGender');
+    const userBirthday = localStorage.getItem('userBirthday');
+    const userTel = localStorage.getItem('userTel');
+    const userAddress = localStorage.getItem('userAddress');
+    console.log('gender:', userGender);
+    console.log('birthday:', userBirthday);
+    console.log('tel:', userTel);
+    console.log('address:', userAddress);
     
     if(user && userEmail && savedPhoto){
       this.userData.userInfo = JSON.parse(user);
       this.userData.email = JSON.parse(userEmail);
       this.userData.photo = savedPhoto;
+    }
+
+    if( userGender && userBirthday && userTel && userAddress ){
+      this.userData.gender = userGender;
+      this.userData.birthday = userBirthday;
+      this.userData.tel = userTel;
+      this.userData.address = userAddress;
     }
   },
   watch:{ //watch 是在監聽 data 中的變數，但它的值來自 v-model 綁定的 html 標籤
@@ -65,6 +81,10 @@ const userApp = {
       console.log(e);
       // 將 updateAvatar() 函式拋出的新的 Vue data (大頭貼照片) 更新至 localStorage 
       localStorage.setItem('userPhoto', this.userData.photo);
+      localStorage.setItem('userGender', this.userData.gender);
+      localStorage.setItem('userBirthday', this.userData.birthday);
+      localStorage.setItem('userTel', this.userData.tel);
+      localStorage.setItem('userAddress', this.userData.address);
 
        // 🔔 廣播一個自訂事件
       window.dispatchEvent(new CustomEvent('userPhotoUpdated', {
@@ -78,9 +98,19 @@ const userApp = {
       this.userData.birthday = '';
       this.userData.tel = '';
       this.userData.address = '';
+    },
+
+    //updataPwd
+    updatePwd(e){
+
+      // 先讓焦點移到文件主體，避免焦點留在 modal 裡
+      document.activeElement.blur();
+
+      
+
+
     }
   }
-  
 }
 
 // createApp(userApp).mount('#userApp'); --->跳頁回 index 才會觸發以下這個問題 
