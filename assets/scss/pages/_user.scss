@@ -1,3 +1,10 @@
+@mixin phone{
+  @media screen and (max-width:1024px) {
+    @content;
+  }
+}
+
+
 // user page
 .side-width{
   max-width: 300px; //沒有相關的基礎設定
@@ -12,17 +19,70 @@
 
 .rounded-16 {
     border-radius: 16px;
+    @include phone{
+    border-radius: 12px;
+  }
+}
+.rounded-24{
+  border-radius: 24px;
+  @include phone{
+    border-radius: 16px;
+  }
+}
+
+.gap-lg-5{
+  gap: 24px;
+}
+
+.flex-shrink-1024-0{
+  flex-shrink: 0;
+  @include phone {
+    
+  }
 }
 
 .uploadPadding{
   padding: 12px 20px;
+  @include phone {
+    padding: 12px;
+  }
 }
 .printPadding{
+  padding: 12px 12px 12px 20px ;
+  @include phone {
+    padding: 12px 8px 12px 12px;
+  }
+}
+.updataPwdPadding{
   padding: 12px 12px 12px 20px ;
 }
 
 .fs-14{
   font-size: 14px;
+}
+.fs-20{
+  font-size: 20px;
+}
+
+.fs-special{
+  font-size: 14px;
+  @include phone{
+    font-size: 12px;
+  }
+}
+
+.pb-56{
+  padding-bottom: 56px;
+}
+
+.flex-col-rever-btn{
+  gap: 24px;
+  flex-direction: row;
+  @include phone{
+    gap: 16px;
+    flex-direction: column-reverse;
+
+  }
 }
 
 .user-default-img{
@@ -30,9 +90,37 @@
   height: 120px;
 }
 
+//使用電腦的開發者工具來查看時, 背景都會有內縮補償情況
+//此參數是讓畫面固定不動
+body.modal-open {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+
+.user-modal.modal-dialog {
+  @include phone{
+    margin: 0px auto !important;
+    height: 100%;
+    padding: 0px 24px;
+  } 
+}
+
+.user-modal.modal-content {
+  @include phone{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }  
+}
+
 .modal-480{
   max-width: 480px;
+  @include phone {
+    max-width: 327px;
+  }
 }
+
 
 .modal-header-padding{
   padding: 8px 16px 8px 24px;
@@ -64,4 +152,17 @@
 .personal-data-btn{
    width: 351px;
    overflow-x:auto;
+}
+
+
+//預約紀錄的 dropdown
+
+.dropdown.sort-dropdown {
+  position: relative;
+  overflow: visible !important;
+  z-index: 10; // 保險，避免被蓋住
+}
+
+.bg-hover:hover {
+  background-color: $natural-90 !important;
 }

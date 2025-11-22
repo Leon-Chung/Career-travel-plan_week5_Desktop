@@ -101,14 +101,54 @@ const userApp = {
     },
 
     //updataPwd
+    closeUpdataPwdBtn(){
+      document.activeElement.blur();
+    },
     updatePwd(e){
-
       // 先讓焦點移到文件主體，避免焦點留在 modal 裡
       document.activeElement.blur();
+    },
 
-      
+    //dropdown
+    toggleDropdown(e){
+      console.log(e);
+    // 從你點擊的元素開始往上找，找到最近的 .dropdown-btn 元素
+    // 如果你點到 button 內的 span 或 icon，也能抓到對應的 button
+    // btn 會是 DOM 元素，如果沒找到 .dropdown-btn → btn = null
+      const btn = e.target.closest('.dropdown-btn');
 
+    // 找到頁面上 所有的 dropdown menu（可能有多個下拉選單）
+    // 以 NodeList 形式存放在 allMenus 變數裡  
+      const allMenus = document.querySelectorAll('.dropdown-menu');
 
+    // 如果點擊 不是 dropdown button（例如點到頁面其他地方）
+    // 把所有 dropdown menu 的 .show class 移除 → 也就是關閉所有下拉選單
+    // return → 停止執行後面程式，因為沒必要再切換當前 dropdown
+      if (!btn) {
+      // 點擊 dropdown 外的地方 → 關閉所有 dropdown
+        allMenus.forEach(menu => menu.classList.remove('show'));
+        return;
+      }
+
+    // 取得 button 後面的下一個兄弟元素
+      const menu = btn.nextElementSibling;
+
+    // 檢查這個 menu 是否已經有 .show class 參數 ; 有為 true , 無為 false
+    // 將結果存進 isOpen，用來決定後續要加還是移除 .show
+      const isOpen = menu.classList.contains('show');
+
+    // 第一次點擊 dropdown 按鈕時, 你的 HTML 還沒有 .show   
+      console.log(isOpen); //-->回傳 false
+
+    // 先把 所有 dropdown 都關掉（移除 .show）=> 保證同一時間只有一個 dropdown 打開
+    // 關閉所有 dropdown
+      allMenus.forEach(menu => menu.classList.remove('show'));
+
+    // 如果點擊的 dropdown 時, 原本就是關閉的 (isOpen = false) → 就加上 .show → 打開它
+    // 如果原本已經開了 → 不加 → 也就是維持關閉
+      if (!isOpen) {
+        menu.classList.add('show');
+      }
     }
   }
 }
