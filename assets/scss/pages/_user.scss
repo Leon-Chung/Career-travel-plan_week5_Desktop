@@ -6,6 +6,14 @@
 
 
 // user page
+.col-width{
+  //.col-lg-10 在 Bootstrap 裡會加 左右 gutter padding（預設 12px）
+  //若要1076px的寬度就必須將 max-width 設成包含 padding
+  // 這樣內容寬度就會剛好 1076px，左右 gutter 還在。
+  max-width: 1100px; // 1076+12+12 = 1100px
+  width: 100%;
+}
+
 .side-width{
   max-width: 300px; //沒有相關的基礎設定
   width: 100%;
@@ -143,6 +151,10 @@ body.modal-open {
   padding: 0;                  /* 去除多餘間距 */
 }
 
+.filter-Icon.material-icons-outlined{
+  font-size: 24px;
+}
+
 .material-icons-outlined{
   font-size: 20px;
 }
@@ -166,3 +178,78 @@ body.modal-open {
 .bg-hover:hover {
   background-color: $natural-90 !important;
 }
+
+.btnChange.btn:hover{
+  background: #141A1F;
+}
+
+//table => bootstrap 4 沒有 .d-lg-table-cell 這樣的寫法, 所以需要手刻 CSS
+//big screen th
+.d-lg-table-cell-show{
+    display: table-cell !important;
+    vertical-align: middle;
+  @include phone {
+    display: none !important;
+  }
+}
+.d-lg-table-cell-none{
+    display: none !important;
+  @include phone {
+    display: table-cell !important;
+  }
+}
+
+//small screen tr and td
+.table-row-rwd {
+    display: table-row;      /* 回到 tr 原本樣式 */
+  @include phone {
+    display: block;          /* 小螢幕時 tr 變 block */
+           
+  }
+}
+
+// each td padding
+.table-row-rwd .courseMerchandisePadding {
+  display: table-cell;   /* 回到 td 原本樣式 */
+  padding: 16px 397px 16px 12px;
+  letter-spacing: 0px;
+  @include phone {
+    display: none;
+  }
+}
+
+.table-row-rwd .othersItem {
+  display: table-cell;   /* 回到 td 原本樣式 */
+  @include phone {
+    display: none;
+  }
+}
+
+
+.table-row-rwd .smallScreenTdStatus{
+  display: none;
+  @include phone {
+    display: block;
+    padding: 0px;
+  }
+}
+
+.table-row-rwd .smallScreenCourseMerchandisePadding {
+    padding: 10px 11.5px 10px 8px;
+}
+.table-row-rwd .smallScreenConsultationMethodPadding {
+    padding: 10px 8px;
+}
+.table-row-rwd .smallScreenBookClassDatePadding {
+    padding: 11.5px 8px;
+}
+.table-row-rwd .smallScreenConsultationTimePadding {
+    padding: 11.5px  69px 11.5px 8px;
+}
+.table-row-rwd .smallScreenClassStatusPadding {
+    padding: 11.5px  235px 11.5px 8px;
+}
+
+
+
+

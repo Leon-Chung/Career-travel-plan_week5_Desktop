@@ -20,10 +20,68 @@ const userApp = {
         tel: '',
         address: ''
       },
-    
+      //渲染預約課程畫面
+      //plan => 永遠是用來顯示到畫面用的
+        plan:[],
+      //planBackup => 永遠保存真正的原始資料
+        planBackup:[],
+      //btn-Status-Save
+        btnStatus:'全部',
     }
   },
-  mounted() {//mounted() 是跳頁時會自動進行「初始化階段讀取一次」
+  created(){ //資料已經準備好，但畫面還沒生成，不能操作 DOM
+    //初始原始資料
+       const BookingData =[
+        {
+          courseMerchandise: '職涯定位-職涯探索包 | 6/6堂',
+          bookClassDate :'2025/11/11',
+          consultationTime : '60分鐘',
+          consultationMethod : '視訊',
+          classStatus : '等待上課'
+        },
+        {
+          courseMerchandise: '職涯定位-職涯探索包 | 5/6堂',
+          bookClassDate :'2025/10/10',
+          consultationTime : '60分鐘',
+          consultationMethod : '視訊',
+          classStatus : '等待上課'
+        },
+        {
+          courseMerchandise: '職涯定位-職涯探索包 | 4/6堂',
+          bookClassDate :'2025/09/09',
+          consultationTime : '60分鐘',
+          consultationMethod : '視訊',
+          classStatus : '已完成'
+        },
+        {
+          courseMerchandise: '職涯定位-職涯探索包 | 3/6堂',
+          bookClassDate :'2025/08/08',
+          consultationTime : '60分鐘',
+          consultationMethod : '面對面',
+          classStatus : '已完成'
+        },
+        {
+          courseMerchandise: '職涯定位-職涯探索包 | 2/6堂',
+          bookClassDate :'2025/07/07',
+          consultationTime : '60分鐘',
+          consultationMethod : '面對面',
+          classStatus : '已完成'
+        },
+        {
+          courseMerchandise: '職涯定位-職涯探索包 | 1/6堂',
+          bookClassDate :'2025/06/06',
+          consultationTime : '90分鐘',
+          consultationMethod : '面對面',
+          classStatus : '已完成'
+        },
+      ];
+
+      this.plan = BookingData; //先渲染畫面
+      this.planBackup = JSON.parse(JSON.stringify(BookingData)); // 🔥 深拷貝(永久備份)
+    
+
+  },
+  mounted() {//mounted() 是跳頁時會自動進行「初始化階段讀取一次」; 畫面已經實際渲染在真實頁面上，可以操作 DOM
     // 讀取 localStorage 的使用者暱稱（登入時並紀錄 API 回傳的使用者資料)
     const user = localStorage.getItem('userInfo');
     const userEmail = localStorage.getItem('userEmail');
@@ -54,8 +112,10 @@ const userApp = {
       this.userData.tel = userTel;
       this.userData.address = userAddress;
     }
+
   },
   watch:{ //watch 是在監聽 data 中的變數，但它的值來自 v-model 綁定的 html 標籤
+
     },
   methods:{ // 這裡只能放函式
     //updateAvatar
@@ -109,9 +169,45 @@ const userApp = {
       document.activeElement.blur();
     },
 
+    //bookingBtn-filter
+    bookingFilterByStatus(status){
+
+      //還原全部
+      this.plan = JSON.parse(JSON.stringify(this.planBackup));
+
+      if(status === '全部') return;
+      
+      this.plan = this.plan.filter( i => {
+          return i.classStatus === status;
+        });
+      
+    },
+    //all-btn
+    allBookingBtn(e){
+      this.btnStatus = '全部';
+      //還原全部
+      // this.plan = JSON.parse(JSON.stringify(this.planBackup));
+      this.bookingFilterByStatus('全部');
+    },
+    //finsish-btn
+    finishedBtn(e){
+      this.btnStatus = '已完成';
+    //   //篩選先渲染畫面的 plan 裡面的 已完成
+    //   this.plan = JSON.parse(JSON.stringify(this.planBackup));
+    //   this.plan = this.plan.filter( i => {
+    //     return i.classStatus === '已完成';
+    //   });
+      this.bookingFilterByStatus('已完成');
+    },
+    //cancelBtn
+    cancelBtn(e){
+      this.btnStatus = '已取消';
+      this.bookingFilterByStatus('已取消');
+    },
+
     //dropdown
     toggleDropdown(e){
-      console.log(e);
+    
     // 從你點擊的元素開始往上找，找到最近的 .dropdown-btn 元素
     // 如果你點到 button 內的 span 或 icon，也能抓到對應的 button
     // btn 會是 DOM 元素，如果沒找到 .dropdown-btn → btn = null
@@ -130,9 +226,13 @@ const userApp = {
         return;
       }
 
-    // 取得 button 後面的下一個兄弟元素
-      const menu = btn.nextElementSibling;
-
+    // 取得 大螢幕 跟 小螢幕 的按鈕標籤裡面的 "自定義資料屬性 (data-target="#dropdown1")"
+      const targetSelector = btn.dataset.target;
+      console.log(targetSelector); // #dropdown1
+    // 透過選取出的 #dropdown1 值，來抓取 ul 標籤內的 id="dropdown1" 元素位置
+      const menu = document.querySelector(targetSelector);
+      console.log(menu);
+      
     // 檢查這個 menu 是否已經有 .show class 參數 ; 有為 true , 無為 false
     // 將結果存進 isOpen，用來決定後續要加還是移除 .show
       const isOpen = menu.classList.contains('show');
@@ -149,7 +249,23 @@ const userApp = {
       if (!isOpen) {
         menu.classList.add('show');
       }
-    }
+    },
+   
+
+    //sort
+    //「日期由大到小」（最新 → 最舊）
+    newToOld(e){
+      this.plan.sort(( a, b )=>{
+        return new Date(b.bookClassDate) - new Date(a.bookClassDate);
+      })
+    },
+
+    //「日期由小到大」（最舊 → 最新）  
+    oldToNew(e){
+      this.plan.sort(( a, b )=>{
+        return new Date(a.bookClassDate) - new Date(b.bookClassDate);
+      })
+    }  
   }
 }
 
