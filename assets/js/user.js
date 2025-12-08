@@ -1,5 +1,5 @@
 import { Modal } from 'bootstrap';
-import { createApp, warn, watch } from 'vue';
+import { computed, createApp, warn, watch } from 'vue';
 
 import axios, {isCancel, AxiosError} from 'axios';
 
@@ -20,6 +20,7 @@ const userApp = {
         tel: '',
         address: ''
       },
+
       //渲染預約課程畫面
       //plan => 永遠是用來顯示到畫面用的
         plan:[],
@@ -27,6 +28,43 @@ const userApp = {
         planBackup:[],
       //btn-Status-Save
         btnStatus:'全部',
+
+      //職旅計畫
+        //職業
+        workStatus:'fulltime',
+        //工作產業
+        defaultIndustry: '工作產業',
+        industries: ['科技','媒體','教育','金融','醫療健康','零售製造','服務業','藝術創意','非營利組織'],
+        //工作年資
+        defaultExperience:'工作年資',
+        yearsOfExperience:['1年以下','1-3年','3-5年','5-10年','10年以上'],
+        //工作產業開關
+        workField: false,
+        //工作年資開關
+        workSeniority :false,
+        //月收入
+        defaultIncome:'income-3',
+        incomeRange:[
+          {salary:'3 萬以下',value:"income-3"},
+          {salary:'3-5 萬',value:"income-3-5"},
+          {salary:'5-8 萬',value:"income-5-8"},
+          {salary:'8-12 萬',value:"income-8-12"},
+          {salary:'12-20 萬',value:"income-12-20"},
+          {salary:'20 萬以上',value:"income-20"},
+        ],
+        //職業摘要
+        defaultProfessionalSummary:'',
+        //作品案例展示
+        defaultWorkCases: '',
+
+        //理想工作模式
+        idealWorkStatus:'Fixed-office',
+        //職涯挑戰
+        defaultCareerChallenges:[],
+        //期望資源
+        defaultExpectedResources: [],
+        //服務方案
+        defaultServiceOptions:[],
     }
   },
   created(){ //資料已經準備好，但畫面還沒生成，不能操作 DOM
@@ -79,7 +117,6 @@ const userApp = {
       this.plan = BookingData; //先渲染畫面
       this.planBackup = JSON.parse(JSON.stringify(BookingData)); // 🔥 深拷貝(永久備份)
     
-
   },
   mounted() {//mounted() 是跳頁時會自動進行「初始化階段讀取一次」; 畫面已經實際渲染在真實頁面上，可以操作 DOM
     // 讀取 localStorage 的使用者暱稱（登入時並紀錄 API 回傳的使用者資料)
@@ -115,8 +152,14 @@ const userApp = {
 
   },
   watch:{ //watch 是在監聽 data 中的變數，但它的值來自 v-model 綁定的 html 標籤
-
-    },
+  defaultWorkCases(newValue){
+    console.log(newValue);
+    
+  }
+  },
+  computed:{
+    
+  },
   methods:{ // 這裡只能放函式
     //updateAvatar
     updateAvatar(e){
@@ -169,6 +212,7 @@ const userApp = {
       document.activeElement.blur();
     },
 
+    //Appointment record(預約紀錄)
     //bookingBtn-filter
     bookingFilterByStatus(status){
 
@@ -258,6 +302,8 @@ const userApp = {
       this.plan.sort(( a, b )=>{
         return new Date(b.bookClassDate) - new Date(a.bookClassDate);
       })
+      const allMenus = document.querySelectorAll('.dropdown-menu');
+      allMenus.forEach(menu => menu.classList.remove('show'));
     },
 
     //「日期由小到大」（最舊 → 最新）  
@@ -265,6 +311,60 @@ const userApp = {
       this.plan.sort(( a, b )=>{
         return new Date(a.bookClassDate) - new Date(b.bookClassDate);
       })
+      const allMenus = document.querySelectorAll('.dropdown-menu');
+      allMenus.forEach(menu => menu.classList.remove('show'));
+    },
+    
+    // Career planning(職旅計畫)
+    //workIndustry-dropdownBtn-change
+    workIndustry(e){
+      const allMenus = document.querySelectorAll('.dropdown-menu');
+      allMenus.forEach(menu => menu.classList.remove('is-open'));
+
+      this.workField = !this.workField;
+    },
+
+    //workIndustry-change
+    defaultIndustryBtn(workItem){
+      this.defaultIndustry = workItem;
+      this.workIndustry();
+    },
+
+    //workingExperience-dropdownBtn-change
+    workingExperience(e){
+      const allMenus = document.querySelectorAll('.dropdown-menu');
+      allMenus.forEach(menu => menu.classList.remove('is-open'));
+
+      this.workSeniority = !this.workSeniority;
+    },
+
+    // workingExperience-change
+    defaultExperienceBtn(experienceItem){
+      // console.log(experienceItem);
+      this.defaultExperience = experienceItem;
+      this.workingExperience();
+    },
+  
+  // 職旅計畫
+    // work-cases
+    openIfLinkWorkCases(e) {
+      // console.log('success');
+      // if (!this.defaultWorkCases) return;
+      // if(this.defaultWorkCases){
+      //   window.location.href = this.defaultWorkCases;
+      // }
+
+      //優化後
+      if (!this.defaultWorkCases) return;
+        
+      // 自動補上 https:// 如果沒有
+      let url = this.defaultWorkCases.trim();
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          url = 'https://' + url;
+        }
+
+      // 開新分頁
+      window.open(url, '_blank');
     }  
   }
 }
