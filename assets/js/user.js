@@ -56,15 +56,37 @@ const userApp = {
         defaultProfessionalSummary:'',
         //作品案例展示
         defaultWorkCases: '',
-
+      //職涯規劃
+        //短期職涯目標
+        defaultShortTermGoals:'',
+        //中長期職涯目標
+        defaultLongTermGoals:'',  
         //理想工作模式
         idealWorkStatus:'Fixed-office',
+        //目標薪資
+        defaultExpectedSalary:'',
         //職涯挑戰
         defaultCareerChallenges:[],
         //期望資源
-        defaultExpectedResources: [],
+        defaultExpectedResources:[],
         //服務方案
         defaultServiceOptions:[],
+      //專業技能區塊
+        //核心專業領域
+        defaultCoreCompetency:[],
+        //專業背景
+        defaultProfessionalBackground:'',
+        //專業技能
+        defaultProfessionalSkills:'',
+        //語文能力
+        defaultLanguageProficiency:'',
+        //資格證照
+        defaultCertification:'',
+      //教育背景
+        //學歷背景
+        defaultEducation:'',
+        //專業培訓
+        defaultProfessionaltraining:'',
     }
   },
   created(){ //資料已經準備好，但畫面還沒生成，不能操作 DOM
@@ -122,20 +144,20 @@ const userApp = {
     // 讀取 localStorage 的使用者暱稱（登入時並紀錄 API 回傳的使用者資料)
     const user = localStorage.getItem('userInfo');
     const userEmail = localStorage.getItem('userEmail');
-    console.log('user:', user);
-    console.log('email:', userEmail);
+    // console.log('user:', user);
+    // console.log('email:', userEmail);
     // 讀取 localStorage 的頭貼（可能是預設，也可能是使用者之前上傳的）
     const savedPhoto = localStorage.getItem('userPhoto');
-    console.log(savedPhoto);
+    // console.log(savedPhoto);
     // 讀取 localStorage 個人資訊的資料
     const userGender = localStorage.getItem('userGender');
     const userBirthday = localStorage.getItem('userBirthday');
     const userTel = localStorage.getItem('userTel');
     const userAddress = localStorage.getItem('userAddress');
-    console.log('gender:', userGender);
-    console.log('birthday:', userBirthday);
-    console.log('tel:', userTel);
-    console.log('address:', userAddress);
+    // console.log('gender:', userGender);
+    // console.log('birthday:', userBirthday);
+    // console.log('tel:', userTel);
+    // console.log('address:', userAddress);
     
     if(user && userEmail && savedPhoto){
       this.userData.userInfo = JSON.parse(user);
@@ -150,12 +172,75 @@ const userApp = {
       this.userData.address = userAddress;
     }
 
+    // 職旅計畫
+     //概況
+    // const finishedWorkStatus = localStorage.getItem('userWorkStatus');
+    // const finishedIndustry = localStorage.getItem('userDefaultIndustry');
+    // const finishedExperience = localStorage.getItem('userDefaultExperience');
+    // const finishedIncome = localStorage.getItem('userDefaultIncome');
+    // const finishedProfessionalSummary = localStorage.getItem('userDefaultProfessionalSummary');
+    // const finishedWorkCases = localStorage.getItem('userDefaultWorkCases');
+    // if(finishedWorkStatus && finishedIndustry && finishedExperience && finishedIncome && finishedProfessionalSummary && finishedWorkCases){
+    //   this.workStatus = finishedWorkStatus;
+    //   this.defaultIndustry = finishedIndustry;
+    //   this.defaultExperience = finishedExperience;
+    //   this.defaultIncome = finishedIncome;
+    //   this.defaultProfessionalSummary = finishedProfessionalSummary;
+    //   this.defaultWorkCases = finishedWorkCases;
+    // }
+    //規劃
+    // const finishedShortTermGoals = localStorage.getItem('userDefaultShortTermGoals');
+    // const finishedLongTermGoals = localStorage.getItem('userDefaultLongTermGoals');
+    // const finishedIdealWorkStatus = localStorage.getItem('userDefaultIdealWorkStatus');
+    // const finishedExpectedSalary = localStorage.getItem('userDefaultExpectedSalary');
+    // const finishedCareerChallenges = localStorage.getItem('userDefaultCareerChallenges');
+    // const finishedExpectedResources = localStorage.getItem('userDefaultExpectedResources');
+    // const finishedServiceOptions = localStorage.getItem('userDefaultServiceOptions');
+    // if(finishedShortTermGoals && finishedLongTermGoals && finishedIdealWorkStatus && finishedExpectedSalary){
+    //   this.defaultShortTermGoals = finishedShortTermGoals;
+    //   this.defaultLongTermGoals = finishedLongTermGoals;
+    //   this.idealWorkStatus = finishedIdealWorkStatus;
+    //   this.defaultExpectedSalary = finishedExpectedSalary;
+    // }
+    // if(finishedCareerChallenges && finishedExpectedResources && finishedServiceOptions) {
+    //   this.defaultCareerChallenges = JSON.parse(finishedCareerChallenges);
+    //   this.defaultExpectedResources = JSON.parse(finishedExpectedResources);
+    //   this.defaultServiceOptions = JSON.parse(finishedServiceOptions);
+    // }
+    //專業技能區塊
+    // const finishedCoreCompetency = localStorage.getItem('userDefaultCoreCompetency');
+    // const finishedProfessionalBackground = localStorage.getItem('userDefaultProfessionalBackground');
+    // const finishedProfessionalSkills = localStorage.getItem('userDefaultProfessionalSkills');
+    // const finishedLanguageProficiency = localStorage.getItem('userDefaultLanguageProficiency');
+    // const finishedCertification = localStorage.getItem('userDefaultCertification');
+
+    // if(finishedCoreCompetency && finishedProfessionalBackground && finishedProfessionalSkills && finishedLanguageProficiency && finishedCertification){
+    //   this.defaultCoreCompetency = JSON.parse(finishedCoreCompetency);
+    //   this.defaultProfessionalBackground = finishedProfessionalBackground;
+    //   this.defaultProfessionalSkills = finishedProfessionalSkills;
+    //   this.defaultLanguageProficiency = finishedLanguageProficiency;
+    //   this.defaultCertification = finishedCertification;
+    // }
+    console.log('localStorage.getItem, 優化後');
+    //優化後
+    const finishedUserWorkStatus = JSON.parse(localStorage.getItem('userWorkStatus'));
+    // console.log(finishedUserWorkStatus);
+    
+  //使用 Object.assign 一次更新（推薦）
+  if(finishedUserWorkStatus){
+    Object.assign(this, finishedUserWorkStatus );
+  }
+  //這會把 userDefaults 裡的所有 key/value 一次灌進 this
+  //只要 key 名稱跟 this.data 中的對應名稱相同即可）。
+
+  // ✔ 優點:
+  // 1. 一行解決
+  // 2. 不會破壞 reactivity（對 Vue 來說也安全，只要 key 事先在 data 裡定義）
+
+
   },
   watch:{ //watch 是在監聽 data 中的變數，但它的值來自 v-model 綁定的 html 標籤
-  defaultWorkCases(newValue){
-    console.log(newValue);
-    
-  }
+  
   },
   computed:{
     
@@ -272,17 +357,17 @@ const userApp = {
 
     // 取得 大螢幕 跟 小螢幕 的按鈕標籤裡面的 "自定義資料屬性 (data-target="#dropdown1")"
       const targetSelector = btn.dataset.target;
-      console.log(targetSelector); // #dropdown1
+      // console.log(targetSelector); // #dropdown1
     // 透過選取出的 #dropdown1 值，來抓取 ul 標籤內的 id="dropdown1" 元素位置
       const menu = document.querySelector(targetSelector);
-      console.log(menu);
+      // console.log(menu);
       
     // 檢查這個 menu 是否已經有 .show class 參數 ; 有為 true , 無為 false
     // 將結果存進 isOpen，用來決定後續要加還是移除 .show
       const isOpen = menu.classList.contains('show');
 
     // 第一次點擊 dropdown 按鈕時, 你的 HTML 還沒有 .show   
-      console.log(isOpen); //-->回傳 false
+      // console.log(isOpen); //-->回傳 false
 
     // 先把 所有 dropdown 都關掉（移除 .show）=> 保證同一時間只有一個 dropdown 打開
     // 關閉所有 dropdown
@@ -355,17 +440,79 @@ const userApp = {
       // }
 
       //優化後
-      if (!this.defaultWorkCases) return;
-        
-      // 自動補上 https:// 如果沒有
-      let url = this.defaultWorkCases.trim();
-      if (!url.startsWith('http://') && !url.startsWith('https://')) {
-          url = 'https://' + url;
-        }
+      //沒內容就不開
+       if (!this.defaultWorkCases) return;
 
-      // 開新分頁
-      window.open(url, '_blank');
-    }  
+       let url = this.defaultWorkCases.trim();
+  
+       if (!url.startsWith('http://') && !url.startsWith('https://')) {
+         url = 'https://' + url;
+       }
+
+      //  window.open(url, '_blank');
+    },
+    //儲存更新
+    saveUpdateBtn(e){
+      console.log('success');
+      // localStorage.clear();
+    // 職旅計畫
+      //概況
+      // localStorage.setItem('userWorkStatus', this.workStatus);
+      // localStorage.setItem('userDefaultIndustry', this.defaultIndustry);
+      // localStorage.setItem('userDefaultExperience',this.defaultExperience);
+      // localStorage.setItem('userDefaultIncome',this.defaultIncome);
+      // localStorage.setItem('userDefaultProfessionalSummary',this.defaultProfessionalSummary);
+      // localStorage.setItem('userDefaultWorkCases',this.defaultWorkCases);
+      //規劃 
+      // localStorage.setItem('userDefaultShortTermGoals',this.defaultShortTermGoals);
+      // localStorage.setItem('userDefaultLongTermGoals',this.defaultLongTermGoals);
+      // localStorage.setItem('userDefaultIdealWorkStatus',this.idealWorkStatus);
+      // localStorage.setItem('userDefaultExpectedSalary',this.defaultExpectedSalary);
+      // localStorage.setItem('userDefaultCareerChallenges',JSON.stringify(this.defaultCareerChallenges));
+      // localStorage.setItem('userDefaultExpectedResources',JSON.stringify(this.defaultExpectedResources));
+      // localStorage.setItem('userDefaultServiceOptions',JSON.stringify(this.defaultServiceOptions));
+      // localStorage.removeItem('userDefaultServiceOptions'); //delete only localStorage key
+      //專業技能區塊
+      // localStorage.setItem('userDefaultCoreCompetency', JSON.stringify(this.defaultCoreCompetency));
+      // localStorage.setItem('userDefaultProfessionalBackground',this.defaultProfessionalBackground);
+      // localStorage.setItem('userDefaultProfessionalSkills',this.defaultProfessionalSkills);
+      // localStorage.setItem('userDefaultLanguageProficiency',this.defaultLanguageProficiency);
+      // localStorage.setItem('userDefaultCertification',this.defaultCertification);
+      console.log('localStorage.setItem-優化後');
+      //優化後
+      const userWorkStatus = {
+        //概況
+        workStatus: this.workStatus,
+        defaultIndustry: this.defaultIndustry,
+        defaultExperience: this.defaultExperience,
+        defaultIncome: this.defaultIncome,
+        defaultProfessionalSummary: this.defaultProfessionalSummary,
+        defaultWorkCases: this.defaultWorkCases,
+        //規劃
+        defaultShortTermGoals: this.defaultShortTermGoals,
+        defaultLongTermGoals: this.defaultLongTermGoals,
+        idealWorkStatus: this.idealWorkStatus,
+        defaultExpectedSalary: this.defaultExpectedSalary,
+        defaultCareerChallenges: this.defaultCareerChallenges,
+        defaultExpectedResources: this.defaultExpectedResources,
+        defaultServiceOptions: this.defaultServiceOptions,
+        //專業技能區塊
+        defaultCoreCompetency: this.defaultCoreCompetency,
+        defaultProfessionalBackground: this.defaultProfessionalBackground,
+        defaultProfessionalSkills: this.defaultProfessionalSkills,
+        defaultLanguageProficiency: this.defaultLanguageProficiency,
+        defaultCertification: this.defaultCertification,
+        //教育
+        defaultEducation: this.defaultEducation,
+        defaultProfessionaltraining: this.defaultProfessionaltraining
+      };
+      // console.log(userWorkStatus);
+      localStorage.setItem('userWorkStatus',JSON.stringify(userWorkStatus));
+    },
+    printPdf(e){
+      window.print();
+      
+    }    
   }
 }
 

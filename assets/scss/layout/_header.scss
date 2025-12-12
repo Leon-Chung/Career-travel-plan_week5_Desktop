@@ -18,13 +18,18 @@
     width: 92px;
   }
 }
-
+.collapse-padding{
+  padding: 0px;
+  @include phone{
+    padding: 0px 10px;
+  }
+}
 //Avatar
 .avatar-removing{
   cursor: pointer;
   margin-right: 0px;
   @include phone{
-    margin-right: 36px;
+    margin-right: 56px;
   }
 }
 

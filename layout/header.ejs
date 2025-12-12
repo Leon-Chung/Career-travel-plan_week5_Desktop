@@ -5,7 +5,7 @@
       <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/b73ea8a74c1ac1f404c8b9e08555ad2f7b7f20e5/2025-week5/logo.svg" alt="logo">
     </a>
     <!-- collapse -->
-    <button class="navbar-toggler position-absolute end-0 border-0 mx-3 p-0"
+    <button class="navbar-toggler position-absolute end-0 border-0 mx-3 collapse-padding"
             type="button"
             id="menuBtn"
             aria-controls="navbarSupportedContent" 
@@ -28,7 +28,7 @@
     </div>
        
       <!-- login Button trigger modal -->
-    <button type="button" class="btn border border-natural-85 py-2 px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" v-show="memberPhotoChange.LoginAndRegisterPhoto">
+    <button type="button" class="btn border border-natural-85 py-2 px-4 px-lg-5 avatar-removing" data-bs-toggle="modal" data-bs-target="#staticBackdrop" v-show="memberPhotoChange.LoginAndRegisterPhoto">
       登入/註冊
     </button>
     
@@ -164,7 +164,7 @@
                       <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="checkPwdReminder">{{checkPwdErrorMessage}}</span>
                     </div>
                     <!-- check -->
-                    <div class="form-check mb-0 d-flex align-items-center">
+                    <div class="form-check mb-0 d-flex align-items-center flex-wrap">
                       <input class="form-check-input border-natural-85 me-1" type="checkbox" value="" id="checkChecked" v-model="checked">
                       <span class="fs-14 me-1">我同意</span>
                       <a href="../pages/tos.html" class="text-primary fs-14 text-underline me-1">服務條款</a>
