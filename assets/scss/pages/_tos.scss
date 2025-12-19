@@ -1,0 +1,30 @@
+@mixin phone {
+  @media screen and (max-width:1024px) {
+    @content;
+  }
+}
+
+.tos-h2-fs{
+  font-size: 32px;
+  @include phone {
+    font-size: 28px;
+  }
+}
+
+.provisions-area-gap{
+  gap: 24px;
+  @include phone {
+    gap: 16px;
+  }
+}
+
+.provisions-title-fs{
+  font-size: 20px;
+  @include phone {
+    font-size: 18px;
+  }
+}
+
+.provisions-ul-pl{
+  padding-left: 1.75rem;
+}

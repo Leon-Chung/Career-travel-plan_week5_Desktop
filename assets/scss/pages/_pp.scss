@@ -1,0 +1,23 @@
+@mixin phone {
+  @media screen and (max-width:1024px) {
+    @content;
+  }
+}
+
+.privacy-area-gap{
+  gap: 24px;
+  @include phone {
+    gap: 16px;
+  }
+}
+
+.privacy-area-fs{
+  font-size: 20px;
+  @include phone {
+    font-size: 18px;
+  }
+}
+
+.privacy-ul-pl{
+  padding-left: 1.5rem;
+}
