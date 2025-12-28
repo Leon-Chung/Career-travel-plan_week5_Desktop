@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- 兩個 icon 的 url 合併後產生新的 for visibility 跟 visibility_off 專用 -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=visibility" /> -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility_off" /> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
+    <title>index</title>
+  </head>
+  <body>
+    <%- include('./layout/header'); -%>
+
+    <main class="bg-natural-95" id="contactUs">
+      <div class="container py-6 py-lg-7">
+        <div class="row justify-content-center">
+          <div class="col-lg-10 position-relative">
+            <!-- title -->
+            <div class="d-flex justify-content-center mb-lg-5 mb-4">
+              <h2 class="fs-3 fs-lg-2 fw-bold">聯絡我們</h2>
+            </div>
+            <!-- Summary -->
+            <div class="d-flex justify-content-center mb-lg-6 mb-5">
+              <p class="fs-lg-5 text-center text-natural-50">每一封郵件，我們都會親自回覆。每一通電話，都是新可能的開始。</p>
+            </div>
+            <!-- picture -->
+            <div class="d-none d-lg-block position-absolute top-0 end-0 female-asst-img-width female-asst-img-margin">
+              <img src="../assets/images/content/form-top.svg" alt="female-asst">
+            </div>
+            <!-- main page -->
+            <div class="rounded-24 shadow bg-light p-lg-6 p-5">
+              <form action="">
+                <!-- 基本資料 -->
+                <div class="d-lg-flex pb-lg-6 pb-5 border-bottom border-natural-85 mb-lg-6 mb-5">
+                  <section class="me-lg-5 d-lg-block flex-shrink-1024-0 side-width d-flex align-items-center justify-content-between mb-4 mb-lg-0">
+                    <h4 class="fs-20 fs-lg-4 mb-lg-3">基本資料</h4>
+                    <p class="fs-14 fs-lg-6">欄位皆為<span class="ms-1 fs-14 badge rounded-1 text-bg-danger">必填</span></p>
+                  </section>
+                  <section class="w-100">
+                    <!-- 姓名 -->
+                    <div class="form-floating mb-lg-5 mb-4">
+                      <input type="text" class="form-control border-natural-85" id="floatingInputGuestName" placeholder="floatingInputGuestName" v-model="defaultGuest.name">
+                      <label for="floatingInputGuestName" class="fs-lg-6 fs-14">姓名</label>
+                    </div>
+                    <!-- 信箱 -->
+                    <div class="form-floating mb-lg-5 mb-4">
+                      <input type="email" class="form-control border-natural-85" id="floatingInputGuestEmail" placeholder="floatingInputGuestEmail" v-model="defaultGuest.email">
+                      <label for="floatingInputGuestEmail" class="fs-lg-6 fs-14">信箱</label>
+                      <p class="px-2 fs-14 text-natural-50">盡量勿使用Yahoo或Hotmail郵件信箱，以免因擋信、漏信</p>
+                    </div>
+                    <!-- 聯絡電話 -->
+                    <div class="form-floating mb-lg-5 mb-4">
+                      <input type="tel" class="form-control border-natural-85" id="floatingInputGuestTel" placeholder="floatingInputGuestTel" v-model="defaultGuest.tel">
+                      <label for="floatingInputGuestTel" class="fs-lg-6 fs-14">聯絡電話</label>
+                      <p class="px-2 fs-14 text-natural-50">我們不會以電話主動聯繫您，告知您要至ATM操作轉帳</p>
+                    </div>
+                    <!-- 目前職業/工作身分 -->
+                    <div class="dropdown">
+                      <button class="form-select text-start py-4 fs-14 fs-lg-6 border-natural-85 " type="button" data-bs-toggle="dropdown" aria-expanded="false"  @click.prevent="employmentStatus($event)">
+                        {{defaultGuest.employmentStatus}}
+                      </button>
+                      <ul class="dropdown-menu guest-dropdown-menu mt-2 w-100 shadow" :class="{'guest-dropdown-ul-open': employmentStatusBtn}">
+                        <li v-for="( guestStatus , key ) in defaultGuest.employmentStatusOption" :key="'guestStatus'+ key" >
+                          <a class="dropdown-item ps-5 py-2 guest-dropdown-menu-li-a" href="javascript:;" @click.prevent="guestStatusValue(guestStatus)">{{guestStatus}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+                <!-- 諮詢需求 -->
+                <div class="d-lg-flex pb-lg-6 pb-5 border-bottom border-natural-85 mb-lg-6 mb-5">
+                  <!-- left side box -->
+                  <section class="me-lg-5 d-lg-block side-width mb-lg-0 flex-shrink-1024-0 d-flex align-items-center justify-content-between mb-4">
+                    <h4 class="fs-20 fs-lg-4 mb-lg-3">諮詢需求</h4>
+                    <p class="fs-14 fs-lg-6">欄位皆為<span class="ms-1 fs-14 badge rounded-1 text-bg-danger">必填</span></p>
+                  </section>
+                  <!-- right side box -->
+                  <section class="w-100">
+                    <!-- 主題 -->
+                    <div class="input-group d-block mb-4 mb-lg-5">
+                      <p class="fs-14 fs-lg-6 mb-2">諮詢主題</p>
+                      <div class="ps-lg-2 d-flex flex-wrap">
+                        <div class="form-check d-flex align-items-center mb-2 me-lg-5" 
+                             v-for="(consultationItem , key) in defaultGuest.consultationTopicOption" 
+                             :key="'consultationItem'+key"
+                             :class="{'me-4': !consultationTopicKey.includes(key)} /* 如果 key 這個索引不在 computed 計算出來的 consultationTopicKey 陣列裡，就套用 me-4 */ ">
+                          <input class="form-check-input me-1 border-natural-85" 
+                                 type="checkbox" 
+                                 :id="'consultationItem'+key" 
+                                 :value="consultationItem" 
+                                 v-model="defaultGuest.consultationTopic" 
+                                 name="consultationTopic[]"> <!-- name 不是必須，但養成習慣寫 name="xxx[]" , but good habit -->
+                          <label class="form-check-label fs-14" :for="'consultationItem'+key">{{consultationItem}}</label>
+                        </div>
+                      </div>
+                      <p class="ps-lg-2 text-natural-50 fs-14">可複選，讓我們更了解你的狀況，安排最適合的顧問與建議。</p>
+                    </div>
+                    <!-- 專家 -->
+                    <div class="dropdown  mb-4 mb-lg-5">
+                      <button class="form-select py-4 text-start border-natural-85 fs-14 fs-lg-6" 
+                              type="button" 
+                              data-bs-toggle="dropdown" 
+                              aria-expanded="false"
+                              @click.prevent="expectExpertStatus($event)">
+                        {{defaultGuest.expectExpert}}
+                      </button>
+                      <ul class="dropdown-menu w-100 mt-2 guest-dropdown-menu" :class="{'guest-dropdown-ul-open':expectExpertStatusBtn}">
+                        <li v-for="(ExpertItem , key) in defaultGuest.expectExpertOption" :key="'ExpertItem'+key">
+                          <a class="dropdown-item py-2 ps-5 guest-dropdown-menu-li-a" 
+                             href="javascript:;"
+                             @click.prevent="expectExpertValue(ExpertItem)">{{ExpertItem}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- 面臨挑戰 -->
+                    <div class="form-floating mb-4 mb-lg-5">
+                      <textarea class="form-control border-natural-85" 
+                                placeholder="您目前面臨的主要挑戰" 
+                                id="main-challenges" 
+                                style="height: 160px"
+                                v-model="defaultGuest.mainChallenges"></textarea>
+                      <label for="main-challenges" class="fs-14 fs-lg-6">您目前面臨的主要挑戰</label>
+                    </div>
+                    <!-- 期望達成的目標 -->
+                    <div class="form-floating">
+                      <textarea class="form-control border-natural-85" 
+                                placeholder="期望達成的目標" 
+                                id="desired-goal" 
+                                style="height: 160px"
+                                v-model="defaultGuest.desiredGoal"></textarea>
+                      <label for="desired-goal" class="fs-14 fs-lg-6">期望達成的目標</label>
+                    </div>
+                  </section>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include('./layout/footer'); -%>
+
+    <script type="module" src="../main.js"></script>
+  </body>
+</html>

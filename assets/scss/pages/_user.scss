@@ -272,10 +272,7 @@ body.modal-open {
   float: none;
   margin: 0;
   padding: .5rem 0;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: .25rem;
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.175);
+  background: #fcfcfd;
   z-index: 1000;
   border-radius: 12px;
 }
@@ -284,6 +281,14 @@ body.modal-open {
 .custom-dropdown-menu.is-open {
   display: block;
 }
+
+.custom-dropdown-menu-li-a{
+  background: #fcfcfd;
+}
+.custom-dropdown-menu-li-a:hover{
+  background: #E0E5EB;
+}
+
 
 //career summary
  .form-floating > .careerSummaryHeight {

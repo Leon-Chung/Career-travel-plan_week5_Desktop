@@ -390,7 +390,7 @@
                           <button  class="form-select text-start py-4 fs-14 fs-lg-6 border-natural-85" type="button" data-bs-toggle="dropdown" aria-expanded="false" @click.prevent="workIndustry($event)">
                             {{defaultIndustry}}
                           </button>
-                          <ul  class="dropdown-menu mt-2 w-100 custom-dropdown-menu" :class="{'is-open': workField }">
+                          <ul  class="dropdown-menu mt-2 w-100 custom-dropdown-menu shadow" :class="{'is-open': workField }">
                             <!-- 調整前 -->
                             <!-- <li><a class="dropdown-item" href="javascript:;" @click.prevent="defaultIndustry = '科技'">科技</a></li>
                             <li><a class="dropdown-item" href="javascript:;">媒體</a></li>
@@ -403,7 +403,7 @@
                             <li><a class="dropdown-item" href="javascript:;">非營利組織</a></li> -->
                             <!-- 調整後 -->
                             <li v-for="( workItem, key ) in industries" :key="'workItem'+key">
-                              <a class="dropdown-item" href="javascript:;" @click="defaultIndustryBtn(workItem)" >{{workItem}}</a>
+                              <a class="dropdown-item ps-5 py-2 custom-dropdown-menu-li-a" href="javascript:;" @click="defaultIndustryBtn(workItem)" >{{workItem}}</a>
                             </li>
                           </ul>
                         </div>
@@ -414,7 +414,7 @@
                           <button class="form-select text-start py-4 fs-14 fs-lg-6 border-natural-85" type="button" data-bs-toggle="dropdown" aria-expanded="false" @click.prevent="workingExperience($event)">
                              {{defaultExperience}}
                           </button>
-                          <ul class="dropdown-menu w-100 mt-2 custom-dropdown-menu" :class="{'is-open':workSeniority}">
+                          <ul class="dropdown-menu w-100 mt-2 custom-dropdown-menu shadow" :class="{'is-open':workSeniority}">
                             <!-- 調整前 -->
                             <!-- <li><a class="dropdown-item" href="#">1 年以下</a></li>
                             <li><a class="dropdown-item" href="#">1-3 年</a></li>
@@ -423,7 +423,7 @@
                             <li><a class="dropdown-item" href="#">10 年以上</a></li> -->
                             <!-- 調整後 -->
                             <li v-for="( experienceItem, key ) in yearsOfExperience" :key="'experienceItem'+key">
-                              <a class="dropdown-item" href="javascript:;" @click.prevent="defaultExperienceBtn(experienceItem)">{{experienceItem}}</a>
+                              <a class="dropdown-item ps-5 py-2 custom-dropdown-menu-li-a" href="javascript:;" @click.prevent="defaultExperienceBtn(experienceItem)">{{experienceItem}}</a>
                             </li>
                           </ul>
                         </div>

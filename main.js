@@ -8,6 +8,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 // 其他 JS
 import './assets/js/collapse';
 import './assets/js/nav-login';
+import './assets/js/contactUs';
 import './assets/js/user';
 import './assets/js/otherData';
 

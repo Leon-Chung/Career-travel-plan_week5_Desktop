@@ -1,0 +1,47 @@
+@mixin phone {
+  @media screen and (max-width: 1024px){
+    @content;
+  }
+}
+
+.female-asst-img-width{
+  width: 120px;
+  height: 160px;
+}
+.female-asst-img-margin{
+  margin-right: 52px;
+}
+
+.box-left-side{
+  max-width: 300px;
+  width: 100%;
+}
+
+.guest-dropdown-menu{
+  display: none;
+  position: static;  /* 🔥 必須改成 static 才不會亂位 */
+  float: none;
+  margin: 0;
+  padding: .5rem 0;
+  background: #fcfcfd;
+  z-index: 1000;
+  border-radius: 12px;
+}
+
+.guest-dropdown-menu.guest-dropdown-ul-open{
+  display: block;
+}
+
+.guest-dropdown-menu-li-a{
+  background: #fcfcfd;
+  
+}
+.guest-dropdown-menu-li-a:hover{
+  background: #E0E5EB;
+ 
+}
+
+.test{
+  background: #000;
+  color: white;
+}
