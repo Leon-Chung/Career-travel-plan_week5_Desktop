@@ -14,8 +14,8 @@
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility_off" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
     <title>index</title>
-    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-DeKTq_wr.js"></script>
-    <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main--jsX6FAC.css">
+    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-Cfy-vPFx.js"></script>
+    <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-CbKEYWK_.css">
   </head>
   <body>
     
@@ -185,8 +185,8 @@
                     </div>
                     <!-- check -->
                     <div class="form-check mb-0 d-flex align-items-center flex-wrap">
-                      <input class="form-check-input border-natural-85 me-1" type="checkbox" value="" id="checkChecked" v-model="checked">
-                      <span class="fs-14 me-1">我同意</span>
+                      <input class="form-check-input border-natural-85 me-1" type="checkbox" value="" id="agreeToTheTerms" v-model="checked">
+                      <label for="agreeToTheTerms" class="fs-14 me-1">我同意</label>
                       <a href="../pages/tos.html" class="text-primary fs-14 text-underline me-1">用戶條款</a>
                       <span class="fs-14 me-1">和</span>
                       <a href="../pages/pp.html" class="text-primary fs-14 text-underline">隱私政策</a>
@@ -558,7 +558,7 @@
                       <!-- one area -->
                       <div class="mb-lg-5 mb-4">
                         <p class="mb-2 fs-14 fs-lg-6">目前職業狀態</p>
-                        <div class="px-2">
+                        <div class="ps-2">
                           <div class="form-check form-check-inline me-4 me-lg-5 mb-2 ">
                             <input class="form-check-input special-status border-natural-85" type="radio" name="job-status" id="job-fulltime" value="fulltime" v-model="workStatus">
                             <label class="form-check-label fs-14 " for="job-fulltime">全職上班族</label>
@@ -636,7 +636,7 @@
                       <!-- monthly salary -->
                        <div class="mb-4 mb-lg-5">
                         <p class="mb-2">月收入區間</p>
-                        <div class="px-2">
+                        <div class="ps-2">
                           <!-- 調整前 -->
                           <!-- <div class="form-check form-check-inline me-4 me-lg-5 mb-0 fs-14">
                             <input class="form-check-input" type="radio" name="income-status" id="income-3" value="income-3" v-model="defaultIncome">
@@ -678,7 +678,7 @@
                        <!-- career summary -->
                        <div class="mb-4 mb-lg-5">
                         <div class="form-floating ">
-                          <textarea class="form-control border-natural-85 careerSummaryHeight" 
+                          <textarea class="form-control border-natural-85 careerSummaryHeight fs-14 fs-lg-6" 
                                     placeholder="職業摘要（簡短描述您的專業背景和核心競爭力最多 300 字"
                                     id="job-descript" 
                                     style="height: 160px;" 
@@ -691,7 +691,7 @@
                        <div class="mb-4 mb-lg-5">
                         <div class="form-floating">
                           <input type="text" 
-                                 class="form-control border-natural-85 is-link-Work-cases" 
+                                 class="form-control border-natural-85 is-link-Work-cases fs-14 fs-lg-6" 
                                  id="work-cases" 
                                  placeholder="作品案例展示"  
                                  v-model="defaultWorkCases" 
@@ -724,7 +724,7 @@
                         <!-- short term goals -->
                         <div class="mb-4 mb-lg-5">
                           <div class="form-floating">
-                            <textarea class="form-control border-natural-85" 
+                            <textarea class="form-control border-natural-85 fs-14 fs-lg-6" 
                                       placeholder="1 年短期職涯目標（最多 300 字）" 
                                       id="short-term-goals" 
                                       style="height: 160px" 
@@ -736,7 +736,7 @@
                         <!-- medium and long term goals -->
                          <div class="mb-4 mb-lg-5">
                           <div class="form-floating">
-                            <textarea class="form-control border-natural-85"
+                            <textarea class="form-control border-natural-85 fs-14 fs-lg-6"
                                       placeholder=" 1-3 年中長期職涯願景（最多 300 字）" 
                                       id="medium-and-long-term-goals" 
                                       style="height: 160px" 
@@ -748,7 +748,7 @@
                         <!-- ideal working model -->
                          <div class="mb-4 mb-lg-5">
                           <p class="mb-2 fs-14 fs-lg-6">理想工作模式</p>
-                          <div class="px-2">
+                          <div class="ps-2">
                             <div class="form-check form-check-inline me-5 mb-2">
                               <input class="form-check-input border-natural-85 special-status" type="radio" name="job-model-status" id="Fixed-office" value="Fixed-office"  v-model="idealWorkStatus">
                               <label class="form-check-label fs-14" for="Fixed-office">固定辦公室工作</label>
@@ -775,7 +775,7 @@
                          <div class="mb-4 mb-lg-5">
                           <div class="form-floating">
                             <input type="text" 
-                                   class="form-control border-natural-85" 
+                                   class="form-control border-natural-85 fs-14 fs-lg-6" 
                                    id="Target-salary" 
                                    placeholder="目標薪資/收入"
                                    v-model="defaultExpectedSalary">
@@ -785,37 +785,37 @@
                          <!-- Current career challenges -->
                           <div class="mb-4 mb-lg-5">
                             <p class="mb-2 fs-14 fs-lg-6">目前面臨的職涯挑戰</p>
-                            <div class="px-lg-2 d-flex flex-wrap">
+                            <div class="ps-lg-2 d-flex flex-wrap">
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 career-item">
-                                <input class="form-check-input " type="checkbox" id="unclear-direction" value="unclear-direction" name="career-challenges[]" v-model="defaultCareerChallenges">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="unclear-direction" value="unclear-direction" name="career-challenges[]" v-model="defaultCareerChallenges">
                                 <label class="form-check-label fs-14 ms-1" for="unclear-direction">方向不明確</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 career-item">
-                                <input class="form-check-input " type="checkbox" id="Skills-need-to-be-improved" value="Skills-need-to-be-improved" name="career-challenges[]" v-model="defaultCareerChallenges">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="Skills-need-to-be-improved" value="Skills-need-to-be-improved" name="career-challenges[]" v-model="defaultCareerChallenges">
                                 <label class="form-check-label fs-14 ms-1" for="Skills-need-to-be-improved">技能需要提升</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 career-item">
-                                <input class="form-check-input " type="checkbox" id="Unstable-income" value="Unstable-income" name="career-challenges[]" v-model="defaultCareerChallenges">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="Unstable-income" value="Unstable-income" name="career-challenges[]" v-model="defaultCareerChallenges">
                                 <label class="form-check-label fs-14 ms-1" for="Unstable-income">收入不穩定</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 career-item">
-                                <input class="form-check-input " type="checkbox" id="Difficulties-in-customer-development" value="Difficulties-in-customer-development" name="career-challenges[]" v-model="defaultCareerChallenges">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="Difficulties-in-customer-development" value="Difficulties-in-customer-development" name="career-challenges[]" v-model="defaultCareerChallenges">
                                 <label class="form-check-label fs-14 ms-1" for="Difficulties-in-customer-development">客戶開發困難</label>
                               </div>
-                              <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 career-item">
-                                <input class="form-check-input " type="checkbox" id="time-management-issues" value="time-management-issues" name="career-challenges[]" v-model="defaultCareerChallenges">
+                              <div class="form-check d-inline-flex align-items-center me-4 me-lg-0 mb-2 career-item">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="time-management-issues" value="time-management-issues" name="career-challenges[]" v-model="defaultCareerChallenges">
                                 <label class="form-check-label fs-14 ms-1" for="time-management-issues">時間管理問題</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 mb-lg-0 career-item">
-                                <input class="form-check-input " type="checkbox" id="Work-life-imbalance" value="Work-life-imbalance" name="career-challenges[]" v-model="defaultCareerChallenges">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="Work-life-imbalance" value="Work-life-imbalance" name="career-challenges[]" v-model="defaultCareerChallenges">
                                 <label class="form-check-label fs-14 ms-1" for="Work-life-imbalance">工作生活失衡</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-0 career-item">
-                                <input class="form-check-input " type="checkbox" id="Lack-of-personal-connections" value="Lack-of-personal-connections" name="career-challenges[]" v-model="defaultCareerChallenges">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="Lack-of-personal-connections" value="Lack-of-personal-connections" name="career-challenges[]" v-model="defaultCareerChallenges">
                                 <label class="form-check-label fs-14 ms-1" for="Lack-of-personal-connections">缺乏人脈資源</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 mb-0 career-item">
-                                <input class="form-check-input " type="checkbox" id="challenges-other" value="challenges-other" name="career-challenges[]" v-model="defaultCareerChallenges">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="challenges-other" value="challenges-other" name="career-challenges[]" v-model="defaultCareerChallenges">
                                 <label class="form-check-label fs-14 ms-1" for="challenges-other">其他(請說明)</label>
                               </div>
                             </div>
@@ -823,41 +823,41 @@
                           <!-- Expected assistance and resources -->
                            <div class="mb-4 mb-lg-5">
                             <p class="mb-2 fs-14 fs-lg-6">期望獲得的協助與資源</p>
-                            <div class="px-lg-2 d-flex flex-wrap">
+                            <div class="ps-lg-2 d-flex flex-wrap">
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2">
-                                <input class="form-check-input" type="checkbox" id="Career-direction-guidance" value="Career-direction-guidance" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="Career-direction-guidance" value="Career-direction-guidance" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
                                 <label class="form-check-label fs-14 ms-1" for="Career-direction-guidance">職涯方向指導</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2">
-                                <input class="form-check-input" type="checkbox" id="Professional-skills-improvement" value="Professional-skills-improvement" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="Professional-skills-improvement" value="Professional-skills-improvement" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
                                 <label class="form-check-label fs-14 ms-1" for="Professional-skills-improvement">專業技能提升建議</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2">
-                                <input class="form-check-input" type="checkbox" id="Personal-brand-building" value="Personal-brand-building" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="Personal-brand-building" value="Personal-brand-building" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
                                 <label class="form-check-label fs-14 ms-1" for="Personal-brand-building">個人品牌建立</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2">
-                                <input class="form-check-input" type="checkbox" id="Case-acceptance-strategy-and-pricing" value="Case-acceptance-strategy-and-pricing" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="Case-acceptance-strategy-and-pricing" value="Case-acceptance-strategy-and-pricing" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
                                 <label class="form-check-label fs-14 ms-1" for="Case-acceptance-strategy-and-pricing">接案策略與定價</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 mb-lg-0">
-                                <input class="form-check-input" type="checkbox" id="customer-development-methods" value="customer-development-methods" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="customer-development-methods" value="customer-development-methods" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
                                 <label class="form-check-label fs-14 ms-1" for="customer-development-methods">客戶開發方法</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 mb-lg-0">
-                                <input class="form-check-input" type="checkbox" id="financial-planning" value="financial-planning" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="financial-planning" value="financial-planning" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
                                 <label class="form-check-label fs-14 ms-1" for="financial-planning">財務規劃</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 mb-lg-0">
-                                <input class="form-check-input" type="checkbox" id="time-management-system" value="time-management-system" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="time-management-system" value="time-management-system" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
                                 <label class="form-check-label fs-14 ms-1" for="time-management-system">時間管理系統</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 mb-lg-0">
-                                <input class="form-check-input" type="checkbox" id="work-life-balance" value="work-life-balance" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="work-life-balance" value="work-life-balance" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
                                 <label class="form-check-label fs-14 ms-1" for="work-life-balance">工作生活平衡</label>
                               </div>
                               <div class="form-check d-inline-flex align-items-center me-4 mb-0">
-                                <input class="form-check-input" type="checkbox" id="expected-others" value="expected-others" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
+                                <input class="form-check-input border-natural-85" type="checkbox" id="expected-others" value="expected-others" name="Expected-assistance-and-resources[]" v-model="defaultExpectedResources">
                                 <label class="form-check-label fs-14 ms-1" for="expected-others">其他(請說明)</label>
                               </div>
                             </div>
@@ -865,17 +865,17 @@
                            <!-- service options -->
                            <div>
                             <p class="mb-2 fs-14 fs-lg-6">感興趣的服務方案</p>
-                            <div class="px-lg-2">
-                              <div class="form-check d-inline-flex align-items-center mb-0 me-4 me-lg-5 service-options-item">
-                                <input class="form-check-input me-1" type="checkbox" id="Explore-positioning" value="Explore-positioning" name="service-options[]" v-model="defaultServiceOptions">
+                            <div class="ps-lg-2">
+                              <div class="form-check d-inline-flex align-items-center mb-0 me-4 me-lg-5">
+                                <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Explore-positioning" value="Explore-positioning" name="service-options[]" v-model="defaultServiceOptions">
                                 <label class="form-check-label fs-14" for="Explore-positioning">探索定位</label>
                               </div>
-                              <div class="form-check d-inline-flex align-items-center mb-0 me-4 me-lg-5 service-options-item">
-                                <input class="form-check-input me-1" type="checkbox" id="Customized-Solutions" value="Customized-Solutions" name="service-options[]" v-model="defaultServiceOptions">
+                              <div class="form-check d-inline-flex align-items-center mb-0 me-4 me-lg-5">
+                                <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Customized-Solutions" value="Customized-Solutions" name="service-options[]" v-model="defaultServiceOptions">
                                 <label class="form-check-label fs-14" for="Customized-Solutions">客製化方案</label>
                               </div>
-                              <div class="form-check d-inline-flex align-items-center mb-0 me-4 me-lg-5 service-options-item">
-                                <input class="form-check-input me-1" type="checkbox" id="Practical-guidance" value="Practical-guidance" name="service-options[]" v-model="defaultServiceOptions">
+                              <div class="form-check d-inline-flex align-items-center mb-0 me-lg-5">
+                                <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Practical-guidance" value="Practical-guidance" name="service-options[]" v-model="defaultServiceOptions">
                                 <label class="form-check-label fs-14" for="Practical-guidance">實戰指導</label>
                               </div>
                             </div>
@@ -894,45 +894,45 @@
                       <!-- 核心專業領域 -->
                       <div class="mb-4 mb-lg-5">
                         <p class="mb-2 fs-14 fs-lg-6">核心專業領域</p>
-                        <div class="px-lg-2 d-flex flex-wrap">
+                        <div class="ps-lg-2 d-flex flex-wrap">
                           <div class="form-check d-inline-flex align-items-center mb-2 me-4 me-lg-5">
-                            <input class="form-check-input me-1" type="checkbox" id="Design-Creativity" value="Design-Creativity" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
+                            <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Design-Creativity" value="Design-Creativity" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
                             <label class="form-check-label fs-14" for="Design-Creativity">設計/創意</label>
                           </div>
                           <div class="form-check d-inline-flex align-items-center mb-2 me-4 me-lg-5">
-                            <input class="form-check-input me-1" type="checkbox" id="Technology-Programming-Development" value="Technology-Programming-Development" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
+                            <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Technology-Programming-Development" value="Technology-Programming-Development" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
                             <label class="form-check-label fs-14" for="Technology-Programming-Development">科技/程式開發</label>
                           </div>
                           <div class="form-check d-inline-flex align-items-center mb-2 me-4 me-lg-5">
-                            <input class="form-check-input me-1" type="checkbox" id="Marketing-PR" value="Marketing-PR" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
+                            <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Marketing-PR" value="Marketing-PR" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
                             <label class="form-check-label fs-14" for="Marketing-PR">行銷/公關</label>
                           </div>
                           <div class="form-check d-inline-flex align-items-center mb-2 me-4 me-lg-5">
-                            <input class="form-check-input me-1" type="checkbox" id="ContentCreation-writing" value="ContentCreation-writing" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
+                            <input class="form-check-input me-1 border-natural-85" type="checkbox" id="ContentCreation-writing" value="ContentCreation-writing" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
                             <label class="form-check-label fs-14" for="ContentCreation-writing">內容創作/寫作</label>
                           </div>
                           <div class="form-check d-inline-flex align-items-center mb-2 me-4 me-lg-0">
-                            <input class="form-check-input me-1" type="checkbox" id="Consultancy-Consultancy" value="Consultancy-Consultancy" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
+                            <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Consultancy-Consultancy" value="Consultancy-Consultancy" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
                             <label class="form-check-label fs-14" for="Consultancy-Consultancy">顧問/諮詢</label>
                           </div>
                           <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-2 mb-lg-0">
-                            <input class="form-check-input me-1" type="checkbox" id="business-Administration" value="business-Administration" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
+                            <input class="form-check-input me-1 border-natural-85" type="checkbox" id="business-Administration" value="business-Administration" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
                             <label class="form-check-label fs-14" for="business-Administration">商業/管理</label>
                           </div>
                           <div class="form-check d-inline-flex align-items-center me-lg-5 mb-2 mb-lg-0">
-                            <input class="form-check-input me-1" type="checkbox" id="Finance-Accounting" value="Finance-Accounting" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
+                            <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Finance-Accounting" value="Finance-Accounting" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
                             <label class="form-check-label fs-14" for="Finance-Accounting">財務/會計</label>
                           </div>
                           <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-0">
-                            <input class="form-check-input me-1" type="checkbox" id="Education-Training" value="Education-Training" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
+                            <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Education-Training" value="Education-Training" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
                             <label class="form-check-label fs-14" for="Education-Training">教育/培訓</label>
                           </div>
                           <div class="form-check d-inline-flex align-items-center me-4 me-lg-5 mb-0">
-                            <input class="form-check-input me-1" type="checkbox" id="Legal-Compliance" value="Legal-Compliance" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
+                            <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Legal-Compliance" value="Legal-Compliance" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
                             <label class="form-check-label fs-14" for="Legal-Compliance">法律/合規</label>
                           </div>
                           <div class="form-check d-inline-flex align-items-center mb-0">
-                            <input class="form-check-input me-1" type="checkbox" id="Health-Medical" value="Health-Medical" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
+                            <input class="form-check-input me-1 border-natural-85" type="checkbox" id="Health-Medical" value="Health-Medical" name="core-areas-of-expertise[]" v-model="defaultCoreCompetency">
                             <label class="form-check-label fs-14" for="Health-Medical">健康/醫療</label>
                           </div>
                         </div>
@@ -940,7 +940,7 @@
                       <!-- 專業背景和核心競爭力 -->
                       <div class="mb-4 mb-lg-5">
                         <div class="form-floating">
-                          <textarea class="form-control border-natural-85" 
+                          <textarea class="form-control border-natural-85 fs-14 fs-lg-6" 
                                     placeholder="專業背景和核心競爭力（最多300字）" 
                                     id="Professional-background" 
                                     style="height: 160px" 
@@ -952,7 +952,7 @@
                       <!-- 專業技能 -->
                       <div class="mb-4 mb-lg-5">
                         <div class="form-floating">
-                          <textarea class="form-control border-natural-85" 
+                          <textarea class="form-control border-natural-85 fs-14 fs-lg-6" 
                                     placeholder="專業技能(最多300字)" 
                                     id="Professional-skills" 
                                     style="height: 160px" 
@@ -964,7 +964,7 @@
                       <!-- 語文能力 -->
                       <div class="mb-4 mb-lg-5">
                         <div class="form-floating">
-                          <textarea class="form-control border-natural-85" 
+                          <textarea class="form-control border-natural-85 fs-14 fs-lg-6" 
                                     placeholder="語文能力(最多300字)" 
                                     id="language-proficiency" 
                                     style="height: 160px" 
@@ -976,7 +976,7 @@
                       <!-- 資格證照 -->
                       <div class="">
                         <div class="form-floating">
-                          <textarea class="form-control border-natural-85" 
+                          <textarea class="form-control border-natural-85 fs-14 fs-lg-6" 
                                     placeholder="資格證照(最多300字)" 
                                     id="Qualification-certificate" 
                                     style="height: 160px" 
@@ -999,7 +999,7 @@
                           <!-- Academic background -->
                           <div class="mb-4 mb-lg-5">
                             <div class="form-floating">
-                              <textarea class="form-control border-natural-85" 
+                              <textarea class="form-control border-natural-85 fs-14 fs-lg-6" 
                                         placeholder="學歷背景(最多500字)" 
                                         id="Academic-background" 
                                         style="height: 160px" 
@@ -1011,7 +1011,7 @@
                           <!-- Professional Training -->
                           <div>
                             <div class="form-floating">
-                              <textarea class="form-control border-natural-85" 
+                              <textarea class="form-control border-natural-85 fs-14 fs-lg-6" 
                                         placeholder="專業培訓與工作坊(最多500字)" 
                                         id="Professional-Training" 
                                         style="height: 160px" 
