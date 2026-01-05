@@ -335,10 +335,3 @@ body.modal-open {
   width: 100%;
 }
 
-//service options
-.service-options-item{
-  letter-spacing: 0.32px;
-  @include phone {
-    letter-spacing: normal;
-  }
-}

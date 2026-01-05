@@ -1,4 +1,10 @@
 /* 標籤的基本樣式 */
+@mixin phone {
+  @media screen and (max-width:1024px) {
+    @content
+  }
+}
+
 body {
   letter-spacing: 0.02em; //沒有相關的基礎設定
 }
@@ -12,3 +18,4 @@ a {
   display: inline-block;
   color: inherit;
 }
+

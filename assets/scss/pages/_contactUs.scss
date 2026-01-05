@@ -41,6 +41,41 @@
  
 }
 
+.form-check.contactTime{
+  margin-bottom: 0px;
+}
+
+.form-floating > .tellUsOtherPadding{
+     padding-top: 1.625rem !important;
+    @include phone {
+      padding-top: 2.5rem !important;             /* 把 textarea 往下推 */
+    }
+}
+
+@media (min-width: 481px) and (max-width: 991px) {
+  .form-floating > .tellUsOtherPadding {
+    // padding-top: 1.9rem; /* 介於桌機與手機之間的合理值 */
+    padding-top: 1.625rem !important;
+  }
+}
+
+.tellUsOther-label{
+  white-space: nowrap;
+  @include phone {
+    white-space: normal !important;   /*解除不換行限制*/
+    height: auto !important;          /* label 高度隨內容自動撐開*/
+    line-height: 1.3;                 /*調整行距*/
+    padding-top: .8rem;               /*下推一點 label 位置*/
+  }
+}
+
+.sentContactBtnPadding{
+  padding: 12px 12px 12px 20px;
+  @include phone {
+    padding: 12px 8px 12px 12px;
+  }
+}
+
 .test{
   background: #000;
   color: white;
