@@ -41,9 +41,32 @@
  
 }
 
-.form-check.contactTime{
-  margin-bottom: 0px;
+.flatpicker-cursor{
+  cursor: pointer;
 }
+
+.flatpickr-calendar{
+  margin-top: 8px;
+}
+
+.flatpickr-rContainer{
+  width: 100%;
+}
+
+.flatpickr-days{
+  width: 100% !important;
+}
+
+.dayContainer{
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+}
+
+.flatpickr-day{
+  max-width: 100% !important;
+}
+
 
 .form-floating > .tellUsOtherPadding{
      padding-top: 1.625rem !important;
