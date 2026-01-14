@@ -194,7 +194,7 @@
                         <label for="makeAnAppointment" class="fs-lg-6 fs-14">預約諮詢時間</label>
                         <span ref="calendarIcon" 
                               class="material-symbols-outlined position-absolute top-50 end-0 me-3 translate-middle-y icon-fs20 flatpicker-cursor"
-                              @click.stop="openCalendar($event)" data-toggle > 
+                              @click.prevent="openCalendar($event)" data-toggle > 
                                 calendar_month
                         </span>
                       </div>

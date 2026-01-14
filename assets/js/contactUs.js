@@ -1,10 +1,16 @@
-import { computed, createApp } from "vue";
+import { computed, createApp, warn } from "vue";
 
 //導入 flatpickr 日曆選擇器
 import flatpick from "flatpickr";
 import "flatpickr/dist/flatpickr.css";
 // 如果要繁體中文
 import { MandarinTraditional } from "flatpickr/dist/l10n/zh-tw.js";
+
+import axios, {isCancel, AxiosError} from 'axios';
+
+// const apiA1 = 'https://script.google.com/macros/s/AKfycbyN7wBHtdB19DPAPbiKpEe-MB8IKe5-CoZqcuXT4HJqPnhXvEwm7RcK8uEJO98FFlGZ/exec';
+// const partII = 'AKfycbz_bpIfyQQk939_ceHoqJV07H2x_tuZfopWceE1uXRDFJjpLo7iJlyv8c4D2fMHPjte';
+
 
 const contactUs = document.querySelector('#contactUs');
 console.log(contactUs);
@@ -52,7 +58,7 @@ const contactUsApp = {
       employmentStatusBtn: false,
       expectExpertStatusBtn: false,
       //預約諮詢時間
-      bookingTime:null,
+      bookingTime:null, // flatpickr instance
       //checkSwitch
       acceptNewDataCheckedText: '',
       acceptNewDataChecked: false,
@@ -61,8 +67,11 @@ const contactUsApp = {
       agreeTermsChecked:false,
       agreeTermsShowSwitch:false,
 
-      originalGuest: {} // 先存一份初始資料
+      originalGuest: {}, // 先存一份初始資料
 
+      // 連接到 google 後端資料庫 api
+      apiA1: 'https://script.google.com/macros/s/AKfycbyN7wBHtdB19DPAPbiKpEe-MB8IKe5-CoZqcuXT4HJqPnhXvEwm7RcK8uEJO98FFlGZ/exec',
+      
     }
   },
   created(){ //資料已經準備好，但畫面還沒生成，不能操作 DOM
@@ -229,7 +238,7 @@ const contactUsApp = {
       //     this.fpInstance.open();
       //   }
       // });
-      
+
     },
     //得知我們
     ThroughAChannelClass(key){
@@ -268,7 +277,7 @@ const contactUsApp = {
      // 有找到符合條件->那個物件
      // 沒找到->undefined
 
-     console.log(findTestError);
+    //  console.log(findTestError);
      
      if(findTestError){ // 如果有篩出 error
       if(findTestError.acceptNewDataCheckedErrorMessage){
@@ -278,8 +287,55 @@ const contactUsApp = {
           this.agreeTermsShowSwitch = true;
           this.agreeTermsCheckedText = findTestError.agreeTermsCheckedErrorMessage;
         }
+      }else if(!findTestError){
+        (async()=>{
+          try{
+
+            const params = new URLSearchParams({
+              name: this.defaultGuest.name,
+              email: this.defaultGuest.email,
+              tel: this.defaultGuest.tel,
+              employmentStatus: this.defaultGuest.employmentStatus,
+              consultationTopic: this.defaultGuest.consultationTopic,
+              expectExpert: this.defaultGuest.expectExpert,
+              mainChallenges: this.defaultGuest.mainChallenges,
+              desiredGoal: this.defaultGuest.desiredGoal,
+              preferredContactMethod: this.defaultGuest.preferredContactMethod,
+              preferredContactTime: this.defaultGuest.preferredContactTime,
+              makeAnAppointment: this.defaultGuest.makeAnAppointment,                              
+              findOutThroughAChannel: this.defaultGuest.findOutThroughAChannel,
+              tellUsOther: this.defaultGuest.tellUsOther
+            });
+            
+            const res = await axios({
+              method:'POST',
+              url:`${this.apiA1}`,
+              data:params
+            });
+
+            console.log(res);
+            this.reFillBtn();
+            
+          }catch(err){
+            console.warn(err);
+          }
+        })();
       }
      
+
+      // axios({
+      //   method:'POST',
+      //   url: this.apiA1,
+      //   data:{
+      //     name: this.defaultGuest.name,
+      //   }
+      // })
+      // .then(res=>{
+      //   console.log(res);
+      // })
+      // .catch(err=>{
+      //   console.log(err);
+      // })
 
     },
     //guestFactory 是工廠函式的「規格書」:適合表單 reset
@@ -325,6 +381,7 @@ const contactUsApp = {
 
       //優化後:
       this.defaultGuest = JSON.parse(JSON.stringify(this.originalGuest));
+      this.bookingTime.clear();
       this.acceptNewDataChecked = false;
       this.agreeTermsChecked = false;
     }
