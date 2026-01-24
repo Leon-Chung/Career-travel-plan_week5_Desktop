@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- 告訴 IE：不要用舊模式，請用最新能力來顯示這個網頁。 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
+  <title>servicePlan</title>
+  <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-Bh4Hwd8W.js"></script>
+  <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-B4kzJ3QL.css">
+</head>
+<body>
+  
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom py-14 py-lg-3 border-natural-85" id="navLogin">
+  <div class="container position-relative">
+    <a class="navbar-brand me-0 py-0 logo" href="../pages/index.html">
+      <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/b73ea8a74c1ac1f404c8b9e08555ad2f7b7f20e5/2025-week5/logo.svg" alt="logo">
+    </a>
+    <!-- collapse -->
+    <button class="navbar-toggler position-absolute end-0 border-0 mx-3 collapse-padding"
+            type="button"
+            id="menuBtn"
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon bar-icon"></span>
+    </button>
+    <div class="custom-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-lg-auto mb-0 mb-lg-0 nav-flex ">
+        <li class="nav-item me-lg-3">
+          <a class="nav-link px-lg-5 " href="servicePlan.html">服務方案</a>
+        </li>
+        <li class="nav-item me-lg-3">
+          <a class="nav-link px-lg-5 " href="#">關於職旅</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-lg-5 " href="contactUs.html">聯絡我們</a>
+        </li>
+      </ul>
+    </div>
+       
+      <!-- login Button trigger modal -->
+    <button type="button" class="btn border border-natural-85 py-2 px-4 px-lg-5 avatar-removing" data-bs-toggle="modal" data-bs-target="#staticBackdrop" v-show="memberPhotoChange.LoginAndRegisterPhoto">
+      登入/註冊
+    </button>
+    
+      <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="display: none" ref="loginModal">
+      <div class="modal-dialog modal-dialog-centered modal-width modal-fullscreen-lg-down">
+        <div class="modal-content">
+          <!-- Login page -->
+          <div class="card shadow border-0 custom-rounded " v-show="modalLogin">
+            <div class="row g-0">
+              <!-- Login-girl-Page -->
+              <div class="col-lg-7 d-lg-block d-none">
+                <div class="img-wrapper">
+                  <img src="/Career-travel-plan_week5_Desktop/assets/login-DRI71ClI.png" class=" img-fluid custom-img-width" alt="Login-girl-Promotional-Photos">
+                </div>
+              </div>
+              <!-- Login-text-page -->
+              <div class="col-12 pt-5 pb-5 col-lg-5 pt-lg-0 pb-lg-0">
+                <div class="modal-header border-0 p-0 position-relative">
+                  <button type="button" class="btn-close p-0 user-img position-absolute top-0 end-0 mt-3 me-3 mt-lg-5 me-lg-5" data-bs-dismiss="modal" aria-label="Close" @click.prevent="closeModal()"></button>
+                </div>
+                <div class="card-header-title d-flex justify-content-center mt-5 mt-lg-6">
+                  <h2 class="fw-bold fs-3 fs-lg-2">登入</h2>
+                </div>
+                <!-- 第三方認證 -->
+                <div class="card-body p-5 p-lg-6 d-flex flex-column gap-5">
+                  <div class="third-party-certification border-bottom border-natural-85 pb-5">
+                      <div class="google">
+                          <button type="button" 
+                                  class="btn border w-100 fs-lg-6 fs-14 border-natural-85 rounded-2 py-3  d-flex align-items-center justify-content-center">
+                                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJjSURBVHgBtZTPbxJREMdndgGVYoSLsTExizHxYgwHNBxMfITewbYHGxNL/4NysokHMU08178AOJUajdzFsgcPREnK0cQD66HW31nSok2X3fHtytLHhi4kxm8C+2bezGfnTd4swhTaYynFXc+qTW1SPJ608Y0lGUm4jEg5AoweJ5DO7ZppUmVWbalTQTssEY3IgRJPzMFklXumUYirbV10SqKxxxLKjBzcmRJoKx+SQ8zrDIiGLAcb/KGMRBDoFkIFiR8bMSoRZgFJGeytXNx+W/NCh8f/MX/9kdk9VRQ3LaTChXprw5v0ZS5ZRAu189vvyjBGQ+jhs5nOQfWKYnVDvsCp1a/LOaMeJPvXXVPoa+ZGCf5BTk8tQOaWHJ7bBemqXoHXo4GZ9V6OJMj6wSzjqKAWY7oDJQujKNyDyKXDjjeBwErwbuX9oCAHKvxfleA/yKkUJdLFOWgeReMAnz+KgRaizivQRtOJT9rxtLlySMarAANE+47CRu8abP2+rLbuvkjDBGWeHDSIgA1fbBgxu6fO8QOBfnvXDOv39ds20Haxm1sLy35Atr7PRCBfqzbQXjtQTIO++DPz9EP/3DDJIignq/Or44Cp0hqTJHwp+ohPHYjHd5WsLuzwR0L08QDN/irxK9LlzedvJXufBfdvwenv9wCtML8ZoDUeRuJuzsjs98m8I6PUQEBlWIHzLaBV3vO/1kDG2TdgnnkP4U8PNPgVS3sKGVViM6fIIBc5w7enA6m8kJX2Uk3zhbpKbi4yAsrziCwPigqV69xu8yY+bi09V8flnggVleLVu+ump6px+gNqLOABUudmHgAAAABJRU5ErkJggg==" alt="google-icon" class="me-1 google-img">Google</button>
+                      </div>
+                      <div class="discord mt-4">
+                          <button type="button" 
+                                  class="btn border w-100 fs-lg-6 fs-14 border-natural-85 rounded-2 py-3  d-flex align-items-center justify-content-center">
+                                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGjSURBVHgB7VRNTsJQEJ5X+VFWdUNCYmI5gXAC6gnEBVHZKAsSxQW9Ad4AWEBM3MCuxoXcQLwBnIAuTEwwxm6IUG3HKbS1r1Tjz1K/Rdv5+2bezLwC/GmwMGVeGYmxWUIWGNsh8VZtJzuurVh5rJrMlBjC0K//lLRYHmesKFzTp+Q46BYDjUhEEjRAkH3umvli7F5dbAw+JN0/vpdAWLlxCb8IbRqbZHuNtO4qBN6+In+T0Ia0aiQUv4InFaAGPwI7DCUtVO4yEKgSGdi90rhw6jE9+gFWqVCex/OkEYzLXDCyxmUrmZ3GolkGzOkXas+xSVptJbeJvOn3j0Qi8hIpTTjHV4lD+91rrOv0PVhUyXRvIMg03l/Y8hL4ziXRuvhROzh5ECntJiLK80CAzN7puM5MGFKiKncysi2RMkQReEgUWA8kIj9QgjvjJPTiQ8y/h0eKaDX5zCQjdp0NWFRJk7dl2xYcFEV0fX7voBt1RDfK3lUJQm6Ki7zyJK4ZryMEu2WogWWV1PNUP5Q0QJ6jH0YpzG6Txo3ZGQMcqO1UB/7hxxvDxJd1Cz10cAAAAABJRU5ErkJggg==" alt="google-icon" class="me-1 google-img">Discord</button>
+                      </div>
+                  </div>
+                   <!-- 登入帳號欄 -->
+                  <div class="login-account d-flex flex-column gap-4">
+                    <!-- 信箱 -->
+                    <div class="form-floating position-relative">
+                      <input type="email" class="form-control border-natural-85" id="floatingEmail" placeholder="Email" v-model.trim="loginValue.email">
+                      <label for="floatingEmail" class="fs-lg-6 fs-14">信箱</label>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="loginReminder.email">{{loginErrorMessage.email}}</span>
+                    </div>
+                    <!-- 密碼 -->
+                    <div class="form-floating position-relative">
+                      <input ref="loginPasswordInput" type="password" class="form-control border-natural-85" id="floatingPassword"  placeholder="Password" v-model.trim="loginValue.password">
+                      <label for="floatingPassword" class="fs-lg-6 fs-14">Password</label>
+                      <span class="material-symbols-outlined icon-fs20 click-cursor position-absolute top-50 end-0 translate-middle-y me-3" @click.prevent="eyeLoginChange($event)">{{ eyeIcon }}</span>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="loginReminder.password">{{loginErrorMessage.password}}</span>
+                    </div>
+                    <!-- 提醒 -->
+                     <div class="d-flex justify-content-end">
+                      <a href="javascript:;"><span class="fs-14 text-natural-50">忘記密碼</span></a>
+                     </div>
+                     <!-- sent-btn -->
+                      <div>
+                        <button class="btn w-100 py-3 rounded-2 bg-black text-white fs-lg-6 fs-14" type="button" @click.prevent="loginSent($event)" >送出
+                          <span class="material-icons-outlined icon-fs20 align-bottom ms-1">
+                            chevron_right
+                          </span>
+                        </button>
+                      </div>
+                  </div>
+                </div>
+                 <!-- 快速註冊 -->
+                  <div class="d-flex justify-content-center custom-modal-mb">
+                    <span class="fw-medium lh-120 text-natural-50 fs-lg-6 fs-14">不是會員？</span>
+                    <a href="javascript:;" class="fw-medium lh-120 text-primary text-underline fs-lg-6 fs-14" @click.prevent="switchRegisterOrLogin($event)">快速註冊</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- register page -->
+          <div class="card shadow border-0 custom-rounded" v-show="modalRegister">
+            <div class="row g-0">
+              <div class="col-12 col-lg-5 pt-5 pt-lg-0">
+                <!-- close btn -->
+                <div class="modal-header border-0 p-0 position-relative">
+                  <button type="button" class="btn-close p-0 user-img position-absolute top-0 end-0 mt-3 me-3 mt-lg-5 me-lg-5" data-bs-dismiss="modal" aria-label="Close" @click.prevent="closeModal()"></button>
+                </div>
+                <!-- title -->
+                <div class="d-flex justify-content-center mt-5 mt-lg-6">
+                   <h2 class="fw-bold fs-3 fs-lg-2 ">註冊</h2>
+                </div>
+                <!-- 第三方認證 -->
+                <div class="card-body p-5 p-lg-6 d-flex flex-column gap-5">
+                  <div class="border-bottom border-natural-85 pb-5">
+                    <!-- google 調整前 -->
+                    <!-- <div class="py-3 border d-flex justify-content-center rounded-2 border-natural-85">
+                      <label for="google" class="d-flex align-items-center"><img src="../assets/images/btn-Icon/google.png" alt="" class="me-1">Google</label>
+                      <input type="text" id="google" name="google" class="d-none" >
+                    </div> -->
+                    <div class="google">
+                        <button type="button" 
+                                class="btn border w-100 fs-lg-6 fs-14 border-natural-85 rounded-2 py-3  d-flex align-items-center justify-content-center">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJjSURBVHgBtZTPbxJREMdndgGVYoSLsTExizHxYgwHNBxMfITewbYHGxNL/4NysokHMU08178AOJUajdzFsgcPREnK0cQD66HW31nSok2X3fHtytLHhi4kxm8C+2bezGfnTd4swhTaYynFXc+qTW1SPJ608Y0lGUm4jEg5AoweJ5DO7ZppUmVWbalTQTssEY3IgRJPzMFklXumUYirbV10SqKxxxLKjBzcmRJoKx+SQ8zrDIiGLAcb/KGMRBDoFkIFiR8bMSoRZgFJGeytXNx+W/NCh8f/MX/9kdk9VRQ3LaTChXprw5v0ZS5ZRAu189vvyjBGQ+jhs5nOQfWKYnVDvsCp1a/LOaMeJPvXXVPoa+ZGCf5BTk8tQOaWHJ7bBemqXoHXo4GZ9V6OJMj6wSzjqKAWY7oDJQujKNyDyKXDjjeBwErwbuX9oCAHKvxfleA/yKkUJdLFOWgeReMAnz+KgRaizivQRtOJT9rxtLlySMarAANE+47CRu8abP2+rLbuvkjDBGWeHDSIgA1fbBgxu6fO8QOBfnvXDOv39ds20Haxm1sLy35Atr7PRCBfqzbQXjtQTIO++DPz9EP/3DDJIignq/Or44Cp0hqTJHwp+ohPHYjHd5WsLuzwR0L08QDN/irxK9LlzedvJXufBfdvwenv9wCtML8ZoDUeRuJuzsjs98m8I6PUQEBlWIHzLaBV3vO/1kDG2TdgnnkP4U8PNPgVS3sKGVViM6fIIBc5w7enA6m8kJX2Uk3zhbpKbi4yAsrziCwPigqV69xu8yY+bi09V8flnggVleLVu+ump6px+gNqLOABUudmHgAAAABJRU5ErkJggg==" alt="google-icon" class="me-1 google-img">Google</button>
+                    </div>
+                    <div class="discord mt-4">
+                        <button type="button" 
+                                class="btn border w-100 fs-lg-6 fs-14 border-natural-85 rounded-2 py-3  d-flex align-items-center justify-content-center">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGjSURBVHgB7VRNTsJQEJ5X+VFWdUNCYmI5gXAC6gnEBVHZKAsSxQW9Ad4AWEBM3MCuxoXcQLwBnIAuTEwwxm6IUG3HKbS1r1Tjz1K/Rdv5+2bezLwC/GmwMGVeGYmxWUIWGNsh8VZtJzuurVh5rJrMlBjC0K//lLRYHmesKFzTp+Q46BYDjUhEEjRAkH3umvli7F5dbAw+JN0/vpdAWLlxCb8IbRqbZHuNtO4qBN6+In+T0Ia0aiQUv4InFaAGPwI7DCUtVO4yEKgSGdi90rhw6jE9+gFWqVCex/OkEYzLXDCyxmUrmZ3GolkGzOkXas+xSVptJbeJvOn3j0Qi8hIpTTjHV4lD+91rrOv0PVhUyXRvIMg03l/Y8hL4ziXRuvhROzh5ECntJiLK80CAzN7puM5MGFKiKncysi2RMkQReEgUWA8kIj9QgjvjJPTiQ8y/h0eKaDX5zCQjdp0NWFRJk7dl2xYcFEV0fX7voBt1RDfK3lUJQm6Ki7zyJK4ZryMEu2WogWWV1PNUP5Q0QJ6jH0YpzG6Txo3ZGQMcqO1UB/7hxxvDxJd1Cz10cAAAAABJRU5ErkJggg==" alt="google-icon" class="me-1 google-img">Discord</button>
+                    </div>
+                  </div>
+                  <!-- register -->
+                  <div class="d-flex flex-column gap-4">
+                    <!-- 帳號 -->
+                    <div class="form-floating position-relative">
+                      <input ref="registerAccount" type="text" class="form-control border-natural-85" id="floatingRegisterAccount" placeholder="registerAccount" v-model.trim="registerAccountValue">
+                      <label for="floatingRegisterAccount" class="fs-lg-6 fs-14">帳號</label>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="accountReminder">{{accountErrorMessage}}</span>
+                    </div>
+                    <!-- 信箱 -->
+                    <div class="form-floating position-relative">
+                      <input ref="registerEmail" type="email" class="form-control border-natural-85" id="floatingRegisterEmail" placeholder="registerEmail" v-model.trim="registerEmailValue">
+                      <label for="floatingRegisterEmail" class="fs-lg-6 fs-14">信箱</label>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="emailReminder">{{emailErrorMessage}}</span>
+                    </div>
+                    <!-- 密碼 -->
+                    <div class="form-floating position-relative">
+                      <input ref="registerPasswordInput" type="password" class="form-control border-natural-85 " id="floatingRegisterPassword" placeholder="registerPassword" v-model.trim="registerPasswordValue">
+                      <label for="floatingRegisterPassword" class="fs-lg-6 fs-14">密碼</label>
+                      <span class="material-symbols-outlined icon-fs20 click-cursor position-absolute top-50 end-0 translate-middle-y me-3" @click.prevent="eyeRegisterChange($event)">{{ eyeRegisterIcon }}</span>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="pwdReminder">{{pwdErrorMessage}}</span>
+                    </div>
+                    <!-- 確認密碼 -->
+                    <div class="form-floating position-relative">
+                      <input ref="checkPasswordInput" type="password" class="form-control" id="floatingCheckPassword" placeholder="CheckPassword" v-model.trim="registerCheckPasswordValue">
+                      <label for="floatingCheckPassword" class="fs-lg-6 fs-14">確認密碼</label>
+                      <span class="material-symbols-outlined icon-fs20 click-cursor position-absolute top-50 translate-middle-y end-0 me-3" @click.prevent="eyeCheckChange($event)">{{ eyeCheckIcon }}</span>
+                      <span class="fs-14 text-danger position-absolute top-50 end-0 translate-middle-x" v-show="checkPwdReminder">{{checkPwdErrorMessage}}</span>
+                    </div>
+                    <!-- check -->
+                    <div class="form-check mb-0 d-flex align-items-center flex-wrap">
+                      <input class="form-check-input border-natural-85 me-1" type="checkbox" value="" id="agreeToTheTerms" v-model="checked">
+                      <label for="agreeToTheTerms" class="fs-14 me-1">我同意</label>
+                      <a href="../pages/tos.html" class="text-primary fs-14 text-underline me-1">用戶條款</a>
+                      <span class="fs-14 me-1">和</span>
+                      <a href="../pages/pp.html" class="text-primary fs-14 text-underline">隱私政策</a>
+                      <span class="fs-14 me-1">。</span>
+                      <span class="fs-14 text-danger" v-show="agreeTermsReminder">{{agreeTermsErrorMessage}}</span>
+                    </div>
+                    <!-- sent btn -->
+                     <div>
+                      <button type="button" class="btn w-100 py-3 bg-black text-white fs-lg-6 fs-14" @click.prevent="registerSent($event)">送出
+                        <span class="material-icons-outlined icon-fs20 align-bottom  ms-1">
+                            chevron_right
+                          </span>
+                      </button>
+                     </div>
+                  </div>
+                </div>
+                <!-- 直接登入 -->
+                <div class="d-flex justify-content-center custom-modal-register-mb">
+                  <span class="fw-medium lh-120 text-natural-50 fs-lg-6 fs-14">已經會員？</span>
+                  <a href="javascript:;" class="fw-medium lh-120 text-primary text-underline fs-lg-6 fs-14" @click.prevent="switchRegisterOrLogin($event)" >直接登入</a>
+                </div>
+              </div>
+              <div class="col-lg-7 d-lg-block d-none">
+                <div class="img-wrapper-register">
+                  <img src="/Career-travel-plan_week5_Desktop/assets/register-Cfh0nsYT.png" class="img-fluid custom-img-width" alt="register-boy-Promotional-Photos">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="avatar-removing fs-14 fs-lg-6" v-show="memberPhotoChange.memberPhoto" @click.prevent="userPage($event)"><img :src="userData.photo" alt="user-img" class=" me-2 border rounded-circle user-img" >{{ userData.userInfo }}</a>
+  </div>
+</nav>
+  <main class="bg-light" id="servicePlan">
+    <!-- 表頭圖 -->
+     <section>
+       <div class="container-fluid px-0 position-relative">
+         <!-- img -->
+         <div class="service-plan-header-img position-relative">
+           <div class="bg-light position-absolute w-100 service-plan-background-color-height service-plan-background-color-opacity"></div>
+           <img src="/Career-travel-plan_week5_Desktop/assets/banner-bg-pc-CrJ0aIBr.png" class="w-100 h-100 service-plan-object-img">
+         </div>
+         <!-- title -->
+         <div class="py-6 py-lg-7 px-3 position-absolute top-0 w-100 service-plan-title-height">
+           <div class="w-100 d-flex flex-column gap-lg-6 gap-5 justify-content-center align-items-center">
+             <h1 class="fw-bold fs-2 fs-lg-1">服務方案</h1>
+             <div class="d-flex justify-content-center">
+               <p class="service-plan-title-width fs-lg-5 fs-6 text-center text-natural-50">我們最全面的服務方案，為您提供從評估、規劃到實踐的完整支持。不再擔心轉型過程中的各種挑戰，我們的專家團隊將全程陪伴，確保您順利實現職業自由。</p>
+             </div>
+           </div>
+         </div>
+         <!-- small girls img -->
+         <div class="girls-img-show position-absolute girls-img-position">
+           <img src="/Career-travel-plan_week5_Desktop/assets/banner-person-DTAW4mej.svg" alt="small-girls-picture">
+         </div>
+       </div>
+     </section>
+    <!-- 職涯轉型全程計畫 -->
+    <section class="bg-light">
+       <div class="container py-lg-7 py-6">
+         <div class="d-flex flex-column gap-lg-6 gap-5">
+          <!-- 職涯轉型全程計畫-title -->
+          <div class="d-flex flex-column gap-lg-5 gap-4">
+              <div class="d-flex flex-column gap-1">
+                <div class="text-center">
+                  <img src="/Career-travel-plan_week5_Desktop/assets/goal-Bpk-8BlK.svg" alt="goal-picture">
+                </div>
+                <h2 class="text-center fs-3 fs-lg-2 fw-bold">職涯轉型全程計畫</h2>
+              </div>
+              <p class="text-center text-natural-50 fs-6 fs-lg-5">從企業到自由，無縫轉型之旅</p>
+          </div>
+          <!-- 職涯轉型全程計畫-方案 -->
+          <div class="d-flex flex-column gap-lg-5 gap-4">
+            <!-- card-1 -->
+            <div class="card border border-2 border-secondary-50 shadow p-lg-6 px-5 pb-5 pt-6 rounded-24 position-relative">
+              <!-- card-tab -->
+              <div class="d-flex align-items-center 
+                          bg-secondary-50 py-2 px-4 
+                          position-absolute top-0 start-0 
+                          card-tab-rounded card-tab-box-size
+                          ">
+                <h5 class="fs-14 fw-bold">HOT</h5>
+              </div>
+              <!-- card-title -->
+              <div class="row g-0">
+                <!-- title-main -->
+                <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+                  <div class="d-flex flex-column gap-lg-5 gap-4 pe-md-5">
+                    <!-- title-outline -->
+                    <div class="d-flex gap-2 flex-column">
+                      <p class="fs-14 fs-lg-6 text-primary-60 fw-medium">全面方案</p>
+                      <h4 class="fs-20 fs-lg-4">職涯轉型全程計畫</h4>
+                      <p class="fs-14 fs-lg-6">針對希望完全改變職業領域的資深專業人士。我們的專家團隊將協助您將過往經驗轉化為新領域的競爭優勢。</p>
+                      <ul class="mb-0 list-unstyled">
+                        <li class="d-flex align-items-center mb-1">
+                          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                          <span class="fs-14 fs-lg-6">深度職能轉換評估與規劃</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-1">
+                          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                          <span class="fs-14 fs-lg-6">跨領域技能遷移策略</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-1">
+                          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                          <span class="fs-14 fs-lg-6">新領域人脈建立指導</span>
+                        </li>
+                        <li class="d-flex align-items-center">
+                          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                          <span class="fs-14 fs-lg-6">長期職涯發展藍圖</span>
+                        </li>                      
+                      </ul>
+                    </div>
+                    <!-- title-price -->
+                    <div class="bg-natural-95 p-lg-5 p-4 rounded-1">
+                      <ul class="mb-0 list-unstyled">
+                        <li class="mb-2 d-flex align-items-center">
+                          <span class="fs-14 fs-lg-6 white-nowrap">適合對象：</span>
+                          <h5 class="fs-14 fs-lg-6 fw-bold">從企業職場轉型為自由工作者 / 數位遊牧者的專業人士</h5>
+                        </li>
+                        <li class="d-flex align-items-center">
+                          <span class="fs-14 fs-lg-6 white-nowrap">優惠價格：</span>
+                          <h4 class="fs-lg-4 fs-20 fw-bold text-primary-60 ls-0">NT$ 120,000</h4>
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- title-btn -->
+                    <div>
+                      <input type="text" id="Willingness-one" class="d-none">
+                      <label for="Willingness-one" class="btn rounded-16 border printPadding text-bg-dark fs-14 fs-lg-6">我有興趣
+                        <span class="material-icons-outlined align-bottom ms-lg-1">chevron_right</span>
+                      </label>
+                    </div> 
+                  </div>
+                </div>
+                <!-- card-picture -->
+                <div class="d-none d-md-block col-md-5 col-lg-4 col-xl-3">
+                  <div class="card-plan-img-size">
+                    <img src="/Career-travel-plan_week5_Desktop/assets/plan-1-DhruYoqJ.svg" alt="paln-1" class="w-100 h-100">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- card-2 -->
+            <div class="card shadow p-lg-6 p-5 rounded-24 border-0">
+            <!-- card-title -->
+            <div class="row g-0">
+              <!-- title-main -->
+              <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+                <div class="d-flex flex-column gap-lg-5 gap-4 pe-md-5">
+                  <!-- title-outline -->
+                  <div class="d-flex gap-2 flex-column">
+                    <p class="fs-14 fs-lg-6 text-primary-60 fw-medium">加速方案</p>
+                    <h4 class="fs-20 fs-lg-4">自由工作加速計畫</h4>
+                    <p class="fs-14 fs-lg-6">為已確定要轉型但需要全面規劃的專業人士設計。六次深度諮詢，從心態調整到實際操作，全方位為您的轉型做好準備。</p>
+                    <ul class="mb-0 list-unstyled">
+                      <li class="d-flex align-items-center mb-1">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                        <span class="fs-14 fs-lg-6">詳細的市場機會分析</span>
+                      </li>
+                      <li class="d-flex align-items-center mb-1">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                        <span class="fs-14 fs-lg-6">個人優勢定位與差異化策略</span>
+                      </li>
+                      <li class="d-flex align-items-center mb-1">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                        <span class="fs-14 fs-lg-6">完整的轉型時間表與里程碑</span>
+                      </li>
+                      <li class="d-flex align-items-center">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                        <span class="fs-14 fs-lg-6">轉型期間的心理健康維護策略</span>
+                      </li>                      
+                    </ul>
+                  </div>
+                  <!-- title-price -->
+                  <div class="bg-natural-95 p-lg-5 p-4 rounded-1">
+                    <ul class="mb-0 list-unstyled">
+                      <li class="mb-2 d-flex align-items-center">
+                        <span class="fs-14 fs-lg-6 white-nowrap">適合對象：</span>
+                        <h5 class="fs-14 fs-lg-6 fw-bold">已經開始自由工作但想提升效能和收入的專業人士</h5>
+                      </li>
+                      <li class="d-flex align-items-center">
+                        <span class="fs-14 fs-lg-6 white-nowrap">優惠價格：</span>
+                        <h4 class="fs-lg-4 fs-20 fw-bold text-primary-60 ls-0">NT$ 80,000</h4>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- title-btn -->
+                  <div>
+                    <input type="text" id="Willingness-two" class="d-none">
+                    <label for="Willingness-two" class="btn rounded-16 border printPadding text-bg-dark fs-14 fs-lg-6">我有興趣
+                      <span class="material-icons-outlined align-bottom ms-lg-1">chevron_right</span>
+                    </label>
+                  </div> 
+                </div>
+              </div>
+              <!-- card-picture -->
+              <div class="d-none d-md-block col-md-5 col-lg-4 col-xl-3">
+                <div class="card-plan-img-size">
+                  <img src="/Career-travel-plan_week5_Desktop/assets/plan-2-fdMDNmKG.svg" alt="paln-2" class="w-100 h-100">
+                </div>
+              </div>
+             </div>
+            </div>
+            <!-- card-3 -->
+            <div class="card shadow p-lg-6 p-5 rounded-24 border-0">
+            <!-- card-title -->
+            <div class="row g-0">
+              <!-- title-main -->
+              <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+                <div class="d-flex flex-column gap-lg-5 gap-4 pe-md-5">
+                  <!-- title-outline -->
+                  <div class="d-flex gap-2 flex-column">
+                    <p class="fs-14 fs-lg-6 text-primary-60 fw-medium">遊牧方案</p>
+                    <h4 class="fs-20 fs-lg-4">數位遊牧生活計畫</h4>
+                    <p class="fs-14 fs-lg-6">針對希望完全改變職業領域的資深專業人士。我們的專家團隊將協助您將過往經驗轉化為新領域的競爭優勢。</p>
+                    <ul class="mb-0 list-unstyled">
+                      <li class="d-flex align-items-center mb-1">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                        <span class="fs-14 fs-lg-6">深度職能轉換評估與規劃</span>
+                      </li>
+                      <li class="d-flex align-items-center mb-1">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                        <span class="fs-14 fs-lg-6">新領域人脈建立指導</span>
+                      </li>
+                      <li class="d-flex align-items-center mb-1">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                        <span class="fs-14 fs-lg-6">跨領域技能遷移策略</span>
+                      </li>
+                      <li class="d-flex align-items-center">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADISURBVHgB7ZFbDsIgEEU7sAeNOzK6COtfo4uQLkLjn3UTjTtqdBEzAlVCtY+ZfnMTEhq45xTIspSUOJvD8+SGpAPcjR5MZNoWmPqyLDk9lqADD02eRE1t6MCJ9mjHZ2441wUSeH1dVW66LppcAdxawvhJQAr/hiuBOXCJpP8NEIMYtaZsIDpeizpxhq+oaIz9K/+IqFT+OC/u8fr2+NoRYuU/iEp7SiMSjEm48ElBn0Q7JhPOEvxKQhhwtuBPwoSL4yRelJIS5w16UZBugYAuPAAAAABJRU5ErkJggg==" alt="stat-icon" class="me-2">
+                        <span class="fs-14 fs-lg-6">長期職涯發展藍圖</span>
+                      </li>                      
+                    </ul>
+                  </div>
+                  <!-- title-price -->
+                  <div class="bg-natural-95 p-lg-5 p-4 rounded-1">
+                    <ul class="mb-0 list-unstyled">
+                      <li class="mb-2 d-flex align-items-center">
+                        <span class="fs-14 fs-lg-6 white-nowrap">適合對象：</span>
+                        <h5 class="fs-14 fs-lg-6 fw-bold">希望同時擁有工作自由和地域自由的專業人士</h5>
+                      </li>
+                      <li class="d-flex align-items-center">
+                        <span class="fs-14 fs-lg-6 white-nowrap">優惠價格：</span>
+                        <h4 class="fs-lg-4 fs-20 fw-bold text-primary-60 ls-0">NT$ 60,000</h4>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- title-btn -->
+                  <div>
+                    <input type="text" id="Willingness-three" class="d-none">
+                    <label for="Willingness-three" class="btn rounded-16 border printPadding text-bg-dark fs-14 fs-lg-6">我有興趣
+                      <span class="material-icons-outlined align-bottom ms-lg-1">chevron_right</span>
+                    </label>
+                  </div> 
+                </div>
+              </div>
+              <!-- card-picture -->
+              <div class="d-none d-md-block col-md-5 col-lg-4 col-xl-3">
+                <div class="card-plan-img-size">
+                  <img src="/Career-travel-plan_week5_Desktop/assets/plan-3-DcD0AJxh.svg" alt="paln-3" class="w-100 h-100">
+                </div>
+              </div>
+             </div>
+            </div>
+          </div>
+         </div>
+       </div>
+    </section>
+    <!-- 基礎諮詢服務 -->
+    <section class="bg-natural-95">
+      <div class="container py-lg-7 py-6">
+        <div class="d-flex flex-column gap-5 gap-lg-6">
+          <!-- 服務主題 -->
+          <div class="d-flex flex-column gap-4 gap-lg-5 align-items-center">
+            <div class="d-flex flex-column gap-1">
+              <div class="d-flex justify-content-center">
+                <img src="/Career-travel-plan_week5_Desktop/assets/conversation-CQ9CAWyn.svg" alt="conversation-icon">
+              </div>
+              <h2 class="fw-bold fs-3 fs-lg-2">基礎諮詢服務</h2>
+            </div>
+            <p class="fs-6 fs-lg-5 text-natural-50">我們提供第一次免費諮詢，一起建立信任的橋樑</p>
+          </div>
+          <!-- 服務圖片 -->
+          <div class="row row-cols-1 row-cols-md-3 w-100 g-0 g-md-4 g-lg-5"> <!-- row-cols-1 row-cols-md-3 => 手機 1 欄、桌機 3 欄 -->
+            <!--card-1  -->                                           <!-- g-0 g-lg-5 => 手機 沒有 gutter，桌機以上才有間距, 這正是避免 375px 留白的正解 -->
+            <div class="col mb-4 mb-lg-0"> <!-- mb-4 → 手機版上下卡片有距離 ; mb-lg-0 → 桌機以上交給 g-lg-5 -->
+              <div class="card rounded-24 p-lg-5 px-4 py-5 border-0 shadow gap-lg-5 gap-4">
+                <!-- small img -->
+                <div class="mx-auto service-img-size">
+                  <img src="/Career-travel-plan_week5_Desktop/assets/server-1-BcCKjqdp.svg" alt="server-one-icon" class="img-fluid">
+                </div>
+                <!-- service-title -->
+                <div class="d-flex flex-column gap-2 align-items-center">
+                  <h5 class="fs-lg-4 fs-20 fw-bold">職涯探索評估</h5>
+                  <p class="fs-14 text-natural-50">3 次一對一諮詢，了解可能性和適配性</p>
+                  <h4 class="fs-lg-4 fs-20 fw-bold text-primary-60 ls-0">NT$ 3,800</h4>
+                </div>
+                <!-- service-btn-one -->
+                  <div class="d-flex justify-content-center">
+                  <input type="text" id="service-btn-one" class="d-none">
+                  <label for="server-btn-one" class="btn border rounded-16 printPadding text-bg-dark fs-14 fs-lg-6">我有興趣
+                    <span class="material-icons-outlined align-bottom ms-lg-1">chevron_right</span>
+                  </label>
+                  </div>
+              </div>
+            </div>
+            <!-- card-2 -->
+            <div class="col mb-4 mb-lg-0">
+              <div class="card rounded-24 p-lg-5 px-4 py-5 border-2 border-secondary-50 shadow gap-lg-5 gap-4 position-relative">
+                  <!-- service-tab -->
+                <div class="position-absolute card-tab-rounded card-tab-box-size py-2 px-4 bg-secondary-50 top-0 start-0">
+                  <h5 class="fs-14 fw-bold">HOT</h5>
+                </div>
+                <!-- small img -->
+                <div class="mx-auto service-img-size">
+                  <img src="/Career-travel-plan_week5_Desktop/assets/server-2-D0IGk8_r.svg" alt="server-two-icon" class="img-fluid">
+                </div>
+                <!-- service-title -->
+                <div class="d-flex flex-column gap-2 align-items-center">
+                  <h5 class="fs-lg-4 fs-20 fw-bold">職涯轉型規劃</h5>
+                  <p class="fs-14 text-natural-50">6 次深度諮詢，建立完整轉型藍圖</p>
+                  <h4 class="fs-lg-4 fs-20 fw-bold text-primary-60 ls-0">NT$ 12,000</h4>
+                </div>
+                <!-- service-btn-one -->
+                  <div class="d-flex justify-content-center">
+                  <input type="text" id="service-btn-two" class="d-none">
+                  <label for="server-btn-two" class="btn border rounded-16 printPadding text-bg-dark fs-14 fs-lg-6">我有興趣
+                    <span class="material-icons-outlined align-bottom ms-lg-1">chevron_right</span>
+                  </label>
+                  </div>
+              </div>
+            </div> 
+            <!-- card-3 -->
+            <div class="col">
+              <div class="card rounded-24 p-lg-5 px-4 py-5 border-0 shadow gap-lg-5 gap-4">
+                <!-- small img -->
+                <div class="mx-auto service-img-size">
+                  <img src="/Career-travel-plan_week5_Desktop/assets/server-3-CuFy9Es5.svg" alt="server-three-icon" class="img-fluid">
+                </div>
+                <!-- service-title -->
+                <div class="d-flex flex-column gap-2 align-items-center">
+                  <h5 class="fs-lg-4 fs-20 fw-bold">專業定位與品牌建立</h5>
+                  <p class="fs-14 text-natural-50">4 次專業諮詢，確立市場定位與差異化策略</p>
+                  <h4 class="fs-lg-4 fs-20 fw-bold text-primary-60 ls-0">NT$ 8,800</h4>
+                </div>
+                <!-- service-btn-three -->
+                <div class="d-flex justify-content-center">
+                  <input type="text" id="service-btn-three" class="d-none">
+                  <label for="server-btn-three" class="btn border rounded-16 printPadding text-bg-dark fs-14 fs-lg-6">我有興趣
+                    <span class="material-icons-outlined align-bottom ms-lg-1">chevron_right</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 持續支持方案 -->
+    <section class="position-relative">
+      <div class="bg-natural-95 position-absolute w-100" style="height: 300px;" ></div>
+      <div class="container py-lg-7 py-6 position-relative">
+       <div class="d-flex justify-content-center" >
+         <div class="d-flex flex-column gap-5 gap-lg-6 w-100" style="max-width: 856px;">
+           <!-- support-title -->
+           <div class="d-flex flex-column gap-1">
+             <div class="d-flex justify-content-center">
+               <img src="/Career-travel-plan_week5_Desktop/assets/love-41W-g3fP.svg" alt="love-icon">
+             </div>
+             <h2 class="text-center fs-lg-2 fs-3 fw-bold">持續支持方案</h2>
+           </div>
+           <!-- support-img -->
+           <div class="d-flex gap-lg-5 gap-4 border border-2 border-secondary-50 shadow rounded-24 p-lg-6 p-5 bg-info">
+ 
+           </div>
+         </div>
+       </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-natural-95 border-top border-natural-85">
+  <div class="container py-lg-6 py-5">
+    <!-- left -->
+    <div class="d-lg-flex justify-content-between align-items-center">
+      <div class="d-flex flex-wrap justify-content-center">
+        <p class="py-2 px-4 px-lg-5">服務方案</p>
+        <p class="py-2 px-4 px-lg-5">關於職旅</p>
+        <p class="py-2 px-4 px-lg-5">聯絡我們</p>
+        <p class="py-2 px-4 px-lg-5 mt-2 mt-sm-0 mt-md-0 mt-lg-0">隱私權政策</p>
+        <p class="py-2 px-4 px-lg-5 mt-2 mt-sm-0 mt-md-0 mt-lg-0">用戶條款</p>
+      </div>
+      <div class="mt-2 mt-lg-0 text-center">
+        <span class="text-natural-50 fs-14">Copyright © 2025 職旅 workway. All rights reserved.</span>
+      </div>
+    </div>
+  </div>
+</footer>  
+</body>
+</html>
