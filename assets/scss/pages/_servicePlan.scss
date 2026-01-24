@@ -1,0 +1,95 @@
+@mixin phone {
+  @media screen and (max-width:1024px) {
+    @content;
+  }
+}
+
+.service-plan-background-color-height{
+  height: 320px;
+  @include phone{
+    height: 254px;
+  }
+}
+
+.service-plan-background-color-opacity{
+  opacity: 0.1;
+}
+
+.service-plan-header-img{
+  height: 320px;
+  overflow: hidden;
+  @include phone {
+    height: 254px;
+    
+  }
+}
+
+.service-plan-object-img{
+  object-fit: cover;
+  object-position: center center;  
+}
+
+.service-plan-title-height{
+  height: 320px;
+  @include phone {
+    height: 254px;
+  }
+}
+.service-plan-title-width{
+  max-width: 800px;
+  width: 100%;
+}
+
+
+.girls-img-show{
+  display: block;
+  @include phone {
+    display: none;
+  }
+}
+
+.girls-img-position{
+  top: 208px;
+  right: 440px;
+}
+
+.card-tab-box-size{
+  max-width: 63px;
+  max-height: 33px;
+  width: 100%;
+  height: 100%;
+}
+
+.card-tab-rounded{
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 12px;
+  @include phone {
+    border-top-left-radius: 12px;
+  }
+}
+
+.card-plan-img-size{
+  max-width: 300px;
+  height: 337px;
+}
+
+.white-nowrap {
+  white-space: nowrap;
+}
+
+.ls-0 {
+  letter-spacing: 0 !important;
+}
+
+.service-img-size{
+  width: 160px;
+  height: 160px;
+  @include phone {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.service-z-index{
+  z-index: 1;
+}

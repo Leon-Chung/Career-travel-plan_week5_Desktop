@@ -306,7 +306,7 @@ const contactUsApp = {
               findOutThroughAChannel: this.defaultGuest.findOutThroughAChannel,
               tellUsOther: this.defaultGuest.tellUsOther
             });
-            
+
             const res = await axios({
               method:'POST',
               url:`${this.apiA1}`,
@@ -314,6 +314,7 @@ const contactUsApp = {
             });
 
             console.log(res);
+            alert(res.data.message);
             this.reFillBtn();
             
           }catch(err){
