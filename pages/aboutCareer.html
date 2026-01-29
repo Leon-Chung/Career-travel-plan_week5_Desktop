@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- 告訴 IE：不要用舊模式，請用最新能力來顯示這個網頁。 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
+  <title>aboutCareer</title>
+</head>
+<body>
+  <%- include('./layout/header') -%>
+  <main class="bg-light" id="aboutCareer">
+    <!-- header-bg -->
+    <section>
+      <div class="container-fluid px-0 position-relative">
+        <!-- img -->
+        <div class="position-relative about-Career-img-size">
+          <div class="bg-light position-absolute about-Career-background-color-height about-Career-background-color-opacity"></div>
+          <img src="../assets/images/service/banner-bg-pc.png" alt="banner-bg-pc" class="about-Career-img-show w-100 h-100">
+          <div class="about-Career-img-reverse-show about-Career-objcet-img"></div> <!-- 背景圖要 repeat，就該交給 div -->
+        </div>
+        <!-- header-title -->
+        <div class="d-flex flex-column px-3 py-lg-7 py-6 position-absolute top-0 w-100">
+          <div class="d-flex flex-column gap-lg-6 gap-5 align-items-center">
+            <h1 class="fs-lg-1 fs-2 fw-bold">關於職旅</h1>
+            <div class="about-Career-title-width">
+              <p class="fs-lg-5 fs-6 text-natural-50 text-center">職旅 WorkWay 匯集了來自不同領域、擁有豐富實戰經驗的自由工作者與數位遊牧專家。根據你的需求和階段，我們提供一對一諮詢。</p>
+              <p class="fs-lg-5 fs-6 text-natural-50 text-center">無論你是剛開始探索期，還是已在轉型路上遇到瓶頸，我們都能提供適合你的專業指導。</p>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </section>
+  </main>
+  <%- include('./layout/footer') -%>
+  <script type="module" src="../main.js"></script>
+</body>
+</html>

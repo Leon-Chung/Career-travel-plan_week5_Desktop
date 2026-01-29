@@ -15,16 +15,17 @@
      <section>
        <div class="container-fluid px-0 position-relative">
          <!-- img -->
-         <div class="service-plan-header-img position-relative">
+         <div class="position-relative service-plan-img-size">
            <div class="bg-light position-absolute w-100 service-plan-background-color-height service-plan-background-color-opacity"></div>
-           <img src="../assets/images/service/banner-bg-pc.png" class="w-100 h-100 service-plan-object-img">
+           <img src="../assets/images/service/banner-bg-pc.png" class="w-100 h-100 service-plan-img-show">
+           <div class="service-plan-img-reverse-show service-plan-object-img"></div> <!-- 背景圖要 repeat，就該交給 div -->
          </div>
          <!-- title -->
-         <div class="py-6 py-lg-7 px-3 position-absolute top-0 w-100 service-plan-title-height">
-           <div class="w-100 d-flex flex-column gap-lg-6 gap-5 justify-content-center align-items-center">
+         <div class="py-6 py-lg-7 px-3 position-absolute top-0 w-100">
+           <div class="d-flex flex-column gap-lg-6 gap-5 align-items-center">
              <h1 class="fw-bold fs-2 fs-lg-1">服務方案</h1>
-             <div class="d-flex justify-content-center">
-               <p class="service-plan-title-width fs-lg-5 fs-6 text-center text-natural-50">我們最全面的服務方案，為您提供從評估、規劃到實踐的完整支持。不再擔心轉型過程中的各種挑戰，我們的專家團隊將全程陪伴，確保您順利實現職業自由。</p>
+             <div class="service-plan-title-width">
+               <p class="fs-lg-5 fs-6 text-center text-natural-50">我們最全面的服務方案，為您提供從評估、規劃到實踐的完整支持。不再擔心轉型過程中的各種挑戰，我們的專家團隊將全程陪伴，確保您順利實現職業自由。</p>
              </div>
            </div>
          </div>
@@ -337,9 +338,9 @@
     </section>
     <!-- 持續支持方案 -->
     <section class="position-relative">
-      <div class="bg-natural-95 position-absolute w-100" style="height: 300px;" ></div>
+      <div class="bg-natural-95 position-absolute w-100" style="height: 300px;"></div>
       <div class="container py-lg-7 py-6 position-relative">
-       <div class="d-flex justify-content-center" >
+       <div class="d-flex justify-content-center">
          <div class="d-flex flex-column gap-5 gap-lg-6 w-100" style="max-width: 856px;">
            <!-- support-title -->
            <div class="d-flex flex-column gap-1">
@@ -349,11 +350,86 @@
              <h2 class="text-center fs-lg-2 fs-3 fw-bold">持續支持方案</h2>
            </div>
            <!-- support-img -->
-           <div class="d-flex gap-lg-5 gap-4 border border-2 border-secondary-50 shadow rounded-24 p-lg-6 p-5 bg-info">
- 
+           <div class="d-flex gap-lg-5 gap-4 border border-2 border-secondary-50 shadow rounded-24 p-lg-6 p-5 bg-info position-relative" style="overflow: hidden;">
+            <!-- support-bg-img -->
+            <div class="position-absolute support-circle-img-position  d-none d-md-block">
+              <img src="../assets/images/service/subscribe-3.svg" alt="circle-icon" class="img-fluid h-100">
+            </div>
+            <!-- support-bg-img-2 -->
+            <div class="position-absolute support-circle-img-position d-block d-md-none w-100">
+              <img src="../assets/images/service/Vector.png" alt="circle-icon" class="support-circle-img">
+            </div> 
+            <!-- support-img-title -->
+            <div class="d-flex flex-column gap-6 position-relative align-items-center w-100">
+              <div class="d-flex flex-column gap-2 align-items-center">
+                <h4 class="fs-20 fs-lg-4">職旅會員計畫</h4>
+                <p class="fs-14 fs-lg-6">享有長期社群支持與資源服務</p>
+              </div>
+              <div class="d-flex gap-2 align-items-center">
+                <h4 class="fs-20 fs-lg-4 ls-0 fw-bold text-primary-60">NT$ 9,800</h4>
+                <p class="fs-14 fs-lg-6">/年</p>
+                <h5 class="fs-14 fs-lg-6 ls-0">( NT$1,200 /月)</h5>
+              </div>
+              <!-- btn -->
+              <div>
+                <input type="text" id="support-btn" class="d-none">
+                <label for="support-btn" class="btn border text-bg-dark fs-14 fs-lg-6 rounded-16 printPadding">我有興趣
+                  <span class="material-icons-outlined align-bottom ms-lg-1">chevron_right</span>
+                </label>
+              </div>
+            </div>
+            <!-- support-boy-img -->
+            <div class="position-absolute support-boy-img-position d-none d-md-block">
+              <img src="../assets/images/service/subscribe-1.svg" alt="support-boy-icon" class="img-fluid">
+            </div>
+            <!-- support-girls-img -->
+            <div class="position-absolute support-girls-img-position d-none d-md-block">
+              <img src="../assets/images/service/subscribe-2.svg" alt="support-girls-icon" class="img-fluid">
+            </div>
            </div>
          </div>
        </div>
+      </div>
+    </section>
+    <!-- 持續支持方案-公司聯絡資訊 -->
+    <section>
+      <div class="container contact-Info-Padding">
+        <div class="d-flex flex-column rounded-24 py-lg-5 px-lg-6 gap-lg-5 py-4 px-5 gap-4 bg-primary-60">
+          <!-- 公司文宣 -->
+          <div class="d-flex flex-column gap-5 pb-5 border-dashed">
+            <!-- img -->
+            <div>
+              <img src="../assets/images/service/logo.png" alt="conversation-icon" class="img-fluid">
+            </div>
+             <!--text  -->
+            <div class="d-flex flex-column gap-3">
+              <h2 class="fs-3 fs-lg-2 fw-bold text-light">邁向你真正想過的生活，從這裡開始</h2>
+              <p class="fs-lg-5 fs-6 text-light">第一次諮詢只要 30 分鐘，可能改變你未來 30 年的生活方式</p>
+            </div>
+          </div>
+          <!-- 公司資訊 -->
+          <div class="d-flex gap-5 contact-company-flex">
+            <div class="d-lg-flex gap-lg-5">
+              <!-- tel -->
+              <div class="d-flex gap-2 align-items-start mb-4 mb-lg-0">
+                <div class="d-flex align-items-center"><img src="../assets/images/service/call.png" alt="call-icon" class="img-fluid"></div>
+                <a href="tel:0800123123"><h5 class="text-light contact-company-fs-20 ls-0">0800-123-123</h5></a>
+              </div>
+              <!-- mail -->
+              <div class="d-flex gap-2 align-items-start">
+                <div class="d-flex align-items-center"><img src="../assets/images/service/mail.png" alt="mail-icon" class="img-fluid"></div>
+                <a href="mailto:Sample@mail.com"><h5 class="text-light contact-company-fs-20 ls-0">Sample@mail.com</h5></a>
+              </div>
+            </div>
+            <!-- btn -->
+            <div>
+              <input type="text" id="contact-company-btn" class="d-none">
+              <label for="contact-company-btn" class="btn text-bg-dark rounded-16 printPadding fs-14 fs-lg-6">
+                預約免費職涯探索<span class="material-icons-outlined align-bottom ms-lg-1">chevron_right</span>
+              </label>
+            </div> 
+          </div>
+        </div>
       </div>
     </section>
   </main>

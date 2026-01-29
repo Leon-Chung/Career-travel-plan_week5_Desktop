@@ -15,7 +15,7 @@
   opacity: 0.1;
 }
 
-.service-plan-header-img{
+.service-plan-img-size{
   height: 320px;
   overflow: hidden;
   @include phone {
@@ -24,17 +24,28 @@
   }
 }
 
-.service-plan-object-img{
-  object-fit: cover;
-  object-position: center center;  
-}
-
-.service-plan-title-height{
-  height: 320px;
-  @include phone {
-    height: 254px;
+.service-plan-img-show{
+  display: block;
+  @include phone{
+    display: none;
   }
 }
+
+.service-plan-img-reverse-show{
+  display: none;
+  @include phone{
+    display: block;
+  }
+}
+
+.service-plan-object-img{
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/service/banner-bg.png');
+  background-size: contain;
+  background-repeat: repeat-x; /* 只橫向重複 */ 
+}
+
 .service-plan-title-width{
   max-width: 800px;
   width: 100%;
@@ -50,7 +61,7 @@
 
 .girls-img-position{
   top: 208px;
-  right: 440px;
+  right: 430px;
 }
 
 .card-tab-box-size{
@@ -90,6 +101,50 @@
   }
 }
 
-.service-z-index{
-  z-index: 1;
+.support-circle-img-position{
+  top: -2px;
+  right: 0px;
+  @include phone{
+    top: 0px;
+    right: 0px;
+  }
+}
+
+.support-circle-img{
+  width: 100%;
+  height: 160px;
+}
+
+.support-boy-img-position{
+  left: 24px;
+  bottom: -2px;
+}
+
+.support-girls-img-position{
+  right: 24px;
+  bottom: -2px;
+}
+
+.contact-Info-Padding{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.border-dashed {
+  border-bottom: 1px dashed #D1D9E1 !important;
+}
+
+.contact-company-fs-20{
+  font-size: 20px;
+  @include phone {
+    font-size: 18px;
+  }
+}
+
+.contact-company-flex{
+  flex-direction: row;
+  justify-content: space-between;
+  @include phone {
+    flex-direction: column;
+  }
 }

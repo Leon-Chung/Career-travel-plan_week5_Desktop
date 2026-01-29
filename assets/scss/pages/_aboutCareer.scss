@@ -1,0 +1,53 @@
+@mixin phone{
+  @media screen and (max-width:1024px) {
+    @content;
+  }
+}
+
+.about-Career-background-color-height{
+  width: 100%;
+  height: 347px;
+  @include phone {
+    height: 278px;
+  }
+}
+
+.about-Career-background-color-opacity{
+  opacity: 0.1;
+}
+
+.about-Career-img-size{
+  height: 347px;
+  overflow: hidden;
+  @include phone{
+    height: 278px;
+  }
+}
+
+
+.about-Career-img-show{
+  display: block;
+  @include phone{
+    display: none;
+  }
+}
+
+.about-Career-img-reverse-show{
+  display: none;
+  @include phone{
+    display: block;
+  }
+}
+
+.about-Career-objcet-img{
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/service/banner-bg.png');
+  background-size: contain;
+  background-repeat: repeat-x; /* 只橫向重複 */
+}
+
+.about-Career-title-width{
+  max-width: 800px;
+  width: 100%;
+}
