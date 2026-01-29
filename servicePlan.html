@@ -7,8 +7,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
   <title>servicePlan</title>
-  <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-Bh4Hwd8W.js"></script>
-  <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-B4kzJ3QL.css">
+  <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-CMlPAaBI.js"></script>
+  <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-iyejm_44.css">
 </head>
 <body>
   
@@ -32,7 +32,7 @@
           <a class="nav-link px-lg-5 " href="servicePlan.html">服務方案</a>
         </li>
         <li class="nav-item me-lg-3">
-          <a class="nav-link px-lg-5 " href="#">關於職旅</a>
+          <a class="nav-link px-lg-5 " href="aboutCareer.html">關於職旅</a>
         </li>
         <li class="nav-item">
           <a class="nav-link px-lg-5 " href="contactUs.html">聯絡我們</a>
@@ -220,16 +220,17 @@
      <section>
        <div class="container-fluid px-0 position-relative">
          <!-- img -->
-         <div class="service-plan-header-img position-relative">
+         <div class="position-relative service-plan-img-size">
            <div class="bg-light position-absolute w-100 service-plan-background-color-height service-plan-background-color-opacity"></div>
-           <img src="/Career-travel-plan_week5_Desktop/assets/banner-bg-pc-CrJ0aIBr.png" class="w-100 h-100 service-plan-object-img">
+           <img src="/Career-travel-plan_week5_Desktop/assets/banner-bg-pc-CrJ0aIBr.png" class="w-100 h-100 service-plan-img-show">
+           <div class="service-plan-img-reverse-show service-plan-object-img"></div> <!-- 背景圖要 repeat，就該交給 div -->
          </div>
          <!-- title -->
-         <div class="py-6 py-lg-7 px-3 position-absolute top-0 w-100 service-plan-title-height">
-           <div class="w-100 d-flex flex-column gap-lg-6 gap-5 justify-content-center align-items-center">
+         <div class="py-6 py-lg-7 px-3 position-absolute top-0 w-100">
+           <div class="d-flex flex-column gap-lg-6 gap-5 align-items-center">
              <h1 class="fw-bold fs-2 fs-lg-1">服務方案</h1>
-             <div class="d-flex justify-content-center">
-               <p class="service-plan-title-width fs-lg-5 fs-6 text-center text-natural-50">我們最全面的服務方案，為您提供從評估、規劃到實踐的完整支持。不再擔心轉型過程中的各種挑戰，我們的專家團隊將全程陪伴，確保您順利實現職業自由。</p>
+             <div class="service-plan-title-width">
+               <p class="fs-lg-5 fs-6 text-center text-natural-50">我們最全面的服務方案，為您提供從評估、規劃到實踐的完整支持。不再擔心轉型過程中的各種挑戰，我們的專家團隊將全程陪伴，確保您順利實現職業自由。</p>
              </div>
            </div>
          </div>
@@ -542,9 +543,9 @@
     </section>
     <!-- 持續支持方案 -->
     <section class="position-relative">
-      <div class="bg-natural-95 position-absolute w-100" style="height: 300px;" ></div>
+      <div class="bg-natural-95 position-absolute w-100" style="height: 300px;"></div>
       <div class="container py-lg-7 py-6 position-relative">
-       <div class="d-flex justify-content-center" >
+       <div class="d-flex justify-content-center">
          <div class="d-flex flex-column gap-5 gap-lg-6 w-100" style="max-width: 856px;">
            <!-- support-title -->
            <div class="d-flex flex-column gap-1">
@@ -554,11 +555,86 @@
              <h2 class="text-center fs-lg-2 fs-3 fw-bold">持續支持方案</h2>
            </div>
            <!-- support-img -->
-           <div class="d-flex gap-lg-5 gap-4 border border-2 border-secondary-50 shadow rounded-24 p-lg-6 p-5 bg-info">
- 
+           <div class="d-flex gap-lg-5 gap-4 border border-2 border-secondary-50 shadow rounded-24 p-lg-6 p-5 bg-info position-relative" style="overflow: hidden;">
+            <!-- support-bg-img -->
+            <div class="position-absolute support-circle-img-position  d-none d-md-block">
+              <img src="data:image/svg+xml,%3csvg%20width='600'%20height='160'%20viewBox='0%200%20600%20160'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_2388_9492)'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M375.643%20-342.964C438.659%20-343.723%20500.307%20-332.707%20551.224%20-295.578C612.413%20-250.958%20666.688%20-194.311%20681.368%20-120.025C699.213%20-29.7267%20711.619%2087.1297%20637.694%20141.984C564.122%20196.577%20467.209%20109.984%20375.643%20106.833C290.708%20103.91%20203.639%20168.708%20131.032%20124.547C49.2495%2074.8045%20-13.9302%20-25.7625%202.66144%20-120.025C18.5534%20-210.313%20125.545%20-244.357%20204.245%20-291.397C257.481%20-323.217%20313.624%20-342.216%20375.643%20-342.964Z'%20fill='%23FCFCFD'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_2388_9492'%3e%3crect%20width='600'%20height='160'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="circle-icon" class="img-fluid h-100">
+            </div>
+            <!-- support-bg-img-2 -->
+            <div class="position-absolute support-circle-img-position d-block d-md-none w-100">
+              <img src="data:image/png;base64,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" alt="circle-icon" class="support-circle-img">
+            </div> 
+            <!-- support-img-title -->
+            <div class="d-flex flex-column gap-6 position-relative align-items-center w-100">
+              <div class="d-flex flex-column gap-2 align-items-center">
+                <h4 class="fs-20 fs-lg-4">職旅會員計畫</h4>
+                <p class="fs-14 fs-lg-6">享有長期社群支持與資源服務</p>
+              </div>
+              <div class="d-flex gap-2 align-items-center">
+                <h4 class="fs-20 fs-lg-4 ls-0 fw-bold text-primary-60">NT$ 9,800</h4>
+                <p class="fs-14 fs-lg-6">/年</p>
+                <h5 class="fs-14 fs-lg-6 ls-0">( NT$1,200 /月)</h5>
+              </div>
+              <!-- btn -->
+              <div>
+                <input type="text" id="support-btn" class="d-none">
+                <label for="support-btn" class="btn border text-bg-dark fs-14 fs-lg-6 rounded-16 printPadding">我有興趣
+                  <span class="material-icons-outlined align-bottom ms-lg-1">chevron_right</span>
+                </label>
+              </div>
+            </div>
+            <!-- support-boy-img -->
+            <div class="position-absolute support-boy-img-position d-none d-md-block">
+              <img src="/Career-travel-plan_week5_Desktop/assets/subscribe-1-CheM7QWD.svg" alt="support-boy-icon" class="img-fluid">
+            </div>
+            <!-- support-girls-img -->
+            <div class="position-absolute support-girls-img-position d-none d-md-block">
+              <img src="/Career-travel-plan_week5_Desktop/assets/subscribe-2-D5suLDUW.svg" alt="support-girls-icon" class="img-fluid">
+            </div>
            </div>
          </div>
        </div>
+      </div>
+    </section>
+    <!-- 持續支持方案-公司聯絡資訊 -->
+    <section>
+      <div class="container contact-Info-Padding">
+        <div class="d-flex flex-column rounded-24 py-lg-5 px-lg-6 gap-lg-5 py-4 px-5 gap-4 bg-primary-60">
+          <!-- 公司文宣 -->
+          <div class="d-flex flex-column gap-5 pb-5 border-dashed">
+            <!-- img -->
+            <div>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAkCAYAAAD7PHgWAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMDSURBVHgB7VjdcdpAEN47Cc34DVcQXEFSglxBSAdQgXEF4Ao8qcCkAuMKoAPTAXRg3mCE7i7fSjpMZEkjWSfGD/lmNJLuT5929/bnBOVgjOlrTXe4h3j7gaY+VWNHJFZE+sX3/Tl1CaXMXRyrN1zmk9dmv98PyCHEGbmpMXpG7bHTWt0GQbDmlziOR1WDoaktJL8WQuxKB2WSMw6vNyvJKIrndeYopZ6KpC/2ezMIAr00hgbkEELQ3PO88fF4DCGdacXIf+xcCDnzPPFw6mYVOJbe6eINRzXAPwEez+/SNNMzgnrZFcEoiibUACA6e58fD7lNZq6kE0BdYZPxvV5vho36O5v9xBoQzJa6w873vesmE5iUUnqDR/hjdS+pPXb811qbPwV9fai5kYbY3VgpSun/dEDQ3EM1kyDwRyUkQ2oISHHBdyHMoDVBjbhoIaX4YC5wNd+pIZTqJU6bXZ9PLSGlN8WOw99636CaUcGQkFqg602SwPPkdVkoYzfHqsy328DRWoJ1gDAW4rYo6mNyVVHsIgTT1K2YIGx4nG+DtBGBxDM/X4QgPjYo64EHWOXbOD/o9dLN1yFBs7JPSBw+beedEAShref5t2X9NoMqX0HzJklwIRV/RN30zpmbqXIleaTxVg3L+rFx+vCvjwlBDNy4SFbhpB84GyEHyDYJJwwkwfaFHACp1TSKVKP8r9a6aUoul+QOO6j7pkjdnMAiNt/VWYS1ijXWPvshhBs4UTMkJzClFRo74GbmhLWSW1Ks61cXtng8RjdXV1fboj7ODaWUlfkhuAzYXLK3X6cONkzeMO3qkOoauA6gTVs8bUoGxKPmROMl23ImgVqVXBFQzT3aNW2NLMoGZ+rgQZUfBLGVVWlqKmaZkjQP5311wKkX5oUuXVbuA/GwqfRZalbqtgSGcEZ2TRdF0wk4Y1lEkUQMNmPE43WdOZDWBFXcq62D8xDUIVgyh8Oh1ESgxuRY5Mx7sHvicnOMw6c5fQWw98gfMJ2r+MsgJRpN+JTLeoT/cIG/uMDdQ4qAOU8AAAAASUVORK5CYII=" alt="conversation-icon" class="img-fluid">
+            </div>
+             <!--text  -->
+            <div class="d-flex flex-column gap-3">
+              <h2 class="fs-3 fs-lg-2 fw-bold text-light">邁向你真正想過的生活，從這裡開始</h2>
+              <p class="fs-lg-5 fs-6 text-light">第一次諮詢只要 30 分鐘，可能改變你未來 30 年的生活方式</p>
+            </div>
+          </div>
+          <!-- 公司資訊 -->
+          <div class="d-flex gap-5 contact-company-flex">
+            <div class="d-lg-flex gap-lg-5">
+              <!-- tel -->
+              <div class="d-flex gap-2 align-items-start mb-4 mb-lg-0">
+                <div class="d-flex align-items-center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEvSURBVHgB7VTRTcMwED3bGYANcCeAETICG9ANYAPYAFZggo6AmIBukG7Q/llKbF/vyaniRK3UtO5fnxQnOVn3fHfPj+iOOQghNN4HnjwNXQGd/zCTPbLHtm37TCUIBDssxmhbVUbFyD99vAyBUrTB23u/SJG4TnFVhiDG+Nd/1liMMY89taUS6LquToONvyHwxzBo/0KlIAm3YxX5JZWEVPF5s+QAMz8MVRRsTQ7R/XtfxdY5Z+kWwKBBEkL8R1VUGkh6sI5TJKK0t6S48IV5zb7xzrHN/KnJ2zWW8RXeNSXBSfPkorrvNDO/OsRoLkAirVhNTwtJ5/suJhgS4PQjS29AAgdA+44RKJoJVFNVfqm1fj1h7wQnvpggBy6iqKsWt32SVFAQlLYRggXdcS72IvBm1a3EFoMAAAAASUVORK5CYII=" alt="call-icon" class="img-fluid"></div>
+                <a href="tel:0800123123"><h5 class="text-light contact-company-fs-20 ls-0">0800-123-123</h5></a>
+              </div>
+              <!-- mail -->
+              <div class="d-flex gap-2 align-items-start">
+                <div class="d-flex align-items-center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADoSURBVHgB7ZHtDYJADIYPZQDcgFHcRDcQR3AC3UA3YRTcAP5dcvSobUwFT3MgYMKPe5JLem3Ttx9KBRYDIu4AbEkPJ76Ca0ndSAxrOaBSNQ9VHK83bx7pgISuWutU/YjWmAI0udT5SHDGLI2x2dDi1uLBXa9HAPa8Ltmnb5q6rredrovnv0eAbTpSQsmXdm14Zp/kss0+iXOuxAcJCLzX7jQ8HXfZ+iDnf18df4AwxmTOjkv2fcsdJSDTGAM37tp3l9ECQ3HrrNSfCQK9xB27opfMcWjiLsZrgqbBYxS1gQlQo3hSgcXwAJ7WmUJv1WvVAAAAAElFTkSuQmCC" alt="mail-icon" class="img-fluid"></div>
+                <a href="mailto:Sample@mail.com"><h5 class="text-light contact-company-fs-20 ls-0">Sample@mail.com</h5></a>
+              </div>
+            </div>
+            <!-- btn -->
+            <div>
+              <input type="text" id="contact-company-btn" class="d-none">
+              <label for="contact-company-btn" class="btn text-bg-dark rounded-16 printPadding fs-14 fs-lg-6">
+                預約免費職涯探索<span class="material-icons-outlined align-bottom ms-lg-1">chevron_right</span>
+              </label>
+            </div> 
+          </div>
+        </div>
       </div>
     </section>
   </main>
