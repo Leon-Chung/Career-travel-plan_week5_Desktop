@@ -19,3 +19,34 @@ a {
   color: inherit;
 }
 
+.lh-120{
+  line-height: 1.2 !important;
+}
+.lh-150{
+  line-height: 1.5 !important;
+}
+
+.ls-0 {
+  letter-spacing: 0 !important;
+}
+
+.rounded-12{
+  border-radius: 12px;
+}
+
+.mb-18{
+  @include phone{
+    margin-bottom: 18px;
+  }
+}
+
+.border-dashed {
+  border-bottom: 1px dashed #D1D9E1 !important;
+}
+
+.fs-80 {
+  font-size: 80px;
+  @include phone {
+    font-size: 32px;
+  }
+}

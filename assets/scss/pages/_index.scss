@@ -1,0 +1,161 @@
+@mixin phone {
+  @media screen and (max-width:1024px) {
+    @content;
+  }
+}
+
+.index-gradient-ball-img-size {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+}
+
+.index-gradient-ball-img-padding {
+  padding-top: 40px;
+  padding-bottom: 38px;
+  @include phone {
+   padding-bottom: 24px;
+  }
+}
+
+.index-gradient-ball-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 0%;
+}
+
+.index-title-size {
+  max-width: 815px;
+  width: 100%; 
+}
+
+.index-title-btn-flex-column{
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  @include phone {
+    flex-direction: column;
+  }
+}
+
+.index-title-text-position{
+  text-align: left;
+  @include phone {
+    text-align: center;
+  }
+}
+
+.index-title-btn-padding{
+  padding: 12px 12px 12px 20px;
+  @include phone {
+    padding: 8px 8px 8px 12px;
+  }
+}
+
+.icon-fs28{
+  font-size: 28px !important;
+}
+
+.mb-40{
+  margin-bottom: 40px;
+}
+
+.index-fluid-hero-wall-wrapper{
+  width: 100%;
+}
+
+.index-hero-wall {
+  width: 100%;
+  justify-content: flex-start;
+  @include phone{
+    justify-content: center;
+  }
+}
+
+.index-img-object{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.index-hero-1-size{
+  max-width: 608px;
+  max-height: 400px;
+}
+.index-hero-2-size{
+  max-width: 608px;
+  max-height: 160px;
+}
+.index-hero-3-size{
+  max-width: 608px;
+  max-height: 216px;
+}
+.index-hero-4-size{
+  max-width: 608px;
+  max-height: 400px;
+}
+
+// area-2
+.index-story-bg-height{
+  max-height: 690px;
+  // height: 100%;
+  @include phone {
+    max-height: 743px;
+  }
+}
+
+.index-story-center-box-flex-direction{
+  flex-direction: row;
+  align-items: center;
+  @include phone {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.index-story-text-size{
+  max-width: 416px;
+}
+
+.index-story-logo-size{
+  width: 96px;
+  height: 84px;
+  @include phone {
+    width: 48px;
+    height: 42px;
+  }
+}
+
+.index-swiper-container-size{
+  max-width: 3044px;
+  overflow: hidden;
+   @media (max-width: 1439px) {
+    max-width: 100%;  // 讓 swiper 可視寬 = container 寬度
+  }
+}
+
+.swiper-slide.index-swiper-slide{
+  width: 400px;
+  height: auto;
+  @include phone {
+    width: 320px;
+  }
+}
+
+.index-story-img-size{
+  width: 400px;
+  height: 500px;
+  @include phone {
+    width: 320px;
+    height: 400px;
+  }
+}
+
+.index-story-tab-position{
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
