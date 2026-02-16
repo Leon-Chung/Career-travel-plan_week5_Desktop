@@ -130,10 +130,14 @@
 }
 
 .index-swiper-container-size{
-  max-width: 3044px;
-  overflow: hidden;
-   @media (max-width: 1439px) {
-    max-width: 100%;  // 讓 swiper 可視寬 = container 寬度
+  //讓 swiper 脫離 container 對齊系統
+  width: 100vw; // 滿版寬度
+  //真正的 RWD 做法不是給固定值這樣，而是用 vw + calc 讓它自動滿版
+  // margin-right: -752px; // 直接給固定值
+  margin-right: calc(15.76% - 50vw);
+  @include phone {
+    width: 100%;
+    margin-right: 0;
   }
 }
 
