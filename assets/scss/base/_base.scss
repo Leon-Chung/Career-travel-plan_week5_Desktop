@@ -50,3 +50,16 @@ a {
     font-size: 32px;
   }
 }
+
+.special-fs-24{
+  font-size: 24px;
+  @include phone {
+    font-size: 20px;
+  }
+}
+.special-fs-20{
+  font-size: 20px;
+  @include phone {
+    font-size: 18px;
+  }
+}

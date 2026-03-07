@@ -158,8 +158,158 @@
   }
 }
 
+.index-story-p-height{
+  min-height: 84px;
+}
+
 .index-story-tab-position{
   position: absolute;
   top: 12px;
   left: 12px;
+}
+
+// area-3
+.index-work-way-why-conversation-height{
+  height: 64px;
+}
+
+.index-work-way-why-padding{
+  padding: 12.8px 18.12px 13.2px 19.88px;
+  @include phone {
+    padding: 13.8px 22.12px 14.2px 23.88px;
+  }
+}
+
+.index-work-way-why-diamond-size{
+  width: 28px;
+  height: 28px;
+}
+
+// 裝飾物（菱形、箭頭、角標）＝ 一定用「座標定位」
+.index-work-way-why-diamond-rotate{
+  //水平置中
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.index-work-way-why-diamond-position{
+  left: 50%; //水平置中
+  bottom: -7.5px;
+  z-index: 0;
+}
+
+.index-work-img-wall-flex-direction{
+  flex-direction: row;
+  @include phone {
+    flex-direction: column;
+  }
+}
+
+.index-work-img-card-size{
+  max-width: 416px;
+  height: 316px;
+  @include phone{
+    max-width: 100%;
+  }
+}
+
+.index-work-img-object{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%; 
+}
+
+.index-work-img-rounded{
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+//用來「圓角吃掉抗鋸齒產生的半透明像素」。
+.index-work-img-margin-bottom{
+  margin-bottom: 0px;
+  @include phone{
+    margin-bottom: -1px;
+  }
+}
+
+.padding-nine-point-five{
+  padding: 9.5px 0px;
+  @include phone {
+    padding: 8.5px 0px;
+  }
+}
+
+.index-work-adv-vector-img-show{
+  display: block;
+  @include phone{
+    display: none;
+  }
+}
+
+// area-4
+.index-meet-gradient-ball-img-position{
+  position: absolute;
+  top: 140px;
+  left: 1300px;
+  // right: -180px;
+  z-index: 0;
+  @include phone {
+    top: 530px;
+    left: 135px;
+  }
+}
+
+.index-meet-gradient-ball-img-size{
+  width: 800px;
+  height: 800px;
+  @include phone {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+.index-meet-gradient-ball-img-object{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.index-meet-partners-box-flex-direction{
+  flex-direction: row;
+  @include phone {
+    flex-direction: column;
+  }
+}
+
+.index-meet-partners-img-size{
+  max-width: 636px;
+  max-height: 480px;
+  @include phone {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.index-meet-partners-title-middle-width{
+  max-width: 420px;
+  @include phone {
+    max-width: 351px;
+  }
+}
+
+//優化前
+// .index-meet-partners-quote-title::before{
+//   content: "“";
+//   margin-left: -11px;
+// }
+// .index-meet-partners-quote-title::after{
+//   content: "”";
+// }
+
+//優化後
+.index-meet-partners-quote-title{
+  margin-left: 0px;
+  @media screen and (max-width: 351px) {
+    margin-left: -12px;
+  }
 }
