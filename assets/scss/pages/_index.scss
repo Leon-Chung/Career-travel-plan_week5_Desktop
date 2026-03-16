@@ -136,7 +136,6 @@
   // margin-right: -752px; // 直接給固定值
   margin-right: calc(15.76% - 50vw);
   @include phone {
-    width: 100%;
     margin-right: 0;
   }
 }
@@ -212,6 +211,16 @@
   }
 }
 
+.index-work-shadow-show{
+  background-color: rgba(20, 26, 31, 0); /* 背景黑 50% */
+  color: rgba(252, 252, 253, 0); /* 文字不透明 */
+}
+.index-work-shadow-show:hover{
+  background-color: rgba(20, 26, 31, 0.5); /* 背景黑 50% */
+  color: rgba(252, 252, 253); /* 文字不透明 */
+}
+
+
 .index-work-img-object{
   width: 100%;
   height: 100%;
@@ -227,8 +236,10 @@
 //用來「圓角吃掉抗鋸齒產生的半透明像素」。
 .index-work-img-margin-bottom{
   margin-bottom: 0px;
+  margin-left: 0px;
   @include phone{
     margin-bottom: -1px;
+    margin-left: -1px;
   }
 }
 
@@ -250,12 +261,14 @@
 .index-meet-gradient-ball-img-position{
   position: absolute;
   top: 140px;
-  left: 1300px;
-  // right: -180px;
+  // left: 1300px;
+  right: -180px;
   z-index: 0;
   @include phone {
-    top: 530px;
-    left: 135px;
+    // top: 530px; // 設計稿
+    top: 510px; //實際
+    // left: 135px;
+    right: -160px;
   }
 }
 
@@ -312,4 +325,82 @@
   @media screen and (max-width: 351px) {
     margin-left: -12px;
   }
+}
+
+// area-5
+.index-Service-process-container-size{
+  @include phone{
+    width: 100vw;
+  }
+}
+
+.swiper-slide.index-Service-process-swiper-slide{
+  width: 306px;
+}
+
+.index-Service-process-swiper-card-padding{
+  padding: 64px 24px 48px 24px;
+  @include phone {
+    padding: 64px 16px 48px 16px;
+  }
+}
+
+.index-Service-process-swiper-img-size{
+  width: 160px;
+  height: 160px;
+}
+.index-Service-process-swiper-img-object{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.index-Service-process-swiper-img-rounded{
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+// area-6
+.index-confused-size{
+  width: 100%;
+  max-height: 864px;
+}
+
+.index-confused-bg-image{
+  background-image: url('/assets/images/index/bg-grid.png');
+  background-size: auto;
+  background-position: center top;
+  background-repeat: repeat;
+}
+
+.index-confused-qa-height{
+  height: 64px;
+}
+
+.index-confused-Qa-size{
+  width: 120px;
+  height: 50px;
+}
+
+.index-confused-diamond-size{
+  width: 28px;
+  height: 28px;
+}
+.index-confused-diamond-rotate{
+ //水平置中
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.index-confused-diamond-positon{
+  left: 50%;//水平置中
+  bottom: -9px;
+}
+
+.index-confused-qa-image-size{
+  width: 526px;
+  max-width: 526px;
+}
+
+.index-cpnfused-border-style {
+  border: 1px dashed #d1d9e1;
 }

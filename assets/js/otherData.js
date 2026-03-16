@@ -9,7 +9,11 @@ if (mountPoint) { // 如果這個節點存在, 執行
       name: 'leon123154',
       // userData: { userInfo: null, isLogin: false },
       url:'https://todoo.5xcamp.us/api-docs/index.html',
+      
     }
+  },
+  mounted(){
+    console.log('2121546');
   },
   methods:{
 

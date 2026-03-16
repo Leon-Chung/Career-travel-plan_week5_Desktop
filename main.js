@@ -10,6 +10,7 @@ import './assets/js/collapse';
 import './assets/js/nav-login';
 import './assets/js/contactUs';
 import './assets/js/user';
+import './assets/js/index';
 import './assets/js/otherData';
 
 console.log('Hello world');
