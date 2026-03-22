@@ -261,24 +261,30 @@
 .index-meet-gradient-ball-img-position{
   position: absolute;
   top: 140px;
-  // left: 1300px;
-  right: -180px;
+  right: -175px;
+  bottom: auto;
+  left: auto;
+  transform: none;
   z-index: 0;
+
   @include phone {
-    // top: 530px; // 設計稿
-    top: 510px; //實際
-    // left: 135px;
-    right: -160px;
+   top: 67.5%;       // 垂直置中父容器
+   left: 89%;      // 水平置中父容器
+   transform: translateX(-50%); // Y 不移動
+   right: auto;    // 取消右側偏移
   }
+
 }
 
 .index-meet-gradient-ball-img-size{
   width: 800px;
   height: 800px;
+ 
   @include phone {
     width: 400px;
     height: 400px;
   }
+  
 }
 
 .index-meet-gradient-ball-img-object{
@@ -403,4 +409,18 @@
 
 .index-cpnfused-border-style {
   border: 1px dashed #d1d9e1;
+}
+
+// area-7
+.index-company-information-contact-Info-Padding{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.index-company-information-contact-company-flex{
+  flex-direction: row;
+  justify-content: space-between;
+  @include phone {
+    flex-direction: column;
+  }
 }
