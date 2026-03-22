@@ -84,3 +84,37 @@ if(indexPoint){
 
   createApp(indexApp).mount(indexPoint);
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  const swiperHero = new Swiper('.swiper-Hero', {
+        // Optional parameters
+        // direction: 'vertical',
+        loop: true,
+        spaceBetween: 16, //控制 slide 間距。
+        loopAdditionalSlides: 0,
+        slidesPerView: 'auto',
+        autoHeight: false,
+        breakpoints: {
+          1024: {
+            spaceBetween: 24,
+          }
+        }
+        
+      });
+      const swiperServiceProcess = new Swiper('.swiper-Service-process', {
+        // Optional parameters
+        // direction: 'vertical',
+        loop: true,
+        spaceBetween: 16, //控制 slide 間距。
+        loopAdditionalSlides: 0,
+        slidesPerView: 'auto',
+        autoHeight: false,
+        
+        breakpoints: {
+          1024: {
+            spaceBetween: 24,
+            allowTouchMove: false
+          }
+        }
+      });
+});
