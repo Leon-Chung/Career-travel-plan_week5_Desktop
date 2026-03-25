@@ -46,7 +46,7 @@
 /* 預設收起 */
 .custom-collapse {
   @include phone{
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     max-height: 0;
     opacity: 0;
@@ -59,20 +59,19 @@
 .custom-collapse.is-open {
   @include phone{
     width: 100%;
-    background: #f8f9fa;
-    position: absolute;
-    top: 60px;
-    margin: 0px -12px;
-    max-height: 300px; /* 可依內容調整 */
+    background: #fcfcfd;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    max-height: none;
+    height: calc(100vh);
     opacity: 1;
     visibility: visible;
+    z-index: 5;
   }
-  .nav-flex{
+  .nav-ul-height{
     @include phone{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-    
+      min-height: 652px;
     }
   }
 }

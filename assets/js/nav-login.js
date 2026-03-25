@@ -19,6 +19,8 @@ axios(apiUrl,{
 const navLogin = {
   data(){
     return {
+      //在 RWD 使用 hamburger 來做切換登入/註冊的按鈕
+
       //切換會員暱稱、頭像按鈕
       memberPhotoChange:{
         LoginAndRegisterPhoto: true,
@@ -621,6 +623,11 @@ const navLogin = {
      if(this.currentMode === 'login'){
       this.modalLogin = true;
       this.modalRegister = false;
+      //若有 key in 資料, 但未續完成就按壓 close btn 後, 清空資料
+      setTimeout(()=>{
+        this.loginValue.email ='';
+        this.loginValue.password ='';
+      },300)
      }else if(this.currentMode === 'register'){
        this.modalRegister = false;
        setTimeout(()=>{
@@ -648,6 +655,11 @@ const navLogin = {
         this.modalRegister = !this.modalRegister;
         this.currentMode = 'login';
       }
+    },
+
+    exchangeCollapse(){
+      console.log('text');
+      
     }
     
   }

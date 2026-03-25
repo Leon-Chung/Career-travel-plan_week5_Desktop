@@ -13,18 +13,24 @@
             aria-label="Toggle navigation">
       <span class="navbar-toggler-icon bar-icon"></span>
     </button>
-    <div class="custom-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-lg-auto mb-0 mb-lg-0 nav-flex ">
+    <div class="custom-collapse p-5 p-lg-0" id="navbarSupportedContent">
+      <div class="modal-header d-lg-none mb-4 mb-lg-0">
+        <button type="button" class="btn-close rounded-0 user-img"  aria-label="Close" id="closeCollapse"></button>
+      </div>
+      <ul class="navbar-nav mx-lg-auto gap-5 gap-lg-0 nav-ul-height mb-4 mb-lg-0">
         <li class="nav-item me-lg-3">
-          <a class="nav-link px-lg-5 " href="servicePlan.html">服務方案</a>
+          <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="servicePlan.html">服務方案</a>
         </li>
         <li class="nav-item me-lg-3">
-          <a class="nav-link px-lg-5 " href="aboutCareer.html">關於職旅</a>
+          <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="aboutCareer.html">關於職旅</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-lg-5 " href="contactUs.html">聯絡我們</a>
+          <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="contactUs.html">聯絡我們</a>
         </li>
       </ul>
+      <div class="bg-secondary-50 rounded-1 py-2 py-lg-0 text-center" @click.prevent="exchangeCollapse()">
+        <a href="javascript:;" class="fw-bold fs-20 lh-120">登入/註冊</a>
+      </div>
     </div>
        
       <!-- login Button trigger modal -->
