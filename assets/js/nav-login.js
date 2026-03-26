@@ -20,7 +20,11 @@ const navLogin = {
   data(){
     return {
       //在 RWD 使用 hamburger 來做切換登入/註冊的按鈕
-
+      exchangeRwdCollapse:{
+        menuBtnActive: false,
+        menuIsopen: false,
+        showBtn: true
+      },
       //切換會員暱稱、頭像按鈕
       memberPhotoChange:{
         LoginAndRegisterPhoto: true,
@@ -656,10 +660,17 @@ const navLogin = {
         this.currentMode = 'login';
       }
     },
-
-    exchangeCollapse(){
-      console.log('text');
-      
+    exchangeMenuBtn(){
+      this.exchangeRwdCollapse.menuBtnActive = !this.exchangeRwdCollapse.menuBtnActive;
+      this.exchangeRwdCollapse.menuIsopen = !this.exchangeRwdCollapse.menuIsopen;
+    },
+    closeMenuBtn(){
+      this.exchangeRwdCollapse.menuBtnActive = !this.exchangeRwdCollapse.menuBtnActive;
+      this.exchangeRwdCollapse.menuIsopen = !this.exchangeRwdCollapse.menuIsopen;
+    },
+    exchangeCollapse(e){
+      this.exchangeRwdCollapse.menuBtnActive = !this.exchangeRwdCollapse.menuBtnActive;
+      this.exchangeRwdCollapse.menuIsopen = !this.exchangeRwdCollapse.menuIsopen;
     }
     
   }
