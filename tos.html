@@ -10,7 +10,7 @@
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility_off" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
     <title>userTerms</title>
-    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-4ZolYhS2.js"></script>
+    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-DfDrzOo7.js"></script>
     <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-BEUo2zpB.css">
   </head>
   <body>
@@ -26,14 +26,16 @@
             id="menuBtn"
             aria-controls="navbarSupportedContent" 
             aria-expanded="false" 
-            aria-label="Toggle navigation">
+            aria-label="Toggle navigation"
+            @click.prevent="exchangeMenuBtn()"
+            :class="{'active':exchangeRwdCollapse.menuBtnActive}">
       <span class="navbar-toggler-icon bar-icon"></span>
     </button>
-    <div class="custom-collapse p-5 p-lg-0" id="navbarSupportedContent">
+    <div class="custom-collapse p-5 p-lg-0" id="navbarSupportedContent" :class="{'is-open':exchangeRwdCollapse.menuIsopen}">
       <div class="modal-header d-lg-none mb-4 mb-lg-0">
-        <button type="button" class="btn-close rounded-0 user-img"  aria-label="Close" id="closeCollapse"></button>
+        <button type="button" class="btn-close rounded-0 user-img"  aria-label="Close" id="closeCollapse" @click.prevent="closeMenuBtn()"></button>
       </div>
-      <ul class="navbar-nav mx-lg-auto gap-5 gap-lg-0 nav-ul-height mb-4 mb-lg-0">
+      <ul class="navbar-nav mx-lg-auto gap-5 gap-lg-0 nav-ul-height mb-4 mb-lg-0" >
         <li class="nav-item me-lg-3">
           <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="servicePlan.html">服務方案</a>
         </li>
@@ -44,8 +46,11 @@
           <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="contactUs.html">聯絡我們</a>
         </li>
       </ul>
-      <div class="bg-secondary-50 rounded-1 py-2 py-lg-0 text-center" @click.prevent="exchangeCollapse()">
-        <a href="javascript:;" class="fw-bold fs-20 lh-120">登入/註冊</a>
+      <div class="bg-secondary-50 rounded-1 py-2 py-lg-0 text-center d-lg-none" @click.prevent="exchangeCollapse($event)" v-show="exchangeRwdCollapse.showBtn">
+        <!-- <a href="javascript:;" class="fw-bold fs-20 lh-120">登入/註冊</a> -->
+        <button type="button" class="w-100 bg-secondary-50 border-0 rounded-1 fw-bold fs-20 lh-120" data-bs-toggle="modal" data-bs-target="#staticBackdrop" v-show="memberPhotoChange.LoginAndRegisterPhoto">
+          登入/註冊
+        </button>
       </div>
     </div>
        
