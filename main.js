@@ -13,3 +13,9 @@ import './assets/js/index';
 import './assets/js/otherData';
 
 console.log('Hello world');
+
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    document.body.classList.add('loaded');
+  });
+});
