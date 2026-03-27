@@ -150,7 +150,7 @@ const navLogin = {
       const isLogin = localStorage.getItem('isLogin');
       if (isLogin === 'true') {
       // window.location.href = '../pages/user.html';
-      window.location.href = '/pages/user.html';
+      window.location.href = '/Career-travel-plan_week5_Desktop/user.html';
       }
     },
 
