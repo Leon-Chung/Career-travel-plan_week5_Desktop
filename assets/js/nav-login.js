@@ -634,6 +634,7 @@ const navLogin = {
       setTimeout(()=>{
         this.loginValue.email ='';
         this.loginValue.password ='';
+        this.eyeIcon = 'visibility_off';
       },300)
      }else if(this.currentMode === 'register'){
        this.modalRegister = false;
@@ -644,7 +645,9 @@ const navLogin = {
          this.registerAccountValue = '';
          this.registerEmailValue = '';
          this.registerPasswordValue = '';
+         this.eyeRegisterIcon = 'visibility_off'; //代表目前是「隱藏狀態」
          this.registerCheckPasswordValue = '';
+         this.eyeCheckIcon = 'visibility_off'; //代表目前是「隱藏狀態」
          this.checked = false;
        },300)
      }
