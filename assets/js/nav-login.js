@@ -641,6 +641,10 @@ const navLogin = {
        setTimeout(()=>{
          this.modalLogin = true;
          this.currentMode = 'login';
+         //login page
+         this.loginValue.email ='';
+         this.loginValue.password ='';
+         this.eyeIcon = 'visibility_off';
          //若有 key in 資料, 但未續完成就按壓 close btn 後, 清空資料 
          this.registerAccountValue = '';
          this.registerEmailValue = '';
