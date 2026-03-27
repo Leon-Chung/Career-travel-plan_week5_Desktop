@@ -149,7 +149,8 @@ const navLogin = {
     userPage(e){
       const isLogin = localStorage.getItem('isLogin');
       if (isLogin === 'true') {
-      window.location.href = '../pages/user.html';
+      // window.location.href = '../pages/user.html';
+      window.location.href = 'https://leon-chung.github.io/Career-travel-plan_week5_Desktop/pages/user.html';
       }
     },
 
