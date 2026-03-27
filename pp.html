@@ -10,14 +10,31 @@
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility_off" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
     <title>privacyPolicy</title>
-    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-DfDrzOo7.js"></script>
+    <style>
+      body {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        }
+
+      body.loaded {
+        visibility: visible;
+        transition: opacity 0.8s ease;
+        opacity: 1;
+        overflow-x: hidden;
+      }
+    </style>
+    <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-DwCgcLoq.js"></script>
     <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-BEUo2zpB.css">
   </head>
   <body>
     
 <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom py-14 py-lg-3 border-natural-85" id="navLogin">
   <div class="container position-relative">
-    <a class="navbar-brand me-0 py-0 logo" href="../pages/index.html">
+    <!-- <a class="navbar-brand me-0 py-0 logo" href="../pages/index.html">
+      <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/b73ea8a74c1ac1f404c8b9e08555ad2f7b7f20e5/2025-week5/logo.svg" alt="logo">
+    </a> -->
+    <a class="navbar-brand me-0 py-0 logo" href="https://leon-chung.github.io/Career-travel-plan_week5_Desktop/pages/index.html">
       <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/b73ea8a74c1ac1f404c8b9e08555ad2f7b7f20e5/2025-week5/logo.svg" alt="logo">
     </a>
     <!-- collapse -->
@@ -37,13 +54,16 @@
       </div>
       <ul class="navbar-nav mx-lg-auto gap-5 gap-lg-0 nav-ul-height mb-4 mb-lg-0" >
         <li class="nav-item me-lg-3">
-          <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="servicePlan.html">服務方案</a>
+          <!-- <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="servicePlan.html">服務方案</a> -->
+          <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="https://leon-chung.github.io/Career-travel-plan_week5_Desktop/servicePlan.html">服務方案</a>
         </li>
         <li class="nav-item me-lg-3">
-          <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="aboutCareer.html">關於職旅</a>
+          <!-- <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="aboutCareer.html">關於職旅</a> -->
+          <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="https://leon-chung.github.io/Career-travel-plan_week5_Desktop/aboutCareer.html">關於職旅</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="contactUs.html">聯絡我們</a>
+          <!-- <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="contactUs.html">聯絡我們</a> -->
+          <a class="nav-link px-lg-5 py-lg-2 py-4 text-center" href="https://leon-chung.github.io/Career-travel-plan_week5_Desktop/contactUs.html">聯絡我們</a>
         </li>
       </ul>
       <div class="bg-secondary-50 rounded-1 py-2 py-lg-0 text-center d-lg-none" @click.prevent="exchangeCollapse($event)" v-show="exchangeRwdCollapse.showBtn">
@@ -194,9 +214,11 @@
                     <div class="form-check mb-0 d-flex align-items-center flex-wrap">
                       <input class="form-check-input border-natural-85 me-1" type="checkbox" value="" id="agreeToTheTerms" v-model="checked">
                       <label for="agreeToTheTerms" class="fs-14 me-1">我同意</label>
-                      <a href="../pages/tos.html" class="text-primary fs-14 text-underline me-1">用戶條款</a>
+                      <!-- <a href="../pages/tos.html" class="text-primary fs-14 text-underline me-1">用戶條款</a> -->
+                      <a href="https://leon-chung.github.io/Career-travel-plan_week5_Desktop/pages/tos.html" class="text-primary fs-14 text-underline me-1">用戶條款</a>
                       <span class="fs-14 me-1">和</span>
-                      <a href="../pages/pp.html" class="text-primary fs-14 text-underline">隱私政策</a>
+                      <!-- <a href="../pages/pp.html" class="text-primary fs-14 text-underline">隱私政策</a> -->
+                      <a href="https://leon-chung.github.io/Career-travel-plan_week5_Desktop/pages/pp.html" class="text-primary fs-14 text-underline">隱私政策</a>
                       <span class="fs-14 me-1">。</span>
                       <span class="fs-14 text-danger" v-show="agreeTermsReminder">{{agreeTermsErrorMessage}}</span>
                     </div>
