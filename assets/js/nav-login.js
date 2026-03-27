@@ -282,7 +282,9 @@ const navLogin = {
               
               this.memberPhotoChange.LoginAndRegisterPhoto = false;
               this.memberPhotoChange.memberPhoto = true;
-              
+
+              //登入後，隱藏 RWD 時 exchangeRwdCollapse.showBtn 按鈕
+              this.exchangeRwdCollapse.showBtn = false;
             }
           }catch(loginErr){
             console.log(loginErr);
