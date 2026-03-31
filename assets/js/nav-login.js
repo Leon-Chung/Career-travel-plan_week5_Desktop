@@ -109,9 +109,13 @@ const navLogin = {
       this.userData.userInfo = JSON.parse(user); // 還原會員資料到畫面
       this.userData.email = JSON.parse(userEmail); // 還原會員資料到畫面
       this.userData.photo = savedPhoto;
-      
+
+      //登入後， 登入按鈕跟頭貼顯示做切換
       this.memberPhotoChange.LoginAndRegisterPhoto = false;
       this.memberPhotoChange.memberPhoto = true;
+
+      //登入後，隱藏 RWD 時 exchangeRwdCollapse.showBtn 按鈕
+      this.exchangeRwdCollapse.showBtn = false;
     }
  
     // 監聽自訂事件（同分頁）的用途 => 單分頁應用
@@ -149,7 +153,9 @@ const navLogin = {
     userPage(e){
       const isLogin = localStorage.getItem('isLogin');
       if (isLogin === 'true') {
+      //開發連結
       // window.location.href = '../pages/user.html';
+      //上線連結
       window.location.href = '/Career-travel-plan_week5_Desktop/user.html';
       }
     },
@@ -200,7 +206,7 @@ const navLogin = {
       const loginFailed = loginErrorMessageValueData.find((v)=>{
         return v.test();
       });
-      console.log(loginFailed);
+      // console.log(loginFailed);
       if(loginFailed){
         if(loginFailed.emailMessage){
             this.loginValue.email = '';
@@ -280,11 +286,14 @@ const navLogin = {
               // 為了讓「前端畫面立即更新」而讀取 localStorage 的頭貼（可能是預設，也可能是使用者之前上傳的）
               this.userData.photo = localStorage.getItem('userPhoto');
               
+              //登入後， 登入按鈕跟頭貼顯示做切換
               this.memberPhotoChange.LoginAndRegisterPhoto = false;
               this.memberPhotoChange.memberPhoto = true;
 
-              //登入後，隱藏 RWD 時 exchangeRwdCollapse.showBtn 按鈕
+              //登入後，縮小至 RWD 時 exchangeRwdCollapse.showBtn 按鈕
               this.exchangeRwdCollapse.showBtn = false;
+              // console.log('showBtn 目前是:', this.exchangeRwdCollapse.showBtn);
+              
             }
           }catch(loginErr){
             console.log(loginErr);
