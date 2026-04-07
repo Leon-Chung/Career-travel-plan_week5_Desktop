@@ -162,7 +162,11 @@ const userApp = {
     if(user && userEmail && savedPhoto){
       this.userData.userInfo = JSON.parse(user);
       this.userData.email = JSON.parse(userEmail);
-      this.userData.photo = savedPhoto;
+      this.userData.photo = savedPhoto || 'https://github.com/hexschool/2022-web-layout-training/blob/main/2025-week5/avatar_default.png?raw=true';
+    }else{
+      this.userData.userInfo = null; // 還原初始會員資料到畫面
+      this.userData.email = null; // 還原初始會員資料到畫面
+      this.userData.photo = ''; // 還原初始會員資料到畫面
     }
 
     if( userGender && userBirthday && userTel && userAddress ){
@@ -170,6 +174,11 @@ const userApp = {
       this.userData.birthday = userBirthday;
       this.userData.tel = userTel;
       this.userData.address = userAddress;
+    }else{
+      this.userData.gender = 'female';
+      this.userData.birthday = '';
+      this.userData.tel = '';
+      this.userData.address = '';
     }
 
     // 職旅計畫

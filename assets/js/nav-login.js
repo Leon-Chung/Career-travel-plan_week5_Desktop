@@ -23,7 +23,8 @@ const navLogin = {
       exchangeRwdCollapse:{
         menuBtnActive: false,
         menuIsopen: false,
-        showBtn: true
+        showBtn: true,
+        logOutBtn: false
       },
       //切換會員暱稱、頭像按鈕
       memberPhotoChange:{
@@ -94,29 +95,34 @@ const navLogin = {
   mounted() { //mounted() 是跳頁時會自動進行「初始化階段讀取一次」
 
       // localStorage.clear();
-      // 進入頁面時，從 localStorage 同步登入狀態
-      const isLogin = localStorage.getItem('isLogin');
-      console.warn(isLogin);
-      const user = localStorage.getItem('userInfo');
-      console.log(typeof user);
-      const userEmail = localStorage.getItem('userEmail');
-      console.log(typeof userEmail);
-      const savedPhoto = localStorage.getItem('userPhoto');
+      // 進入頁面時，從 localStorage 同步登入狀態-優化前
+      // const isLogin = localStorage.getItem('isLogin');
+      // console.warn(isLogin);
+      // const user = localStorage.getItem('userInfo');
+      // console.log(typeof user);
+      // const userEmail = localStorage.getItem('userEmail');
+      // console.log(typeof userEmail);
+      // const savedPhoto = localStorage.getItem('userPhoto');
 
-    if(isLogin  === 'true' && user && userEmail  && savedPhoto){
-      console.log('success');
-      this.userData.isLogin = true; // 告訴 Vue：已登入
-      this.userData.userInfo = JSON.parse(user); // 還原會員資料到畫面
-      this.userData.email = JSON.parse(userEmail); // 還原會員資料到畫面
-      this.userData.photo = savedPhoto;
+    // if(isLogin  === 'true' && user && userEmail  && savedPhoto){
+      // console.log('success');
+      // this.userData.isLogin = true; // 告訴 Vue：已登入
+      // this.userData.userInfo = JSON.parse(user); // 還原會員資料到畫面
+      // this.userData.email = JSON.parse(userEmail); // 還原會員資料到畫面
+      // this.userData.photo = savedPhoto;
 
       //登入後， 登入按鈕跟頭貼顯示做切換
-      this.memberPhotoChange.LoginAndRegisterPhoto = false;
-      this.memberPhotoChange.memberPhoto = true;
+      // this.memberPhotoChange.LoginAndRegisterPhoto = false;
+      // this.memberPhotoChange.memberPhoto = true;
 
       //登入後，隱藏 RWD 時 exchangeRwdCollapse.showBtn 按鈕
-      this.exchangeRwdCollapse.showBtn = false;
-    }
+      // this.exchangeRwdCollapse.showBtn = false;
+      //登入後，顯示 RWD 時 exchangeRwdCollapse.logOutBtn 按鈕
+      // this.exchangeRwdCollapse.logOutBtn = true;
+    // }
+
+    //優化後
+    this.checkLoginStatus();
  
     // 監聽自訂事件（同分頁）的用途 => 單分頁應用
       window.addEventListener('userPhotoUpdated', (e) => {
@@ -154,9 +160,9 @@ const navLogin = {
       const isLogin = localStorage.getItem('isLogin');
       if (isLogin === 'true') {
       //開發連結
-      // window.location.href = '../pages/user.html';
+      window.location.href = '../pages/user.html';
       //上線連結
-      window.location.href = '/Career-travel-plan_week5_Desktop/user.html';
+      // window.location.href = '/Career-travel-plan_week5_Desktop/user.html';
       }
     },
 
@@ -263,6 +269,7 @@ const navLogin = {
               // 清掉舊的登入資訊（比較安全）
               localStorage.removeItem('isLogin');
               localStorage.removeItem('userInfo');
+              localStorage.removeItem('userEmail');
 
               // localStorage.setItem(); 只是存資料，不會自動改變畫面
               //紀錄登入狀態
@@ -293,6 +300,8 @@ const navLogin = {
               //登入後，縮小至 RWD 時 exchangeRwdCollapse.showBtn 按鈕
               this.exchangeRwdCollapse.showBtn = false;
               // console.log('showBtn 目前是:', this.exchangeRwdCollapse.showBtn);
+              //登入後，顯示 RWD 時 exchangeRwdCollapse.logOutBtn 按鈕
+              this.exchangeRwdCollapse.logOutBtn = true;
               
             }
           }catch(loginErr){
@@ -687,6 +696,8 @@ const navLogin = {
         this.currentMode = 'login';
       }
     },
+
+    // RWD 時, Menu 頁面切換處理
     exchangeMenuBtn(){
       this.exchangeRwdCollapse.menuBtnActive = !this.exchangeRwdCollapse.menuBtnActive;
       this.exchangeRwdCollapse.menuIsopen = !this.exchangeRwdCollapse.menuIsopen;
@@ -695,11 +706,70 @@ const navLogin = {
       this.exchangeRwdCollapse.menuBtnActive = !this.exchangeRwdCollapse.menuBtnActive;
       this.exchangeRwdCollapse.menuIsopen = !this.exchangeRwdCollapse.menuIsopen;
     },
-    exchangeCollapse(e){
+    exchangeCollapse(){
       this.exchangeRwdCollapse.menuBtnActive = !this.exchangeRwdCollapse.menuBtnActive;
       this.exchangeRwdCollapse.menuIsopen = !this.exchangeRwdCollapse.menuIsopen;
     }
-    
+    ,
+    exchangelogOutBtn(){
+      // 清掉舊的登入資訊（比較安全）
+      localStorage.removeItem('isLogin');
+      localStorage.removeItem('userInfo');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userPhoto');
+      localStorage.removeItem('userGender');
+      localStorage.removeItem('userBirthday');
+      localStorage.removeItem('userTel');
+      localStorage.removeItem('userAddress');
+
+      this.checkLoginStatus();
+    },
+    checkLoginStatus(){
+      // 進入頁面時，從 localStorage 同步登入狀態
+      const isLogin = localStorage.getItem('isLogin');
+      console.warn(isLogin);
+      const user = localStorage.getItem('userInfo');
+      console.log(typeof user);
+      const userEmail = localStorage.getItem('userEmail');
+      console.log(typeof userEmail);
+      const savedPhoto = localStorage.getItem('userPhoto');
+
+    if(isLogin  === 'true'){
+      console.log('success');
+      this.userData.isLogin = true; // 告訴 Vue：已登入
+      this.userData.userInfo = JSON.parse(user); // 還原會員資料到畫面
+      this.userData.email = JSON.parse(userEmail); // 還原會員資料到畫面
+      this.userData.photo = savedPhoto;
+
+      //登入後， 登入按鈕跟頭貼顯示做切換
+      this.memberPhotoChange.LoginAndRegisterPhoto = false;
+      this.memberPhotoChange.memberPhoto = true;
+
+      //登入後，隱藏 RWD 時 exchangeRwdCollapse.showBtn 按鈕
+      this.exchangeRwdCollapse.showBtn = false;
+      //登入後，顯示 RWD 時 exchangeRwdCollapse.logOutBtn 按鈕
+      this.exchangeRwdCollapse.logOutBtn = true;
+      }else{
+      
+      this.userData.isLogin = false; // 告訴 Vue：已登入
+      this.userData.userInfo = null; // 還原初始會員資料到畫面
+      this.userData.email = null; // 還原初始會員資料到畫面
+      this.userData.photo = ''; // 還原初始會員資料到畫面
+      
+      //登出後， 登入按鈕跟頭貼顯示做切換
+      this.memberPhotoChange.LoginAndRegisterPhoto = true;
+      this.memberPhotoChange.memberPhoto = false;
+
+      // 關閉 exchangeCollapse
+      this.exchangeRwdCollapse.menuBtnActive = false;
+      this.exchangeRwdCollapse.menuIsopen = false;
+
+      //登出後，顯示 RWD 時 exchangeRwdCollapse.showBtn 按鈕
+      this.exchangeRwdCollapse.showBtn = true;
+      //登出後，隱藏 RWD 時 exchangeRwdCollapse.logOutBtn 按鈕
+      this.exchangeRwdCollapse.logOutBtn = false;
+      }
+    }
   }
 }
 
