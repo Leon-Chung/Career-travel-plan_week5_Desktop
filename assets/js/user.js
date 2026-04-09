@@ -175,6 +175,7 @@ const userApp = {
       this.userData.tel = userTel;
       this.userData.address = userAddress;
     }else{
+      // 還原初始會員資料到畫面
       this.userData.gender = 'female';
       this.userData.birthday = '';
       this.userData.tel = '';
@@ -233,23 +234,50 @@ const userApp = {
     console.log('localStorage.getItem, 優化後');
     //優化後
     const finishedUserWorkStatus = JSON.parse(localStorage.getItem('userWorkStatus'));
-    // console.log(finishedUserWorkStatus);
+    console.log(finishedUserWorkStatus);
     
   //使用 Object.assign 一次更新（推薦）
+  // finishedUserWorkStatus 物件裡的 每個 鍵值 key ，對應覆蓋到你的 data 裡同名的欄位。
   if(finishedUserWorkStatus){
     Object.assign(this, finishedUserWorkStatus );
-  }
-  //這會把 userDefaults 裡的所有 key/value 一次灌進 this
-  //只要 key 名稱跟 this.data 中的對應名稱相同即可）。
+  // finishedUserWorkStatus 裡每個 鍵值key 的 值，直接複製到 this（也就是 Vue 的 data）裡同名的 key」。
 
   // ✔ 優點:
   // 1. 一行解決
   // 2. 不會破壞 reactivity（對 Vue 來說也安全，只要 key 事先在 data 裡定義）
+  }else{
+    // localStorage 沒值 → 回復 data() 原始值
+
+    // data() 是存在 $options 裡，不是在 this 上，所以讀取要加 $options
+    const resetPartData = JSON.parse(JSON.stringify(this.$options.data())); // 用深拷貝（deep copy）避免參考被改掉
+    // console.warn(resetPartData);
+    
+    const keysToReset = [ 'workStatus', 'defaultIndustry', 'defaultExperience',
+                          'defaultIncome', 'defaultProfessionalSummary', 'defaultWorkCases',
+                          'defaultShortTermGoals', 'defaultLongTermGoals', 'idealWorkStatus',
+                          'defaultExpectedSalary', 'defaultCareerChallenges', 'defaultExpectedResources', 
+                          'defaultServiceOptions', 'defaultCoreCompetency', 'defaultProfessionalBackground',
+                          'defaultProfessionalSkills', 'defaultLanguageProficiency', 'defaultCertification',
+                          'defaultEducation', 'defaultProfessionaltraining' 
+                        ];
+    
+    //把當前 component 實例裡面，對應 key 的 data 欄位，還原成最初 data 函數回傳的值。
+    keysToReset.forEach(key => {
+      // console.log(key); // key 是 keysToReset 陣列裡的字串，例如 'defaultIncome'、'workStatus'…
+      // console.log(this[key]); // this 指向 data ; 就等同於 this.defaultIncome 或 this.workStatus（動態存取 property)
+                                 // this[key] 永遠指向「你 Vue component data 裡同名的欄位」。
+      // console.log(resetPartData[key]); //剛剛從 this.$options.data() 拿到的初始值
+      
+      this[key] = resetPartData[key]; // 深拷貝過的初始值安全還原
+    });
+    
+  }
+  
 
 
   },
   watch:{ //watch 是在監聽 data 中的變數，但它的值來自 v-model 綁定的 html 標籤
-  
+    
   },
   computed:{
     

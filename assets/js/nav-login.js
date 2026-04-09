@@ -160,9 +160,9 @@ const navLogin = {
       const isLogin = localStorage.getItem('isLogin');
       if (isLogin === 'true') {
       //開發連結
-      window.location.href = '../pages/user.html';
+      // window.location.href = '../pages/user.html';
       //上線連結
-      // window.location.href = '/Career-travel-plan_week5_Desktop/user.html';
+      window.location.href = '/Career-travel-plan_week5_Desktop/user.html';
       }
     },
 
@@ -721,8 +721,14 @@ const navLogin = {
       localStorage.removeItem('userBirthday');
       localStorage.removeItem('userTel');
       localStorage.removeItem('userAddress');
+      localStorage.removeItem('userWorkStatus');
 
       this.checkLoginStatus();
+
+       //開發連結
+      // window.location.href = '../pages/index.html';
+      //上線連結
+      window.location.href = '/Career-travel-plan_week5_Desktop/index.html';
     },
     checkLoginStatus(){
       // 進入頁面時，從 localStorage 同步登入狀態
@@ -751,7 +757,7 @@ const navLogin = {
       this.exchangeRwdCollapse.logOutBtn = true;
       }else{
       
-      this.userData.isLogin = false; // 告訴 Vue：已登入
+      this.userData.isLogin = false; // 告訴 Vue：還原初始登入狀態
       this.userData.userInfo = null; // 還原初始會員資料到畫面
       this.userData.email = null; // 還原初始會員資料到畫面
       this.userData.photo = ''; // 還原初始會員資料到畫面
@@ -768,6 +774,7 @@ const navLogin = {
       this.exchangeRwdCollapse.showBtn = true;
       //登出後，隱藏 RWD 時 exchangeRwdCollapse.logOutBtn 按鈕
       this.exchangeRwdCollapse.logOutBtn = false;
+
       }
     }
   }
