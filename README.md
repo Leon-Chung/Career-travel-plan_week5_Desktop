@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 git status# 網頁切版直播班 Vite 範例 - Bootstrap 版本
+=======
+# 網頁切版直播班 Vite 範例提醒 - Bootstrap 版本
+>>>>>>> origin/main
 
 ## Node.js 版本
   - 專案的 Node.js 版本需為 v18 以上
@@ -48,4 +52,9 @@ git push -u origin main // 僅限第一次輸入，往後只需要輸入 git pus
 3. 初始化完畢後，執行 `npm run deploy` 指令進行自動化部署
 
 
+<<<<<<< HEAD
 點此直接開啟作品網站 : https://leon-chung.github.io/Career-travel-plan_week5_Desktop/
+=======
+----------------------------------------------------------------------------------------------------------------------------
+## 點此直接開啟作品網站 : https://leon-chung.github.io/Career-travel-plan_week5_Desktop/
+>>>>>>> origin/main
