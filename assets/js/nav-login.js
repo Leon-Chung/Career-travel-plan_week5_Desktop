@@ -123,6 +123,9 @@ const navLogin = {
 
     //優化後
     this.checkLoginStatus();
+
+    //監聽「瀏覽器視窗大小改變」=> (addEventListener 要「函式本身」，不能加括號)
+    window.addEventListener("resize", this.checkScreen);
  
     // 監聽自訂事件（同分頁）的用途 => 單分頁應用
       window.addEventListener('userPhotoUpdated', (e) => {
@@ -293,15 +296,19 @@ const navLogin = {
               // 為了讓「前端畫面立即更新」而讀取 localStorage 的頭貼（可能是預設，也可能是使用者之前上傳的）
               this.userData.photo = localStorage.getItem('userPhoto');
               
-              //登入後， 登入按鈕跟頭貼顯示做切換
+              //登入後， 登入按鈕跟頭貼顯示做切換(for 桌機 跟 手機)
               this.memberPhotoChange.LoginAndRegisterPhoto = false;
               this.memberPhotoChange.memberPhoto = true;
 
+              //優化前:(hamburger 的登入/登出切換)
               //登入後，縮小至 RWD 時 exchangeRwdCollapse.showBtn 按鈕
-              this.exchangeRwdCollapse.showBtn = false;
+              // this.exchangeRwdCollapse.showBtn = false;
               // console.log('showBtn 目前是:', this.exchangeRwdCollapse.showBtn);
               //登入後，顯示 RWD 時 exchangeRwdCollapse.logOutBtn 按鈕
-              this.exchangeRwdCollapse.logOutBtn = true;
+              // this.exchangeRwdCollapse.logOutBtn = true;
+
+              // 優化後: 登入後，縮小至 RWD 時 exchangeRwdCollapse.showBtn 按鈕變化
+              this.checkScreen();
               
             }
           }catch(loginErr){
@@ -711,6 +718,7 @@ const navLogin = {
       this.exchangeRwdCollapse.menuIsopen = !this.exchangeRwdCollapse.menuIsopen;
     }
     ,
+    //登出
     exchangelogOutBtn(){
       // 清掉舊的登入資訊（比較安全）
       localStorage.removeItem('isLogin');
@@ -725,7 +733,7 @@ const navLogin = {
 
       this.checkLoginStatus();
 
-       //開發連結
+      //開發連結
       // window.location.href = '../pages/index.html';
       //上線連結
       window.location.href = '/Career-travel-plan_week5_Desktop/index.html';
@@ -742,7 +750,7 @@ const navLogin = {
 
     if(isLogin  === 'true'){
       console.log('success');
-      this.userData.isLogin = true; // 告訴 Vue：已登入
+      this.userData.isLogin = true; // 告訴 Vue：已登入(跨分頁到user.js)
       this.userData.userInfo = JSON.parse(user); // 還原會員資料到畫面
       this.userData.email = JSON.parse(userEmail); // 還原會員資料到畫面
       this.userData.photo = savedPhoto;
@@ -750,19 +758,23 @@ const navLogin = {
       //登入後， 登入按鈕跟頭貼顯示做切換
       this.memberPhotoChange.LoginAndRegisterPhoto = false;
       this.memberPhotoChange.memberPhoto = true;
-
+      
+      //(優化前)
       //登入後，隱藏 RWD 時 exchangeRwdCollapse.showBtn 按鈕
-      this.exchangeRwdCollapse.showBtn = false;
+      // this.exchangeRwdCollapse.showBtn = false;
       //登入後，顯示 RWD 時 exchangeRwdCollapse.logOutBtn 按鈕
-      this.exchangeRwdCollapse.logOutBtn = true;
+      // this.exchangeRwdCollapse.logOutBtn = true;
+      //(優化後)
+      this.checkScreen();
+
       }else{
       
-      this.userData.isLogin = false; // 告訴 Vue：還原初始登入狀態
+      this.userData.isLogin = false; // 告訴 Vue：還原初始登入狀態(跨分頁到user.js)
       this.userData.userInfo = null; // 還原初始會員資料到畫面
       this.userData.email = null; // 還原初始會員資料到畫面
       this.userData.photo = ''; // 還原初始會員資料到畫面
       
-      //登出後， 登入按鈕跟頭貼顯示做切換
+      //登出後， 登入按鈕跟頭貼顯示做切換(for 桌機跟手機)
       this.memberPhotoChange.LoginAndRegisterPhoto = true;
       this.memberPhotoChange.memberPhoto = false;
 
@@ -770,14 +782,46 @@ const navLogin = {
       this.exchangeRwdCollapse.menuBtnActive = false;
       this.exchangeRwdCollapse.menuIsopen = false;
 
+      //(優化前: hamburger 的登入/登出切換)
       //登出後，顯示 RWD 時 exchangeRwdCollapse.showBtn 按鈕
-      this.exchangeRwdCollapse.showBtn = true;
+      // this.exchangeRwdCollapse.showBtn = true;
       //登出後，隱藏 RWD 時 exchangeRwdCollapse.logOutBtn 按鈕
-      this.exchangeRwdCollapse.logOutBtn = false;
-
+      // this.exchangeRwdCollapse.logOutBtn = false;
+       //(優化後)
+      this.checkScreen();
       }
-    }
-  }
+    },
+    //確保 RWD 在 991 PX 情況下, 才作動
+    checkScreen(){
+      //優化前: innerWidth 在 DevTools 情境下不等於實際 UI viewport
+      // const isMobile = window.innerWidth <= 991;
+
+      
+      //優化後: matchMedia = JS 版本的 CSS media query => CSS 完全同步（最穩）
+      const isMobile = window.matchMedia("(max-width: 991px)").matches;
+      const isLogin = this.userData.isLogin;
+      console.log(window.innerWidth, document.documentElement.clientWidth);
+      
+      if(isMobile){
+        // 手機：根據登入狀態切換
+        this.exchangeRwdCollapse.showBtn = !isLogin;
+        this.exchangeRwdCollapse.logOutBtn = isLogin;
+        console.warn('sccess');
+         
+      }else{
+        // 桌機：固定樣式（不管登入）
+        this.exchangeRwdCollapse.showBtn = true;
+        this.exchangeRwdCollapse.logOutBtn = false;
+        console.error('falut');
+      }
+    },
+
+
+  },
+  //離開頁面前清理垃圾的地方
+  beforeUnmount() {
+  window.removeEventListener("resize", this.checkScreen);
+}
 }
 
 createApp(navLogin).mount('#navLogin');
