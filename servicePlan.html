@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- 告訴 IE：不要用舊模式，請用最新能力來顯示這個網頁。 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" />
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=visibility,visibility_off" /> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
   <title>servicePlan</title>
   <style>
       body {
@@ -21,7 +22,7 @@
         overflow-x: hidden;
       }
     </style>
-  <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-uS233lVj.js"></script>
+  <script type="module" crossorigin src="/Career-travel-plan_week5_Desktop/assets/main-1JWpxlTp.js"></script>
   <link rel="stylesheet" crossorigin href="/Career-travel-plan_week5_Desktop/assets/main-BEUo2zpB.css">
 </head>
 <body>
@@ -261,7 +262,17 @@
         </div>
       </div>
     </div>
-    <a class="avatar-removing fs-14 fs-lg-6" v-show="memberPhotoChange.memberPhoto" @click.prevent="userPage($event)"><img :src="userData.photo" alt="user-img" class=" me-2 border rounded-circle user-img" >{{ userData.userInfo }}</a>
+    <!-- 優化前: 桌機版少了 logout 按鈕 -->
+    <!-- <a class="avatar-removing fs-14 fs-lg-6" v-show="memberPhotoChange.memberPhoto" @click.prevent="userPage($event)"><img :src="userData.photo" alt="user-img" class=" me-2 border rounded-circle user-img" >{{ userData.userInfo }}</a> -->
+    <!-- 優化後 -->
+    <div v-show="memberPhotoChange.memberPhoto" >
+      <div  class="d-flex">
+        <a class="avatar-removing fs-14 fs-lg-6" @click.prevent="userPage($event)"><img :src="userData.photo" alt="user-img" class=" me-2 border rounded-circle user-img" >{{ userData.userInfo }}</a>
+        <button class="logout-icon border-0 bg-white p-0 d-none d-lg-block ms-2"  @click.prevent="exchangelogOutBtn()">
+          <span class="material-symbols-outlined text-natural-10">door_open</span>
+        </button>
+      </div>
+    </div>
   </div>
 </nav>
   <main class="bg-light" id="servicePlan">
